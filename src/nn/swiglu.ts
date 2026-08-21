@@ -54,7 +54,7 @@ export class SwiGLU {
   private fusedMulSilu(siluOut: Tensor, up: Tensor): Tensor {
     const shape = siluOut.shape;
     const size = siluOut.size;
-    
+
     // Reuse buffer if possible
     let out: Tensor;
     if (this._intermediateBuffer && shapesEqual(this._intermediateBuffer.shape, shape)) {

@@ -111,18 +111,18 @@ export function applyRoPE(x: Tensor, startPos: number = 0, freqs?: RoPEFreqs, ba
 // Optimized in-place RoPE application - modifies tensor directly, no allocation
 export function applyRoPEInPlace(tensor: Tensor, startPos: number, freqs?: RoPEFreqs): void {
   if (!freqs) return;
-  
+
   const ndim = tensor.ndim();
   const headDim = tensor.shape[ndim - 1];
-  
+
   if (headDim % 2 !== 0) {
     throw new Error(`RoPE requires even headDim, got ${headDim}`);
   }
-  
+
   const halfDim = headDim / 2;
   let seqLen: number;
   let numHeads = 1;
-  
+
   if (ndim === 2) {
     seqLen = tensor.shape[0];
   } else if (ndim === 3) {
@@ -131,30 +131,30 @@ export function applyRoPEInPlace(tensor: Tensor, startPos: number, freqs?: RoPEF
   } else {
     throw new Error(`Unsupported tensor dimension for in-place RoPE: ${ndim}D`);
   }
-  
+
   const data = tensor.data;
   const strides = tensor.strides;
   const offset = tensor.offset;
-  
+
   for (let s = 0; s < seqLen; s++) {
     const pos = startPos + s;
     const cos = freqs.cos[pos];
     const sin = freqs.sin[pos];
-    
+
     if (!cos || !sin) continue;
-    
+
     const rowOffset = offset + s * strides[0];
-    
+
     for (let h = 0; h < numHeads; h++) {
       const headOffset = rowOffset + h * strides[1];
-      
+
       for (let d = 0; d < halfDim; d++) {
         const idx1 = headOffset + (2 * d) * strides[2];
         const idx2 = headOffset + (2 * d + 1) * strides[2];
-        
+
         const x1 = data[idx1];
         const x2 = data[idx2];
-        
+
         data[idx1] = x1 * cos[d] - x2 * sin[d];
         data[idx2] = x1 * sin[d] + x2 * cos[d];
       }

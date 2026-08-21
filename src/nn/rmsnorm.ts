@@ -82,7 +82,7 @@ export class RMSNorm {
         let rowOffset = xOffset;
         let outRowOffset = outOffset;
         let rem = r;
-        
+
         // Compute multi-dimensional offset
         for (let d = 0; d < x.ndim() - 1; d++) {
           const stride = xStrides[d];

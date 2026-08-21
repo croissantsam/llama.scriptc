@@ -161,7 +161,7 @@ export class MultiHeadAttention {
     // Optimized attention computation with fused loops
     for (let h = 0; h < numHeads; h++) {
       const kvHead = Math.floor(h / numRep);
-      
+
       // Precompute head offsets
       const qHeadOffset = qOffset + h * qStrides[1];
       const kHeadOffset = kOffset + kvHead * kStrides[1];
@@ -177,16 +177,16 @@ export class MultiHeadAttention {
 
         // Compute scores and find max in one pass
         let maxScore = -Infinity;
-        
+
         for (let j = 0; j < validKeyLen; j++) {
           let dot = 0.0;
           const kRowOffset = kHeadOffset + j * kStrides[0];
-          
+
           // Unroll inner loop for better performance
           for (let d = 0; d < headDim; d++) {
             dot += qData[qRowOffset + d * qStrides[2]] * kData[kRowOffset + d * kStrides[2]];
           }
-          
+
           const s = dot * scale;
           scores[j] = s;
           if (s > maxScore) maxScore = s;
@@ -222,39 +222,39 @@ export class MultiHeadAttention {
 // In-place RoPE application to avoid allocation
 function applyRoPEInPlace(tensor: Tensor, startPos: number, freqs?: RoPEFreqs): void {
   if (!freqs) return;
-  
+
   const seqLen = tensor.shape[0];
   const numHeads = tensor.shape[1];
   const headDim = tensor.shape[2];
-  
+
   if (headDim % 2 !== 0) {
     throw new Error(`RoPE requires even headDim, got ${headDim}`);
   }
-  
+
   const halfDim = headDim / 2;
   const data = tensor.data;
   const strides = tensor.strides;
   const offset = tensor.offset;
-  
+
   for (let i = 0; i < seqLen; i++) {
     const pos = startPos + i;
     const cos = freqs.cos[pos];
     const sin = freqs.sin[pos];
-    
+
     if (!cos || !sin) continue;
-    
+
     const rowOffset = offset + i * strides[0];
-    
+
     for (let h = 0; h < numHeads; h++) {
       const headOffset = rowOffset + h * strides[1];
-      
+
       for (let d = 0; d < halfDim; d++) {
         const idx1 = headOffset + d * strides[2];
         const idx2 = headOffset + (d + halfDim) * strides[2];
-        
+
         const x1 = data[idx1];
         const x2 = data[idx2];
-        
+
         data[idx1] = x1 * cos[d] - x2 * sin[d];
         data[idx2] = x1 * sin[d] + x2 * cos[d];
       }

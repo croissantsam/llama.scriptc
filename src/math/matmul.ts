@@ -41,17 +41,17 @@ function matmul2D(a: Tensor, b: Tensor): Tensor {
   }
 
   const out: Tensor = Tensor.zeros([M, N], a.dtype);
-  
+
   // Get raw data arrays for direct access (avoiding get/set overhead)
   const aData = a.data;
   const bData = b.data;
   const outData = out.data;
-  
+
   // Get strides for non-contiguous tensors
   const aStrides = a.strides;
   const bStrides = b.strides;
   const outStrides = out.strides;
-  
+
   const aOffset = a.offset;
   const bOffset = b.offset;
   const outOffset = out.offset;
@@ -103,15 +103,15 @@ function matmul3DBatched(a: Tensor, b: Tensor): Tensor {
   }
 
   const out: Tensor = Tensor.zeros([B, M, N], a.dtype);
-  
+
   const aData = a.data;
   const bData = b.data;
   const outData = out.data;
-  
+
   const aStrides = a.strides;
   const bStrides = b.strides;
   const outStrides = out.strides;
-  
+
   const aOffset = a.offset;
   const bOffset = b.offset;
   const outOffset = out.offset;
@@ -122,7 +122,7 @@ function matmul3DBatched(a: Tensor, b: Tensor): Tensor {
       const aBatchOffset = aOffset + batch * aStrides[0];
       const bBatchOffset = bOffset + batch * bStrides[0];
       const outBatchOffset = outOffset + batch * outStrides[0];
-      
+
       for (let i = 0; i < M; i++) {
         const aRowOffset = aBatchOffset + i * aStrides[1];
         const outRowOffset = outBatchOffset + i * outStrides[1];

@@ -36,22 +36,22 @@ export class LayerKVCache {
       const vData = this.v.data;
       const kChunkData = kChunk.data;
       const vChunkData = vChunk.data;
-      
+
       const kStride = this.k.strides[0];
       const vStride = this.v.strides[0];
       const chunkStride = kChunk.strides[0];
-      
+
       const kOffset = this.k.offset + startPos * kStride;
       const vOffset = this.v.offset + startPos * vStride;
       const chunkOffset = kChunk.offset;
-      
+
       const elementsPerToken = this.numKVHeads * this.headDim;
-      
+
       for (let s = 0; s < chunkLen; s++) {
         const srcOffset = chunkOffset + s * chunkStride;
         const dstKOffset = kOffset + s * kStride;
         const dstVOffset = vOffset + s * vStride;
-        
+
         // Copy entire token at once
         for (let i = 0; i < elementsPerToken; i++) {
           kData[dstKOffset + i] = kChunkData[srcOffset + i];

@@ -23,7 +23,7 @@ export class TensorPool {
   get(shape: number[], dtype: DType = DType.Float64): Tensor {
     const key = poolKeyToString({ shape, dtype });
     const pool = this.pools.get(key);
-    
+
     if (pool && pool.length > 0) {
       const tensor = pool.pop()!;
       // Reset the tensor data to zeros
@@ -33,7 +33,7 @@ export class TensorPool {
       }
       return tensor;
     }
-    
+
     // Create new tensor
     const size = shapeToSize(shape);
     const data: number[] = new Array(size).fill(0);
@@ -46,15 +46,15 @@ export class TensorPool {
       // Don't pool views or null tensors
       return;
     }
-    
+
     const key = poolKeyToString({ shape: tensor.shape, dtype: tensor.dtype });
     let pool = this.pools.get(key);
-    
+
     if (!pool) {
       pool = [];
       this.pools.set(key, pool);
     }
-    
+
     if (pool.length < this.maxPoolSize) {
       // Reset tensor state
       tensor.offset = 0;

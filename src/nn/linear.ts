@@ -98,20 +98,20 @@ export class Linear {
       for (let i = 0; i < seqLen; i++) {
         const xRowOffset = xOffset + i * inFeat;
         const outRowOffset = outOffset + i * outFeat;
-        
+
         for (let j = 0; j < outFeat; j++) {
           let sumVal = 0.0;
           const wRowOffset = wOffset + j * inFeat;
-          
+
           // Unroll inner loop for better performance
           for (let k = 0; k < inFeat; k++) {
             sumVal += xData[xRowOffset + k] * wData[wRowOffset + k];
           }
-          
+
           if (hasBias) {
             sumVal += bData![j];
           }
-          
+
           outData[outRowOffset + j] = sumVal;
         }
       }

@@ -42,7 +42,7 @@ export function scale(a: Tensor, scalar: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     // Fast path for contiguous tensors
     for (let i = 0; i < a.size; i++) {
@@ -60,7 +60,7 @@ export function addScalar(a: Tensor, scalar: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     // Fast path for contiguous tensors
     for (let i = 0; i < a.size; i++) {
@@ -80,7 +80,7 @@ export function exp(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     for (let i = 0; i < a.size; i++) {
       outData[i] = Math.exp(aData[a.offset + i]);
@@ -97,7 +97,7 @@ export function sqrt(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     for (let i = 0; i < a.size; i++) {
       const val = aData[a.offset + i];
@@ -122,7 +122,7 @@ export function rsqrt(a: Tensor, eps: number = 0): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     for (let i = 0; i < a.size; i++) {
       const val = aData[a.offset + i] + eps;
@@ -151,7 +151,7 @@ export function abs(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     for (let i = 0; i < a.size; i++) {
       outData[i] = Math.abs(aData[a.offset + i]);
@@ -168,7 +168,7 @@ export function clamp(a: Tensor, minVal: number, maxVal: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
   const aData = a.data;
   const outData = out.data;
-  
+
   if (a.isContiguous() && out.isContiguous()) {
     for (let i = 0; i < a.size; i++) {
       const val = aData[a.offset + i];
@@ -193,7 +193,7 @@ function binaryOp(a: Tensor, b: Tensor, op: (x: number, y: number) => number): T
     const aData = a.data;
     const bData = b.data;
     const outData = out.data;
-    
+
     if (a.isContiguous() && b.isContiguous() && out.isContiguous()) {
       // Fast path for contiguous tensors
       for (let i = 0; i < a.size; i++) {

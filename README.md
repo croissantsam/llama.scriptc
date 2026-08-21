@@ -178,7 +178,7 @@ npx scriptc run examples/run_gguf.ts --dynamic
 Exemple de sortie :
 ```text
 =========================================================
-     🚀 QWEN2.5-0.5B INSTRUCT (Q8_0 GGUF) IN SCRIPTC     
+     🚀 QWEN2.5-0.5B INSTRUCT (Q8_0 GGUF) IN SCRIPTC
 =========================================================
 
 [1/3] Loading Tokenizer from GGUF...
@@ -214,7 +214,7 @@ npx scriptc run examples/generate.ts --dynamic "Bonjour, je m'appelle"
 Exemple de sortie (version optimisée) :
 ```text
 =========================================================
-    🚀 LLAMA.SCRIPTC — NATIVE TRANSFORMER LLM ENGINE     
+    🚀 LLAMA.SCRIPTC — NATIVE TRANSFORMER LLM ENGINE
 =========================================================
 
 [1/4] Tokenizer initialized with 125 vocabulary tokens.
@@ -254,7 +254,7 @@ npx scriptc run tests/run_all.ts --dynamic
 Résultat d'exécution (version optimisée) :
 ```text
 =================================================
-   LLM INFERENCE ENGINE (ScriptC) TEST SUITE     
+   LLM INFERENCE ENGINE (ScriptC) TEST SUITE
 =================================================
 
   ✓ Tensor Shape & Strides (6 tests)
