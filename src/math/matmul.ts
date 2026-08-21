@@ -1,4 +1,4 @@
-// Matrix Multiplication (2D and Batched 3D)
+// Matrix Multiplication (2D and Batched 3D) - Optimized
 // ===========================================
 
 import { Tensor } from "../tensor/tensor";
@@ -33,23 +33,56 @@ export function matmul(a: Tensor, b: Tensor): Tensor {
 
 function matmul2D(a: Tensor, b: Tensor): Tensor {
   const M: number = a.shape[0];
-  const K1: number = a.shape[1];
-  const K2: number = b.shape[0];
+  const K: number = a.shape[1];
   const N: number = b.shape[1];
 
-  if (K1 !== K2) {
-    throw new Error(`matmul dimension mismatch: inner dimensions (${K1} and ${K2}) must match. Shapes: [${a.shape.join(", ")}] @ [${b.shape.join(", ")}]`);
+  if (K !== b.shape[0]) {
+    throw new Error(`matmul dimension mismatch: inner dimensions (${K} and ${b.shape[0]}) must match. Shapes: [${a.shape.join(", ")}] @ [${b.shape.join(", ")}]`);
   }
 
   const out: Tensor = Tensor.zeros([M, N], a.dtype);
+  
+  // Get raw data arrays for direct access (avoiding get/set overhead)
+  const aData = a.data;
+  const bData = b.data;
+  const outData = out.data;
+  
+  // Get strides for non-contiguous tensors
+  const aStrides = a.strides;
+  const bStrides = b.strides;
+  const outStrides = out.strides;
+  
+  const aOffset = a.offset;
+  const bOffset = b.offset;
+  const outOffset = out.offset;
 
-  // Standard triple loop matmul
-  for (let i: number = 0; i < M; i++) {
-    for (let k: number = 0; k < K1; k++) {
-      const aVal: number = a.get(i, k);
-      for (let j: number = 0; j < N; j++) {
-        const current: number = out.get(i, j);
-        out.set(current + aVal * b.get(k, j), i, j);
+  // Optimized loop ordering: i, j, k for better cache locality
+  // This accesses a row-wise, b column-wise (transposed), out row-wise
+  if (a.isContiguous() && b.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors - use flat array access
+    for (let i = 0; i < M; i++) {
+      const aRowOffset = aOffset + i * aStrides[0];
+      const outRowOffset = outOffset + i * outStrides[0];
+      for (let j = 0; j < N; j++) {
+        let sum = 0.0;
+        const bColOffset = bOffset + j; // b is [K, N], so stride[1] = 1 for contiguous
+        for (let k = 0; k < K; k++) {
+          sum += aData[aRowOffset + k] * bData[bOffset + k * bStrides[0] + j];
+        }
+        outData[outRowOffset + j] = sum;
+      }
+    }
+  } else {
+    // General path with strides
+    for (let i = 0; i < M; i++) {
+      for (let j = 0; j < N; j++) {
+        let sum = 0.0;
+        for (let k = 0; k < K; k++) {
+          const aIdx = aOffset + i * aStrides[0] + k * aStrides[1];
+          const bIdx = bOffset + k * bStrides[0] + j * bStrides[1];
+          sum += aData[aIdx] * bData[bIdx];
+        }
+        outData[outOffset + i * outStrides[0] + j * outStrides[1]] = sum;
       }
     }
   }
@@ -57,29 +90,63 @@ function matmul2D(a: Tensor, b: Tensor): Tensor {
 }
 
 function matmul3DBatched(a: Tensor, b: Tensor): Tensor {
-  const B1: number = a.shape[0];
-  const B2: number = b.shape[0];
+  const B: number = a.shape[0];
   const M: number = a.shape[1];
-  const K1: number = a.shape[2];
-  const K2: number = b.shape[1];
+  const K: number = a.shape[2];
   const N: number = b.shape[2];
 
-  if (B1 !== B2) {
-    throw new Error(`Batched matmul batch size mismatch: ${B1} vs ${B2}`);
+  if (B !== b.shape[0]) {
+    throw new Error(`Batched matmul batch size mismatch: ${B} vs ${b.shape[0]}`);
   }
-  if (K1 !== K2) {
-    throw new Error(`Batched matmul inner dimension mismatch: ${K1} vs ${K2}`);
+  if (K !== b.shape[1]) {
+    throw new Error(`Batched matmul inner dimension mismatch: ${K} vs ${b.shape[1]}`);
   }
 
-  const out: Tensor = Tensor.zeros([B1, M, N], a.dtype);
+  const out: Tensor = Tensor.zeros([B, M, N], a.dtype);
+  
+  const aData = a.data;
+  const bData = b.data;
+  const outData = out.data;
+  
+  const aStrides = a.strides;
+  const bStrides = b.strides;
+  const outStrides = out.strides;
+  
+  const aOffset = a.offset;
+  const bOffset = b.offset;
+  const outOffset = out.offset;
 
-  for (let batch: number = 0; batch < B1; batch++) {
-    for (let i: number = 0; i < M; i++) {
-      for (let k: number = 0; k < K1; k++) {
-        const aVal: number = a.get(batch, i, k);
-        for (let j: number = 0; j < N; j++) {
-          const current: number = out.get(batch, i, j);
-          out.set(current + aVal * b.get(batch, k, j), batch, i, j);
+  if (a.isContiguous() && b.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors
+    for (let batch = 0; batch < B; batch++) {
+      const aBatchOffset = aOffset + batch * aStrides[0];
+      const bBatchOffset = bOffset + batch * bStrides[0];
+      const outBatchOffset = outOffset + batch * outStrides[0];
+      
+      for (let i = 0; i < M; i++) {
+        const aRowOffset = aBatchOffset + i * aStrides[1];
+        const outRowOffset = outBatchOffset + i * outStrides[1];
+        for (let j = 0; j < N; j++) {
+          let sum = 0.0;
+          for (let k = 0; k < K; k++) {
+            sum += aData[aRowOffset + k * aStrides[2]] * bData[bBatchOffset + k * bStrides[1] + j * bStrides[2]];
+          }
+          outData[outRowOffset + j * outStrides[2]] = sum;
+        }
+      }
+    }
+  } else {
+    // General path with strides
+    for (let batch = 0; batch < B; batch++) {
+      for (let i = 0; i < M; i++) {
+        for (let j = 0; j < N; j++) {
+          let sum = 0.0;
+          for (let k = 0; k < K; k++) {
+            const aIdx = aOffset + batch * aStrides[0] + i * aStrides[1] + k * aStrides[2];
+            const bIdx = bOffset + batch * bStrides[0] + k * bStrides[1] + j * bStrides[2];
+            sum += aData[aIdx] * bData[bIdx];
+          }
+          outData[outOffset + batch * outStrides[0] + i * outStrides[1] + j * outStrides[2]] = sum;
         }
       }
     }

@@ -4,3 +4,4 @@
 export * from "./dtype";
 export * from "./shape";
 export * from "./tensor";
+export * from "./pool";

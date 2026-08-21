@@ -1,4 +1,4 @@
-// Numerically Stable Softmax Implementation
+// Numerically Stable Softmax Implementation - Optimized
 // ==========================================
 
 import { Tensor } from "../tensor/tensor";
@@ -40,26 +40,46 @@ function softmax1D(x: Tensor): Tensor {
   const n: number = x.size;
   if (n === 0) return Tensor.zeros([0], x.dtype);
 
+  const out: Tensor = Tensor.zeros([n], x.dtype);
+  const xData = x.data;
+  const outData = out.data;
+  const xOffset = x.offset;
+  const outOffset = out.offset;
+
   // Step 1: Find max value for numerical stability
   let maxVal: number = -Infinity;
-  for (let i: number = 0; i < n; i++) {
-    const val: number = x.get(i);
-    if (val > maxVal) maxVal = val;
+  if (x.isContiguous()) {
+    for (let i = 0; i < n; i++) {
+      const val = xData[xOffset + i];
+      if (val > maxVal) maxVal = val;
+    }
+  } else {
+    for (let i = 0; i < n; i++) {
+      const val = x.get(i);
+      if (val > maxVal) maxVal = val;
+    }
   }
 
   // Step 2: Compute exp(x_i - maxVal) and accumulate sum
-  const exps: number[] = [];
   let expSum: number = 0;
-  for (let i: number = 0; i < n; i++) {
-    const expVal: number = Math.exp(x.get(i) - maxVal);
-    exps.push(expVal);
-    expSum += expVal;
+  if (x.isContiguous()) {
+    for (let i = 0; i < n; i++) {
+      const expVal = Math.exp(xData[xOffset + i] - maxVal);
+      outData[outOffset + i] = expVal;
+      expSum += expVal;
+    }
+  } else {
+    for (let i = 0; i < n; i++) {
+      const expVal = Math.exp(x.get(i) - maxVal);
+      outData[outOffset + i] = expVal;
+      expSum += expVal;
+    }
   }
 
-  // Step 3: Normalize
-  const out: Tensor = Tensor.zeros([n], x.dtype);
-  for (let i: number = 0; i < n; i++) {
-    out.set(exps[i] / expSum, i);
+  // Step 3: Normalize in-place
+  const invExpSum = 1.0 / expSum;
+  for (let i = 0; i < n; i++) {
+    outData[outOffset + i] = outData[outOffset + i] * invExpSum;
   }
   return out;
 }
@@ -69,26 +89,64 @@ function softmax2DLastAxis(x: Tensor): Tensor {
   const cols: number = x.shape[1];
   const out: Tensor = Tensor.zeros([rows, cols], x.dtype);
 
-  for (let r: number = 0; r < rows; r++) {
-    // 1. Max for row
-    let maxVal: number = -Infinity;
-    for (let c: number = 0; c < cols; c++) {
-      const val: number = x.get(r, c);
-      if (val > maxVal) maxVal = val;
-    }
+  const xData = x.data;
+  const outData = out.data;
+  const xStrides = x.strides;
+  const outStrides = out.strides;
+  const xOffset = x.offset;
+  const outOffset = out.offset;
 
-    // 2. Exp & Sum for row
-    const rowExps: number[] = [];
-    let expSum: number = 0;
-    for (let c: number = 0; c < cols; c++) {
-      const e: number = Math.exp(x.get(r, c) - maxVal);
-      rowExps.push(e);
-      expSum += e;
-    }
+  if (x.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors
+    for (let r = 0; r < rows; r++) {
+      const rowOffset = xOffset + r * cols;
+      const outRowOffset = outOffset + r * cols;
 
-    // 3. Normalize row
-    for (let c: number = 0; c < cols; c++) {
-      out.set(rowExps[c] / expSum, r, c);
+      // 1. Max for row
+      let maxVal = -Infinity;
+      for (let c = 0; c < cols; c++) {
+        const val = xData[rowOffset + c];
+        if (val > maxVal) maxVal = val;
+      }
+
+      // 2. Exp & Sum for row
+      let expSum = 0.0;
+      for (let c = 0; c < cols; c++) {
+        const e = Math.exp(xData[rowOffset + c] - maxVal);
+        outData[outRowOffset + c] = e;
+        expSum += e;
+      }
+
+      // 3. Normalize row in-place
+      const invExpSum = 1.0 / expSum;
+      for (let c = 0; c < cols; c++) {
+        outData[outRowOffset + c] = outData[outRowOffset + c] * invExpSum;
+      }
+    }
+  } else {
+    // General path with strides
+    for (let r = 0; r < rows; r++) {
+      // 1. Max for row
+      let maxVal = -Infinity;
+      for (let c = 0; c < cols; c++) {
+        const val = x.get(r, c);
+        if (val > maxVal) maxVal = val;
+      }
+
+      // 2. Exp & Sum for row
+      let expSum = 0.0;
+      for (let c = 0; c < cols; c++) {
+        const e = Math.exp(x.get(r, c) - maxVal);
+        out.set(e, r, c);
+        expSum += e;
+      }
+
+      // 3. Normalize row
+      const invExpSum = 1.0 / expSum;
+      for (let c = 0; c < cols; c++) {
+        const val = out.get(r, c);
+        out.set(val * invExpSum, r, c);
+      }
     }
   }
   return out;
@@ -100,27 +158,67 @@ function softmax3DLastAxis(x: Tensor): Tensor {
   const d2: number = x.shape[2];
   const out: Tensor = Tensor.zeros([d0, d1, d2], x.dtype);
 
-  for (let i: number = 0; i < d0; i++) {
-    for (let j: number = 0; j < d1; j++) {
-      // 1. Max
-      let maxVal: number = -Infinity;
-      for (let k: number = 0; k < d2; k++) {
-        const val: number = x.get(i, j, k);
-        if (val > maxVal) maxVal = val;
-      }
+  const xData = x.data;
+  const outData = out.data;
+  const xStrides = x.strides;
+  const outStrides = out.strides;
+  const xOffset = x.offset;
+  const outOffset = out.offset;
 
-      // 2. Exp & Sum
-      const exps: number[] = [];
-      let expSum: number = 0;
-      for (let k: number = 0; k < d2; k++) {
-        const e: number = Math.exp(x.get(i, j, k) - maxVal);
-        exps.push(e);
-        expSum += e;
-      }
+  if (x.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors
+    for (let i = 0; i < d0; i++) {
+      for (let j = 0; j < d1; j++) {
+        const rowOffset = xOffset + i * xStrides[0] + j * xStrides[1];
+        const outRowOffset = outOffset + i * outStrides[0] + j * outStrides[1];
 
-      // 3. Normalize
-      for (let k: number = 0; k < d2; k++) {
-        out.set(exps[k] / expSum, i, j, k);
+        // 1. Max
+        let maxVal = -Infinity;
+        for (let k = 0; k < d2; k++) {
+          const val = xData[rowOffset + k];
+          if (val > maxVal) maxVal = val;
+        }
+
+        // 2. Exp & Sum
+        let expSum = 0.0;
+        for (let k = 0; k < d2; k++) {
+          const e = Math.exp(xData[rowOffset + k] - maxVal);
+          outData[outRowOffset + k] = e;
+          expSum += e;
+        }
+
+        // 3. Normalize in-place
+        const invExpSum = 1.0 / expSum;
+        for (let k = 0; k < d2; k++) {
+          outData[outRowOffset + k] = outData[outRowOffset + k] * invExpSum;
+        }
+      }
+    }
+  } else {
+    // General path with strides
+    for (let i = 0; i < d0; i++) {
+      for (let j = 0; j < d1; j++) {
+        // 1. Max
+        let maxVal = -Infinity;
+        for (let k = 0; k < d2; k++) {
+          const val = x.get(i, j, k);
+          if (val > maxVal) maxVal = val;
+        }
+
+        // 2. Exp & Sum
+        let expSum = 0.0;
+        for (let k = 0; k < d2; k++) {
+          const e = Math.exp(x.get(i, j, k) - maxVal);
+          out.set(e, i, j, k);
+          expSum += e;
+        }
+
+        // 3. Normalize
+        const invExpSum = 1.0 / expSum;
+        for (let k = 0; k < d2; k++) {
+          const val = out.get(i, j, k);
+          out.set(val * invExpSum, i, j, k);
+        }
       }
     }
   }

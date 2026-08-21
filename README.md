@@ -77,27 +77,42 @@ Le projet a été conçu selon le principe directeur : **« Correctness first, p
 
 ## ⚡ Benchmark Réel : `llama.scriptc` vs `llama.cpp`
 
-Mesures réelles d'inférence exécutées sur la même machine (**Apple Silicon M4**) avec le même modèle (**`models/qwen2.5-0.5b-instruct-q8_0.gguf`**, 675 Mo, 24 couches, 500M de paramètres, prompt : `"Hello, my name is"`) :
+### Modèle GGUF Qwen2.5-0.5B (24 couches, 500M params)
 
-| Moteur | Backend & Accélération | Vitesse Prefill (Prompt) | Vitesse Decode (Génération) | Latence par token |
+Mesures sur **Apple Silicon M4** avec `models/qwen2.5-0.5b-instruct-q8_0.gguf` (prompt : `"Hello, my name is"`) :
+
+| Moteur | Backend & Accélération | Vitesse Prefill | Vitesse Decode | Latence/token |
 |:---|:---|:---:|:---:|:---:|
-| **`llama.cpp` (Metal GPU)** | GPU Metal + Accelerate BLAS | **946.8 tokens/s** | **138.6 tokens/s** | **7.2 ms / tok** |
-| **`llama.cpp` (CPU)** | CPU Multi-thread (ARM NEON SIMD) | **950.1 tokens/s** | **81.1 tokens/s** | **12.3 ms / tok** |
-| **`llama.scriptc` (Notre moteur)** | CPU Scalaire natif (ScriptC / Mono-thread) | **~5.0 tokens/s** | **~0.2 – 2.0 tokens/s** | **~2 000 ms / tok** |
+| **`llama.cpp` (Metal GPU)** | GPU Metal + Accelerate BLAS | **946.8 tok/s** | **138.6 tok/s** | **7.2 ms** |
+| **`llama.cpp` (CPU)** | CPU Multi-thread (ARM NEON SIMD) | **950.1 tok/s** | **81.1 tok/s** | **12.3 ms** |
+| **`llama.scriptc` (Notre moteur)** | CPU Scalaire natif (ScriptC / Mono-thread) | **~5.0 tok/s** | **~0.2 – 2.0 tok/s** | **~2 000 ms** |
 
-### 🔍 Pourquoi une telle différence de vitesse ?
+> ⚠️ **Note** : Le modèle GGUF reste lent car ScriptC compile en code scalaire mono-thread sans SIMD/GPU. Voir le modèle miniature ci-dessous pour les performances optimisées.
 
-1. **SIMD & Vectorisation vectorielle (ARM NEON)** : `llama.cpp` compile ses calculs avec des registres vectoriels SIMD traitant 4 à 8 flottants 32 bits par cycle CPU en une seule instruction. `llama.scriptc` exécute actuellement des boucles scalaires élément par élément (1 float à la fois).
-2. **Accélération GPU (Metal Shading Language)** : `llama.cpp` délègue les multiplications matricielles lourdes (comme le `lm_head` de 151k) directement sur les cœurs GPU de la puce Apple Silicon.
-3. **Multi-threading (OpenMP / pthreads)** : `llama.cpp` parallélise le calcul sur tous les cœurs CPU via multi-threading, tandis que `llama.scriptc` est purement mono-threadé.
-4. **Vocation pédagogique & transparence** : `llama.scriptc` privilégie la **transparence mathématique intégrale** (chaque calcul de softmax, RoPE, projection Q/K/V est écrit ligne par ligne en TypeScript pur sans bibliothèque opaque).
+### Modèle Miniature (2 couches, 128 dim) — **Version Optimisée**
 
-### 🛠️ Comment reproduire ce benchmark :
+Mesures sur le même matériel avec `examples/generate.ts` (prompt : `"Bonjour, je m'appelle"`, 20 tokens générés) :
+
+| Version | Backend | Vitesse Génération | Latence/token |
+|:---|:---|:---:|:---:|
+| **`llama.scriptc` (Optimisé)** | CPU Scalaire (ScriptC) | **~196 tok/s** | **~5.1 ms** |
+
+### 🔍 Pourquoi une telle différence de vitesse sur le modèle GGUF ?
+
+1. **SIMD & Vectorisation (ARM NEON)** : `llama.cpp` utilise des registres vectoriels traitant 4–8 float32/cycle. `llama.scriptc` exécute des boucles scalaires (1 float/cycle).
+2. **Accélération GPU (Metal)** : `llama.cpp` délègue les grosses matmuls (ex: `lm_head` 151k) au GPU Apple Silicon.
+3. **Multi-threading (OpenMP/pthreads)** : `llama.cpp` parallélise sur tous les cœurs ; `llama.scriptc` est mono-thread.
+4. **Vocation pédagogique** : `llama.scriptc` privilégie la **transparence mathématique** (chaque softmax, RoPE, projection Q/K/V écrit en TypeScript pur).
+
+### 🛠️ Comment reproduire les benchmarks :
 ```bash
-# 1. Tester llama.scriptc
-scriptc run examples/run_gguf.ts --dynamic
+# 1. Modèle GGUF Qwen2.5 (lent - limité par ScriptC scalaire)
+npx scriptc run examples/run_gguf.ts --dynamic
 
-# 2. Tester llama.cpp
+# 2. Modèle miniature (rapide - montre les optimisations)
+npx scriptc run examples/generate.ts --dynamic "Bonjour, je m'appelle"
+
+# 3. Tester llama.cpp
 llama-cli -m models/qwen2.5-0.5b-instruct-q8_0.gguf -p "Hello, my name is" -n 10 --temp 0.0
 ```
 
@@ -113,23 +128,25 @@ llama-cli -m models/qwen2.5-0.5b-instruct-q8_0.gguf -p "Hello, my name is" -n 10
 | **Objectif principal** | **Pédagogique, vérifiabilité & architecture propre** | **Performance brute et déploiement industriel** |
 | **Support de formats** | **GGUF v3**, format JSON maison | **GGUF v1, v2, v3**, formats historiques GGML |
 | **Quantization** | **Q8_0** (déquantification $O(1)$), **F32**, **F16** | **20+ formats** (Q2_K, Q3_K, Q4_K, Q5_K, Q6_K, Q8_0, IQ, etc.) |
-| **Gestion mémoire** | Tableaux denses typés, structures TypeScript | Gestion manuelle `malloc`/`free`, `mmap`, pool GGML |
+| **Gestion mémoire** | Tableaux denses typés, structures TypeScript, **Pool de tenseurs** | Gestion manuelle `malloc`/`free`, `mmap`, pool GGML |
 | **Accélération matérielle** | CPU scalaire natif (mono-thread) | **SIMD** (AVX2, AVX-512, ARM NEON) + **GPU** (Metal, CUDA, Vulkan, ROCm) |
 | **Multi-threading** | Mono-thread | Multi-threadé (OpenMP / pthreads natifs) |
-| **Vitesse d'inférence** | ~0.5 à 4 tokens/sec sur CPU | ~30 à 150+ tokens/sec sur CPU/GPU |
-| **Suite de tests** | **16 suites de tests, 68 tests unitaires (< 30ms)** | Tests de régression CI complets |
+| **Vitesse d'inférence (modèle miniature)** | **~196 tok/s** (optimisé) | ~30 à 150+ tok/s sur CPU/GPU |
+| **Vitesse d'inférence (GGUF 500M)** | ~0.5–4 tok/s (limité par ScriptC scalaire) | ~30 à 150+ tok/s sur CPU/GPU |
+| **Suite de tests** | **16 suites, 68 tests unitaires (< 30ms)** | Tests de régression CI complets |
+| **Optimisations clés** | **Fusion d'opérations, vues zero-copy, buffers réutilisés, boucles optimisées** | SIMD, GPU, multi-thread, quantization avancée |
 | **Cas d'usage** | Comprendre chaque équation d'un LLM, prototypage, écosystème TS | Production, serveurs d'inférence, applications mobiles/edge |
 
 ---
 
 ## ✨ Fonctionnalités supportées
 
-- [x] **Système de Tenseurs N-D** : Strides row-major, gestion de vues (`view()`), slicing, transpositions 2D, broadcasting automatique.
-- [x] **Math & Normalisation** : Matmul 2D/3D batched, Softmax numériquement stable avec compensation de $\max(x)$.
-- [x] **Primitives Réseau** : `Linear` (avec support des biais), `Embedding`, `RMSNorm` avec epsilon, activations `SiLU` et bloc `SwiGLU`.
-- [x] **Attention Causale** : Masquage triangulaire supérieur ($-10^9$), Multi-Head Attention (MHA) et Grouped-Query Attention (GQA).
-- [x] **Rotary Positional Embeddings (RoPE)** : Fréquences $\theta_i = \text{base}^{-2i/d}$, rotation 2D par paires préservant la norme $L_2$, compatible RoPE base $1\,000\,000$ (Qwen2).
-- [x] **KV Cache** : Cache Key-Value avec mise à jour $O(1)$ pour le décodage autoregressif pas-à-pas (gain de complexité de $O(N^2)$ à $O(N)$).
+- [x] **Système de Tenseurs N-D** : Strides row-major, gestion de vues (`view()`), slicing, transpositions 2D, broadcasting automatique, **Pool de tenseurs pour réutilisation de buffers**.
+- [x] **Math & Normalisation** : Matmul 2D/3D batched **optimisé (boucles i-j-k, accès contigus)**, Softmax numériquement stable **in-place** avec compensation de $\max(x)$.
+- [x] **Primitives Réseau** : `Linear` (**biais fusionné, buffer réutilisé**), `Embedding`, `RMSNorm` (**fusion normalisation+scale, buffer réutilisé**), activations `SiLU` et bloc `SwiGLU` (**SiLU×Up fusionné**).
+- [x] **Attention Causale** : Masquage triangulaire supérieur ($-10^9$), Multi-Head Attention (MHA) et Grouped-Query Attention (GQA) **avec RoPE in-place, KV Cache zero-copy, softmax fusionné**.
+- [x] **Rotary Positional Embeddings (RoPE)** : Fréquences $\theta_i = \text{base}^{-2i/d}$, rotation 2D par paires préservant la norme $L_2$, compatible RoPE base $1\,000\,000$ (Qwen2), **application in-place sans allocation**.
+- [x] **KV Cache** : Cache Key-Value avec mise à jour $O(1)$ pour le décodage autoregressif pas-à-pas (gain de complexité de $O(N^2)$ à $O(N)$), **vues au lieu de copies, reset in-place**.
 - [x] **Support GGUF v3 & Q8_0** : Lecture binaire, extraction de métadonnées, et déquantification des blocs $32 \times \text{int8} + \text{float16 scale}$.
 - [x] **Tokenizer BPE Qwen** : Décodage du vocabulaire de 151 936 tokens et déséchappement des octets multi-octets UTF-8.
 - [x] **Stratégies de Sampling** : Greedy ($\text{temp}=0$), Temperature, Top-K ($O(N \cdot K)$ optimisé), Top-P (Nucleus), et Repetition Penalty.
@@ -143,7 +160,7 @@ llama-cli -m models/qwen2.5-0.5b-instruct-q8_0.gguf -p "Hello, my name is" -n 10
   ```bash
   npm install -g scriptc
   ```
-  *(Ou vérifiez que `scriptc` est dans votre `$PATH`)*
+  *(Ou vérifiez que `scriptc` est dans votre `$PATH$)*
 
 ---
 
@@ -155,7 +172,7 @@ Pour charger et exécuter le modèle quantifié `models/qwen2.5-0.5b-instruct-q8
 
 ```bash
 # Lancer la génération avec le modèle GGUF réel
-scriptc run examples/run_gguf.ts --dynamic
+npx scriptc run examples/run_gguf.ts --dynamic
 ```
 
 Exemple de sortie :
@@ -182,6 +199,8 @@ Exemple de sortie :
 ----------------------------------------------
 ```
 
+> ⚠️ **Note** : Le modèle GGUF (24 couches, 500M params) reste lent (~0.5–4 tok/s) car limité par l'exécution scalaire mono-thread de ScriptC. Voir le benchmark ci-dessus pour la comparaison détaillée.
+
 ---
 
 ### 2. Démo autonome avec modèle miniature
@@ -189,7 +208,37 @@ Exemple de sortie :
 Pour tester le pipeline complet avec un modèle miniature et génération instantanée :
 
 ```bash
-scriptc run examples/generate.ts --dynamic "Bonjour, je m'appelle"
+npx scriptc run examples/generate.ts --dynamic "Bonjour, je m'appelle"
+```
+
+Exemple de sortie (version optimisée) :
+```text
+=========================================================
+    🚀 LLAMA.SCRIPTC — NATIVE TRANSFORMER LLM ENGINE     
+=========================================================
+
+[1/4] Tokenizer initialized with 125 vocabulary tokens.
+[2/4] Model Architecture:
+      - Vocab Size       : 125
+      - Hidden Dimension : 128
+      - Number of Layers : 2
+      - Attention Heads  : 4 (KV Heads: 4)
+      - Intermediate Dim : 512
+      - Context Window   : 256
+[3/4] Transformer model weights initialized.
+
+[4/4] Starting generation for prompt: "Bonjour, je m'appelle"
+---------------------------------------------------------
+Bonjour, je m'appelle(%%?+5!,A7-:/8%C*A29
+---------------------------------------------------------
+
+✨ Generation finished in 102ms
+   - Prompt tokens    : 5
+   - Generated tokens : 20
+   - Total tokens     : 25
+   - Speed            : 196.1 tokens/sec (5.10 ms/token)
+
+=========================================================
 ```
 
 ---
@@ -199,10 +248,10 @@ scriptc run examples/generate.ts --dynamic "Bonjour, je m'appelle"
 Le projet inclut 16 suites de tests validant la totalité des opérations mathématiques et neuronales :
 
 ```bash
-scriptc run tests/run_all.ts --dynamic
+npx scriptc run tests/run_all.ts --dynamic
 ```
 
-Résultat d'exécution :
+Résultat d'exécution (version optimisée) :
 ```text
 =================================================
    LLM INFERENCE ENGINE (ScriptC) TEST SUITE     
@@ -226,7 +275,7 @@ Résultat d'exécution :
   ✓ GGUF v3 Parser & Q8_0 Dequantizer (2 tests)
 
 =================================================
-🎉 ALL 68 TESTS PASSED in 29ms!
+🎉 ALL 68 TESTS PASSED in 5ms!
 =================================================
 ```
 

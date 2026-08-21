@@ -1,7 +1,8 @@
-// Key-Value Cache for Autoregressive Transformer Inference
+// Key-Value Cache for Autoregressive Transformer Inference - Optimized
 // ==========================================================
 
 import { Tensor } from "../tensor/tensor";
+import { computeStrides } from "../tensor/shape";
 
 export class LayerKVCache {
   maxSeqLen: number;
@@ -29,12 +30,43 @@ export class LayerKVCache {
       throw new Error(`KV Cache overflow: startPos (${startPos}) + chunkLen (${chunkLen}) exceeds maxSeqLen (${this.maxSeqLen})`);
     }
 
-    for (let s: number = 0; s < chunkLen; s++) {
-      const pos: number = startPos + s;
-      for (let h: number = 0; h < this.numKVHeads; h++) {
-        for (let d: number = 0; d < this.headDim; d++) {
-          this.k.set(kChunk.get(s, h, d), pos, h, d);
-          this.v.set(vChunk.get(s, h, d), pos, h, d);
+    // Fast path: if both tensors are contiguous, use direct memory copy
+    if (kChunk.isContiguous() && vChunk.isContiguous() && this.k.isContiguous() && this.v.isContiguous()) {
+      const kData = this.k.data;
+      const vData = this.v.data;
+      const kChunkData = kChunk.data;
+      const vChunkData = vChunk.data;
+      
+      const kStride = this.k.strides[0];
+      const vStride = this.v.strides[0];
+      const chunkStride = kChunk.strides[0];
+      
+      const kOffset = this.k.offset + startPos * kStride;
+      const vOffset = this.v.offset + startPos * vStride;
+      const chunkOffset = kChunk.offset;
+      
+      const elementsPerToken = this.numKVHeads * this.headDim;
+      
+      for (let s = 0; s < chunkLen; s++) {
+        const srcOffset = chunkOffset + s * chunkStride;
+        const dstKOffset = kOffset + s * kStride;
+        const dstVOffset = vOffset + s * vStride;
+        
+        // Copy entire token at once
+        for (let i = 0; i < elementsPerToken; i++) {
+          kData[dstKOffset + i] = kChunkData[srcOffset + i];
+          vData[dstVOffset + i] = vChunkData[srcOffset + i];
+        }
+      }
+    } else {
+      // General path with strides
+      for (let s: number = 0; s < chunkLen; s++) {
+        const pos: number = startPos + s;
+        for (let h: number = 0; h < this.numKVHeads; h++) {
+          for (let d: number = 0; d < this.headDim; d++) {
+            this.k.set(kChunk.get(s, h, d), pos, h, d);
+            this.v.set(vChunk.get(s, h, d), pos, h, d);
+          }
         }
       }
     }
@@ -42,36 +74,56 @@ export class LayerKVCache {
     this.curLen = Math.max(this.curLen, startPos + chunkLen);
   }
 
-  getKeys(totalLen: number): Tensor {
-    // Return keys from position 0 to totalLen - 1: [totalLen, numKVHeads, headDim]
-    const out: Tensor = Tensor.zeros([totalLen, this.numKVHeads, this.headDim]);
-    for (let s: number = 0; s < totalLen; s++) {
-      for (let h: number = 0; h < this.numKVHeads; h++) {
-        for (let d: number = 0; d < this.headDim; d++) {
-          out.set(this.k.get(s, h, d), s, h, d);
-        }
-      }
+  // Return a VIEW of the keys up to totalLen - no copy!
+  getKeysView(totalLen: number): Tensor {
+    if (totalLen > this.maxSeqLen) {
+      throw new Error(`Requested length ${totalLen} exceeds maxSeqLen ${this.maxSeqLen}`);
     }
-    return out;
+    // Create a view into the existing buffer
+    return new Tensor(
+      this.k.data,
+      [totalLen, this.numKVHeads, this.headDim],
+      computeStrides([totalLen, this.numKVHeads, this.headDim]),
+      this.k.offset,
+      this.k.dtype,
+      true
+    );
+  }
+
+  // Return a VIEW of the values up to totalLen - no copy!
+  getValuesView(totalLen: number): Tensor {
+    if (totalLen > this.maxSeqLen) {
+      throw new Error(`Requested length ${totalLen} exceeds maxSeqLen ${this.maxSeqLen}`);
+    }
+    // Create a view into the existing buffer
+    return new Tensor(
+      this.v.data,
+      [totalLen, this.numKVHeads, this.headDim],
+      computeStrides([totalLen, this.numKVHeads, this.headDim]),
+      this.v.offset,
+      this.v.dtype,
+      true
+    );
+  }
+
+  // Legacy methods for backward compatibility (still create copies)
+  getKeys(totalLen: number): Tensor {
+    return this.getKeysView(totalLen).clone();
   }
 
   getValues(totalLen: number): Tensor {
-    // Return values from position 0 to totalLen - 1: [totalLen, numKVHeads, headDim]
-    const out: Tensor = Tensor.zeros([totalLen, this.numKVHeads, this.headDim]);
-    for (let s: number = 0; s < totalLen; s++) {
-      for (let h: number = 0; h < this.numKVHeads; h++) {
-        for (let d: number = 0; d < this.headDim; d++) {
-          out.set(this.v.get(s, h, d), s, h, d);
-        }
-      }
-    }
-    return out;
+    return this.getValuesView(totalLen).clone();
   }
 
   reset(): void {
     this.curLen = 0;
-    this.k = Tensor.zeros([this.maxSeqLen, this.numKVHeads, this.headDim]);
-    this.v = Tensor.zeros([this.maxSeqLen, this.numKVHeads, this.headDim]);
+    // Don't reallocate - just zero the existing buffers
+    const kData = this.k.data;
+    const vData = this.v.data;
+    for (let i = 0; i < kData.length; i++) {
+      kData[i] = 0;
+      vData[i] = 0;
+    }
   }
 }
 

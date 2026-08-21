@@ -1,4 +1,4 @@
-// Root Mean Square Normalization (RMSNorm)
+// Root Mean Square Normalization (RMSNorm) - Optimized
 // ==========================================
 // RMS(x) = sqrt(mean(x^2) + eps)
 // y = (x / RMS(x)) * weight
@@ -9,6 +9,9 @@ export class RMSNorm {
   dim: number;
   eps: number;
   weight: Tensor; // learnable scale parameter [dim]
+
+  // Pre-allocated output buffer
+  private _outBuffer?: Tensor;
 
   constructor(dim: number, eps: number = 1e-6, weight?: Tensor) {
     this.dim = dim;
@@ -30,32 +33,96 @@ export class RMSNorm {
       throw new Error(`RMSNorm dimension mismatch: expected ${this.dim}, got ${lastDim}`);
     }
 
-    const out: Tensor = Tensor.zeros(x.shape, x.dtype);
+    // Reuse output buffer if possible
+    let out: Tensor;
+    if (this._outBuffer && shapesEqual(this._outBuffer.shape, x.shape)) {
+      out = this._outBuffer;
+    } else {
+      out = Tensor.zeros(x.shape, x.dtype);
+      this._outBuffer = out;
+    }
+
     const numRows: number = x.size / this.dim;
+    const xData = x.data;
+    const outData = out.data;
+    const wData = this.weight.data;
 
-    for (let r: number = 0; r < numRows; r++) {
-      const rowOffset: number = r * this.dim;
+    const xStrides = x.strides;
+    const outStrides = out.strides;
+    const xOffset = x.offset;
+    const outOffset = out.offset;
 
-      // 1. Calculate mean(x^2)
-      let sumSq: number = 0;
-      for (let i: number = 0; i < this.dim; i++) {
-        const val: number = x.getFlat(rowOffset + i);
-        sumSq += val * val;
+    if (x.isContiguous() && out.isContiguous()) {
+      // Fast path for contiguous tensors
+      for (let r = 0; r < numRows; r++) {
+        const rowOffset = xOffset + r * this.dim;
+        const outRowOffset = outOffset + r * this.dim;
+
+        // 1. Calculate mean(x^2)
+        let sumSq = 0.0;
+        for (let i = 0; i < this.dim; i++) {
+          const val = xData[rowOffset + i];
+          sumSq += val * val;
+        }
+        const meanSq = sumSq / this.dim;
+
+        // 2. RMS = sqrt(meanSq + eps)
+        const invRms = 1.0 / Math.sqrt(meanSq + this.eps);
+
+        // 3. Normalize and scale by weight
+        for (let i = 0; i < this.dim; i++) {
+          const val = xData[rowOffset + i];
+          outData[outRowOffset + i] = val * invRms * wData[i];
+        }
       }
-      const meanSq: number = sumSq / this.dim;
+    } else {
+      // General path with strides
+      for (let r = 0; r < numRows; r++) {
+        // Calculate flat offset for this row
+        let rowOffset = xOffset;
+        let outRowOffset = outOffset;
+        let rem = r;
+        
+        // Compute multi-dimensional offset
+        for (let d = 0; d < x.ndim() - 1; d++) {
+          const stride = xStrides[d];
+          const size = x.shape[d];
+          const coord = Math.floor(rem / (x.size / (size * stride)));
+          rowOffset += coord * stride;
+          outRowOffset += coord * outStrides[d];
+          rem %= (x.size / (size * stride));
+        }
+        rowOffset += rem * xStrides[x.ndim() - 1];
+        outRowOffset += rem * outStrides[out.ndim() - 1];
 
-      // 2. RMS = sqrt(meanSq + eps)
-      const rms: number = Math.sqrt(meanSq + this.eps);
-      const invRms: number = 1.0 / rms;
+        // 1. Calculate mean(x^2)
+        let sumSq = 0.0;
+        for (let i = 0; i < this.dim; i++) {
+          const val = xData[rowOffset + i * xStrides[x.ndim() - 1]];
+          sumSq += val * val;
+        }
+        const meanSq = sumSq / this.dim;
 
-      // 3. Normalize and scale by weight
-      for (let i: number = 0; i < this.dim; i++) {
-        const val: number = x.getFlat(rowOffset + i);
-        const gamma: number = this.weight.get(i);
-        out.setFlat(rowOffset + i, val * invRms * gamma);
+        // 2. RMS = sqrt(meanSq + eps)
+        const invRms = 1.0 / Math.sqrt(meanSq + this.eps);
+
+        // 3. Normalize and scale by weight
+        for (let i = 0; i < this.dim; i++) {
+          const val = xData[rowOffset + i * xStrides[x.ndim() - 1]];
+          outData[outRowOffset + i * outStrides[out.ndim() - 1]] = val * invRms * wData[i];
+        }
       }
     }
 
     return out;
   }
+}
+
+// Helper function to compare shapes
+function shapesEqual(a: number[], b: number[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
 }

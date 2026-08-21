@@ -1,4 +1,4 @@
-// Elementwise mathematical operations on Tensors
+// Elementwise mathematical operations on Tensors - Optimized
 // ===============================================
 
 import { Tensor } from "../tensor/tensor";
@@ -40,16 +40,36 @@ export function div(a: Tensor, b: Tensor | number): Tensor {
 
 export function scale(a: Tensor, scalar: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    out.setFlat(i, a.getFlat(i) * scalar);
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors
+    for (let i = 0; i < a.size; i++) {
+      outData[i] = aData[a.offset + i] * scalar;
+    }
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      out.setFlat(i, a.getFlat(i) * scalar);
+    }
   }
   return out;
 }
 
 export function addScalar(a: Tensor, scalar: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    out.setFlat(i, a.getFlat(i) + scalar);
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    // Fast path for contiguous tensors
+    for (let i = 0; i < a.size; i++) {
+      outData[i] = aData[a.offset + i] + scalar;
+    }
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      out.setFlat(i, a.getFlat(i) + scalar);
+    }
   }
   return out;
 }
@@ -58,32 +78,67 @@ export function addScalar(a: Tensor, scalar: number): Tensor {
 
 export function exp(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    out.setFlat(i, Math.exp(a.getFlat(i)));
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    for (let i = 0; i < a.size; i++) {
+      outData[i] = Math.exp(aData[a.offset + i]);
+    }
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      out.setFlat(i, Math.exp(a.getFlat(i)));
+    }
   }
   return out;
 }
 
 export function sqrt(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    const val: number = a.getFlat(i);
-    if (val < 0) {
-      throw new Error(`Cannot compute sqrt of negative number ${val} at index ${i}`);
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    for (let i = 0; i < a.size; i++) {
+      const val = aData[a.offset + i];
+      if (val < 0) {
+        throw new Error(`Cannot compute sqrt of negative number ${val} at index ${i}`);
+      }
+      outData[i] = Math.sqrt(val);
     }
-    out.setFlat(i, Math.sqrt(val));
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      const val = a.getFlat(i);
+      if (val < 0) {
+        throw new Error(`Cannot compute sqrt of negative number ${val} at index ${i}`);
+      }
+      out.setFlat(i, Math.sqrt(val));
+    }
   }
   return out;
 }
 
 export function rsqrt(a: Tensor, eps: number = 0): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    const val: number = a.getFlat(i) + eps;
-    if (val <= 0) {
-      throw new Error(`Cannot compute rsqrt of non-positive number ${val} at index ${i}`);
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    for (let i = 0; i < a.size; i++) {
+      const val = aData[a.offset + i] + eps;
+      if (val <= 0) {
+        throw new Error(`Cannot compute rsqrt of non-positive number ${val} at index ${i}`);
+      }
+      outData[i] = 1.0 / Math.sqrt(val);
     }
-    out.setFlat(i, 1.0 / Math.sqrt(val));
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      const val = a.getFlat(i) + eps;
+      if (val <= 0) {
+        throw new Error(`Cannot compute rsqrt of non-positive number ${val} at index ${i}`);
+      }
+      out.setFlat(i, 1.0 / Math.sqrt(val));
+    }
   }
   return out;
 }
@@ -94,18 +149,37 @@ export function neg(a: Tensor): Tensor {
 
 export function abs(a: Tensor): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    out.setFlat(i, Math.abs(a.getFlat(i)));
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    for (let i = 0; i < a.size; i++) {
+      outData[i] = Math.abs(aData[a.offset + i]);
+    }
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      out.setFlat(i, Math.abs(a.getFlat(i)));
+    }
   }
   return out;
 }
 
 export function clamp(a: Tensor, minVal: number, maxVal: number): Tensor {
   const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-  for (let i: number = 0; i < a.size; i++) {
-    const val: number = a.getFlat(i);
-    const clamped: number = Math.max(minVal, Math.min(maxVal, val));
-    out.setFlat(i, clamped);
+  const aData = a.data;
+  const outData = out.data;
+  
+  if (a.isContiguous() && out.isContiguous()) {
+    for (let i = 0; i < a.size; i++) {
+      const val = aData[a.offset + i];
+      outData[i] = Math.max(minVal, Math.min(maxVal, val));
+    }
+  } else {
+    for (let i = 0; i < a.size; i++) {
+      const val = a.getFlat(i);
+      const clamped = Math.max(minVal, Math.min(maxVal, val));
+      out.setFlat(i, clamped);
+    }
   }
   return out;
 }
@@ -116,8 +190,19 @@ function binaryOp(a: Tensor, b: Tensor, op: (x: number, y: number) => number): T
   // Fast path: same shapes
   if (shapesEqual(a.shape, b.shape)) {
     const out: Tensor = Tensor.zeros(a.shape, a.dtype);
-    for (let i: number = 0; i < a.size; i++) {
-      out.setFlat(i, op(a.getFlat(i), b.getFlat(i)));
+    const aData = a.data;
+    const bData = b.data;
+    const outData = out.data;
+    
+    if (a.isContiguous() && b.isContiguous() && out.isContiguous()) {
+      // Fast path for contiguous tensors
+      for (let i = 0; i < a.size; i++) {
+        outData[i] = op(aData[a.offset + i], bData[b.offset + i]);
+      }
+    } else {
+      for (let i = 0; i < a.size; i++) {
+        out.setFlat(i, op(a.getFlat(i), b.getFlat(i)));
+      }
     }
     return out;
   }
