@@ -1,46 +1,46 @@
-# Instructions --- Construire un moteur d'inférence LLM en ScriptC
+# Instructions --- Build an LLM Inference Engine in ScriptC
 
-## 1. Objectif
+## 1. Objective
 
-Construire **depuis zéro** un moteur d'inférence pour modèles de langage
-de type Transformer en ScriptC.
+Build **from scratch** an inference engine for Transformer-type language
+models in ScriptC.
 
-Le projet doit privilégier :
+The project must prioritize:
 
--   la compréhension complète du fonctionnement d'un LLM ;
--   une architecture simple et modulaire ;
--   la correction numérique avant la performance ;
--   des tests unitaires et des tests de référence ;
--   une optimisation progressive ;
--   l'absence de dépendance à un moteur d'inférence existant pour le
-    cœur du runtime.
+-   complete understanding of how an LLM works;
+-   a simple and modular architecture;
+-   numerical correctness before performance;
+-   unit tests and reference tests;
+-   progressive optimization;
+-   no dependency on an existing inference engine for the
+    core runtime.
 
-Le premier objectif n'est pas de battre llama.cpp en performance. Le
-premier objectif est d'obtenir une implémentation **correcte, lisible et
-vérifiable** capable de générer du texte.
-
-------------------------------------------------------------------------
-
-## 2. Principe de développement
-
-Toujours avancer dans cet ordre :
-
-1.  Comprendre le composant.
-2.  Définir ses structures de données.
-3.  Implémenter une version simple.
-4.  Écrire les tests.
-5.  Comparer les résultats avec une référence.
-6.  Mesurer les performances.
-7.  Optimiser uniquement après validation.
-
-Ne jamais optimiser une opération dont la correction n'a pas été
-démontrée.
+The first objective is not to beat llama.cpp in performance. The
+first objective is to obtain a **correct, readable, and verifiable**
+implementation capable of generating text.
 
 ------------------------------------------------------------------------
 
-## 3. Architecture cible
+## 2. Development Principle
 
-Le moteur doit progressivement évoluer vers cette architecture :
+Always proceed in this order:
+
+1.  Understand the component.
+2.  Define its data structures.
+3.  Implement a simple version.
+4.  Write tests.
+5.  Compare results with a reference.
+6.  Measure performance.
+7.  Optimize only after validation.
+
+Never optimize an operation whose correctness has not been
+demonstrated.
+
+------------------------------------------------------------------------
+
+## 3. Target Architecture
+
+The engine must progressively evolve toward this architecture:
 
 ``` text
                     Model File
@@ -82,47 +82,47 @@ Le moteur doit progressivement évoluer vers cette architecture :
 
 ------------------------------------------------------------------------
 
-## 4. Phase 0 --- Comprendre ScriptC
+## 4. Phase 0 --- Understand ScriptC
 
-Avant d'implémenter le moteur LLM, documenter précisément les capacités
-de ScriptC.
+Before implementing the LLM engine, precisely document the capabilities
+of ScriptC.
 
-À déterminer :
+To determine:
 
--   système de types ;
--   pointeurs ;
--   références ;
--   allocation mémoire ;
--   tableaux ;
--   structures ;
--   modules ;
--   fonctions ;
--   gestion des erreurs ;
--   fichiers ;
--   I/O ;
--   conversions numériques ;
--   `float32` ;
--   `float16` / `bfloat16` si disponibles ;
--   threads ;
--   SIMD ;
--   accès natif ;
--   FFI ;
--   GPU éventuel ;
--   système de build ;
--   système de tests ;
+-   type system;
+-   pointers;
+-   references;
+-   memory allocation;
+-   arrays;
+-   structures;
+-   modules;
+-   functions;
+-   error handling;
+-   files;
+-   I/O;
+-   numeric conversions;
+-   `float32`;
+-   `float16` / `bfloat16` if available;
+-   threads;
+-   SIMD;
+-   native access;
+-   FFI;
+-   potential GPU;
+-   build system;
+-   test system;
 -   profiling/debugging.
 
-Créer un petit programme de test pour chaque capacité nécessaire.
+Create a small test program for each required capability.
 
-**Ne pas supposer qu'une fonctionnalité existe. La vérifier.**
+**Do not assume a feature exists. Verify it.**
 
 ------------------------------------------------------------------------
 
-## 5. Phase 1 --- Système Tensor
+## 5. Phase 1 --- Tensor System
 
-Créer un type `Tensor`.
+Create a `Tensor` type.
 
-Minimum recommandé :
+Minimum recommended:
 
 ``` text
 Tensor
@@ -133,7 +133,7 @@ Tensor
 └── size
 ```
 
-Le tensor doit supporter au minimum :
+The tensor must support at minimum:
 
 ``` text
 create
@@ -146,7 +146,7 @@ fill
 copy
 ```
 
-Puis implémenter :
+Then implement:
 
 ``` text
 add
@@ -164,23 +164,23 @@ matmul
 softmax
 ```
 
-Commencer exclusivement avec `float32`.
+Start exclusively with `float32`.
 
-### Contraintes
+### Constraints
 
--   éviter les copies inutiles ;
--   distinguer clairement ownership et views ;
--   vérifier les dimensions ;
--   gérer correctement les strides ;
--   tester les cas limites.
+-   avoid unnecessary copies;
+-   clearly distinguish ownership and views;
+-   verify dimensions;
+-   correctly handle strides;
+-   test edge cases.
 
 ------------------------------------------------------------------------
 
-## 6. Phase 2 --- Tests numériques
+## 6. Phase 2 --- Numerical Tests
 
-Chaque opération Tensor doit disposer de tests.
+Every Tensor operation must have tests.
 
-Exemple :
+Example:
 
 ``` text
 A = [[1, 2],
@@ -192,30 +192,30 @@ B = [[5, 6],
 C = A @ B
 ```
 
-Résultat attendu :
+Expected result:
 
 ``` text
 [[19, 22],
  [43, 50]]
 ```
 
-Les tests doivent également couvrir :
+Tests must also cover:
 
--   tenseurs 1D ;
--   tenseurs 2D ;
--   tenseurs 3D ;
--   dimensions incompatibles ;
--   tenseurs vides si le runtime les autorise ;
--   valeurs négatives ;
--   grandes valeurs ;
--   petites valeurs ;
--   NaN/Inf lorsque pertinent.
+-   1D tensors;
+-   2D tensors;
+-   3D tensors;
+-   incompatible dimensions;
+-   empty tensors if the runtime allows them;
+-   negative values;
+-   large values;
+-   small values;
+-   NaN/Inf when relevant.
 
 ------------------------------------------------------------------------
 
 ## 7. Phase 3 --- Neural Network Primitives
 
-Implémenter :
+Implement:
 
 ``` text
 Linear
@@ -241,7 +241,7 @@ y = x / RMS(x) * weight
 
 ### Softmax
 
-Utiliser une implémentation numériquement stable :
+Use a numerically stable implementation:
 
 ``` text
 softmax(x_i) =
@@ -252,13 +252,13 @@ softmax(x_i) =
 
 ### SwiGLU
 
-Implémenter la variante utilisée par les architectures Llama-like.
+Implement the variant used by Llama-like architectures.
 
 ------------------------------------------------------------------------
 
 ## 8. Phase 4 --- Attention
 
-Implémenter d'abord une attention causale simple.
+First implement simple causal attention.
 
 ``` text
 Q = XWq
@@ -269,38 +269,38 @@ Attention(Q,K,V) =
     softmax(QKᵀ / sqrt(d))V
 ```
 
-Ajouter ensuite :
+Then add:
 
--   causal mask ;
--   multi-head attention ;
--   RoPE ;
--   grouped-query attention si nécessaire.
+-   causal mask;
+-   multi-head attention;
+-   RoPE;
+-   grouped-query attention if necessary.
 
-Avant toute optimisation, vérifier les résultats sur de très petits
-tenseurs.
+Before any optimization, verify results on very small
+tensors.
 
 ------------------------------------------------------------------------
 
 ## 9. Phase 5 --- RoPE
 
-Implémenter Rotary Positional Embeddings.
+Implement Rotary Positional Embeddings.
 
-Vérifier :
+Verify:
 
--   fréquence ;
--   position ;
--   dimension ;
--   paire de dimensions ;
--   comportement à la position 0 ;
--   cohérence avec une implémentation de référence.
+-   frequency;
+-   position;
+-   dimension;
+-   dimension pair;
+-   behavior at position 0;
+-   consistency with a reference implementation.
 
-Créer des tests numériques indépendants.
+Create independent numerical tests.
 
 ------------------------------------------------------------------------
 
 ## 10. Phase 6 --- Transformer Block
 
-Construire :
+Build:
 
 ``` text
 Input
@@ -325,17 +325,17 @@ SwiGLU / MLP
 Output
 ```
 
-Le Transformer doit être composé de modules indépendants.
+The Transformer must be composed of independent modules.
 
-Éviter de mettre toute la logique dans une seule fonction.
+Avoid putting all logic in a single function.
 
 ------------------------------------------------------------------------
 
 ## 11. Phase 7 --- KV Cache
 
-Implémenter le KV cache avant de viser une génération efficace.
+Implement the KV cache before aiming for efficient generation.
 
-Objectif :
+Objective:
 
 ``` text
 Prompt
@@ -354,27 +354,27 @@ Prompt
        Next token
 ```
 
-Le cache doit éviter de recalculer les clés et valeurs historiques à
-chaque token.
+The cache must avoid recalculating historical keys and values at
+each token.
 
-Documenter précisément :
+Document precisely:
 
--   layout mémoire ;
--   dimensions ;
--   capacité ;
--   position courante ;
--   gestion des contextes longs ;
--   allocation ;
--   réutilisation.
+-   memory layout;
+-   dimensions;
+-   capacity;
+-   current position;
+-   long context handling;
+-   allocation;
+-   reuse.
 
 ------------------------------------------------------------------------
 
 ## 12. Phase 8 --- Tokenizer
 
-Implémenter ou intégrer un tokenizer uniquement après avoir défini
-clairement le format nécessaire.
+Implement or integrate a tokenizer only after clearly defining
+the required format.
 
-Le tokenizer doit fournir :
+The tokenizer must provide:
 
 ``` text
 encode(text) -> token_ids
@@ -382,15 +382,15 @@ encode(text) -> token_ids
 decode(token_ids) -> text
 ```
 
-Commencer avec un format simple.
+Start with a simple format.
 
-Ensuite supporter les tokenizers nécessaires aux modèles ciblés.
+Then support the tokenizers needed for target models.
 
 ------------------------------------------------------------------------
 
 ## 13. Phase 9 --- Model Loader
 
-Créer une abstraction :
+Create an abstraction:
 
 ``` text
 ModelLoader
@@ -399,33 +399,32 @@ ModelLoader
 └── model configuration
 ```
 
-Le loader doit récupérer :
+The loader must retrieve:
 
--   vocab size ;
--   hidden size ;
--   nombre de couches ;
--   nombre de heads ;
--   nombre de KV heads ;
--   head dimension ;
--   contexte ;
--   paramètres RoPE ;
--   dtype ;
--   poids.
+-   vocab size;
+-   hidden size;
+-   number of layers;
+-   number of heads;
+-   number of KV heads;
+-   head dimension;
+-   context;
+-   RoPE parameters;
+-   dtype;
+-   weights.
 
-Commencer avec **un format de fichier simple et contrôlé par le
-projet**.
+Start with **a simple, project-controlled file format**.
 
-Ajouter GGUF ou d'autres formats ensuite.
+Add GGUF or other formats later.
 
-Ne pas commencer par supporter tous les formats existants.
+Do not start by supporting all existing formats.
 
 ------------------------------------------------------------------------
 
-## 14. Phase 10 --- Premier modèle
+## 14. Phase 10 --- First Model
 
-Le premier modèle cible doit être volontairement petit.
+The first target model must be intentionally small.
 
-Exemple :
+Example:
 
 ``` text
 vocab       = 1000
@@ -436,7 +435,7 @@ kv_heads    = 4
 intermediate = 512
 ```
 
-L'objectif est de pouvoir faire :
+The goal is to be able to do:
 
 ``` text
 prompt
@@ -453,16 +452,16 @@ token
   ↓
 decode
   ↓
-texte
+text
 ```
 
 ------------------------------------------------------------------------
 
-## 15. Phase 11 --- Validation avec PyTorch
+## 15. Phase 11 --- Validation with PyTorch
 
-Créer un petit modèle de référence en Python/PyTorch.
+Create a small reference model in Python/PyTorch.
 
-Pour chaque étape comparer :
+For each step compare:
 
 ``` text
 ScriptC output
@@ -470,27 +469,27 @@ vs
 PyTorch output
 ```
 
-Comparer notamment :
+Compare in particular:
 
--   embeddings ;
--   RMSNorm ;
--   Linear ;
--   RoPE ;
--   Q/K/V ;
--   attention ;
--   MLP ;
--   Transformer block ;
+-   embeddings;
+-   RMSNorm;
+-   Linear;
+-   RoPE;
+-   Q/K/V;
+-   attention;
+-   MLP;
+-   Transformer block;
 -   logits.
 
-Utiliser une tolérance numérique explicite.
+Use an explicit numerical tolerance.
 
-Exemple :
+Example:
 
 ``` text
 abs(a - b) < epsilon
 ```
 
-et, lorsque nécessaire :
+and, when necessary:
 
 ``` text
 relative_error(a, b) < epsilon
@@ -500,7 +499,7 @@ relative_error(a, b) < epsilon
 
 ## 16. Phase 12 --- Sampling
 
-Implémenter progressivement :
+Progressively implement:
 
 ``` text
 greedy
@@ -510,9 +509,9 @@ top-p
 repetition penalty
 ```
 
-Le sampler doit être indépendant du Transformer.
+The sampler must be independent of the Transformer.
 
-Interface conceptuelle :
+Conceptual interface:
 
 ``` text
 token = sampler.sample(logits)
@@ -520,9 +519,9 @@ token = sampler.sample(logits)
 
 ------------------------------------------------------------------------
 
-## 17. Phase 13 --- Génération
+## 17. Phase 13 --- Generation
 
-Créer une API minimale :
+Create a minimal API:
 
 ``` text
 generate(
@@ -534,11 +533,11 @@ generate(
 )
 ```
 
-Exemple d'utilisation :
+Usage example:
 
 ``` text
 generate(
-    "Bonjour, je m'appelle",
+    "Hello, my name is",
     100,
     0.7,
     40,
@@ -550,9 +549,9 @@ generate(
 
 ## 18. Phase 14 --- Performance
 
-Ne commencer l'optimisation qu'après validation complète.
+Only start optimization after complete validation.
 
-Mesurer séparément :
+Measure separately:
 
 ``` text
 Model loading
@@ -564,22 +563,22 @@ Memory usage
 Peak memory
 ```
 
-Identifier les hotspots avec un profiler.
+Identify hotspots with a profiler.
 
-Les premières optimisations doivent cibler :
+First optimizations must target:
 
 1.  `matmul`
 2.  attention
-3.  copies mémoire
+3.  memory copies
 4.  KV cache
 5.  allocation
-6.  opérations élémentaires
+6.  element-wise operations
 
 ------------------------------------------------------------------------
 
 ## 19. Phase 15 --- SIMD
 
-Une fois la version naïve correcte :
+Once the naive version is correct:
 
 ``` text
 Scalar
@@ -591,7 +590,7 @@ Multithreading
 Optimized kernels
 ```
 
-Déterminer les possibilités offertes par ScriptC :
+Determine the possibilities offered by ScriptC:
 
 ``` text
 AVX2
@@ -600,17 +599,17 @@ NEON
 SVE
 ```
 
-selon la plateforme.
+depending on the platform.
 
-Ne jamais casser l'implémentation de référence lors d'une optimisation.
+Never break the reference implementation during an optimization.
 
-Conserver une version simple comme oracle de test.
+Keep a simple version as a test oracle.
 
 ------------------------------------------------------------------------
 
-## 20. Phase 16 --- Quantification
+## 20. Phase 16 --- Quantization
 
-Ajouter progressivement :
+Progressively add:
 
 ``` text
 FP32
@@ -622,26 +621,26 @@ INT8
 INT4
 ```
 
-Documenter pour chaque format :
+Document for each format:
 
--   représentation ;
--   échelle ;
--   zero point si nécessaire ;
--   packing ;
--   déquantification ;
--   kernels ;
--   impact mémoire ;
--   impact qualité ;
--   impact performance.
+-   representation;
+-   scale;
+-   zero point if necessary;
+-   packing;
+-   dequantization;
+-   kernels;
+-   memory impact;
+-   quality impact;
+-   performance impact.
 
 ------------------------------------------------------------------------
 
 ## 21. Phase 17 --- GPU
 
-Le GPU ne doit être envisagé qu'après avoir obtenu un moteur CPU
-correct.
+GPU must only be considered after obtaining a correct CPU
+engine.
 
-Architecture :
+Architecture:
 
 ``` text
 Runtime
@@ -651,10 +650,9 @@ Runtime
    +--- GPU Backend
 ```
 
-Les opérations Tensor doivent être indépendantes du backend autant que
-possible.
+Tensor operations must be backend-independent as much as possible.
 
-Exemple :
+Example:
 
 ``` text
 Tensor
@@ -671,16 +669,16 @@ Backend
   +-- Vulkan
 ```
 
-Le premier backend GPU doit être choisi selon les capacités réelles de
-ScriptC.
+The first GPU backend must be chosen based on ScriptC's actual
+capabilities.
 
 ------------------------------------------------------------------------
 
-## 22. Règles d'architecture
+## 22. Architecture Rules
 
-Respecter systématiquement :
+Systematically respect:
 
-### Séparation des responsabilités
+### Separation of Concerns
 
 ``` text
 Tensor
@@ -694,28 +692,28 @@ Sampler
 Backend
 ```
 
-ne doivent pas être mélangés.
+must not be mixed.
 
-### Pas de magie
+### No Magic
 
-Les dimensions, layouts et transformations importantes doivent être
-explicites.
+Important dimensions, layouts, and transformations must be
+explicit.
 
-### Pas de dépendance inutile
+### No Unnecessary Dependencies
 
-Ne pas intégrer llama.cpp, TensorRT ou un autre moteur pour implémenter
-le cœur du moteur.
+Do not integrate llama.cpp, TensorRT, or another engine to implement
+the core engine.
 
-Des outils externes peuvent être utilisés pour :
+External tools may be used for:
 
--   validation ;
--   génération de modèles de référence ;
--   conversion de poids ;
+-   validation;
+-   reference model generation;
+-   weight conversion;
 -   benchmarks.
 
 ------------------------------------------------------------------------
 
-## 23. Structure de projet recommandée
+## 23. Recommended Project Structure
 
 ``` text
 scriptc-llm/
@@ -755,11 +753,11 @@ scriptc-llm/
 
 ------------------------------------------------------------------------
 
-## 24. Règles de test
+## 24. Test Rules
 
-Aucune nouvelle optimisation ne doit être fusionnée sans tests.
+No new optimization must be merged without tests.
 
-Chaque primitive importante doit avoir :
+Every important primitive must have:
 
 ``` text
 unit test
@@ -768,7 +766,7 @@ edge-case test
 benchmark
 ```
 
-Pour les composants complexes :
+For complex components:
 
 ``` text
 ScriptC
@@ -776,8 +774,8 @@ ScriptC
    +---- compare ----> PyTorch/reference
 ```
 
-Les différences numériques doivent être mesurées, pas simplement
-observées.
+Numerical differences must be measured, not simply
+observed.
 
 ------------------------------------------------------------------------
 
@@ -785,10 +783,10 @@ observées.
 
 ### M0 --- Runtime
 
--   [ ] Comprendre ScriptC
--   [ ] Allocation mémoire
+-   [ ] Understand ScriptC
+-   [ ] Memory allocation
 -   [ ] Structures
--   [ ] Fichiers
+-   [ ] Files
 -   [ ] Tests
 
 ### M1 --- Tensor
@@ -852,11 +850,11 @@ observées.
 
 ------------------------------------------------------------------------
 
-## 26. Premier objectif concret
+## 26. First Concrete Objective
 
-Ne pas commencer par Llama.
+Do not start with Llama.
 
-Le premier livrable doit être :
+The first deliverable must be:
 
 ``` text
 ScriptC
@@ -871,15 +869,15 @@ Attention
    ↓
 MLP
    ↓
-Transformer miniature
+Miniature Transformer
    ↓
 logits
 ```
 
-Puis :
+Then:
 
 ``` text
-Transformer miniature
+Miniature Transformer
    ↓
 tokenizer
    ↓
@@ -888,25 +886,23 @@ sampling
 generate("Hello")
 ```
 
-Une fois cette chaîne fonctionnelle, passer à une architecture
-Llama-like réelle.
+Once this chain works, move to a real Llama-like architecture.
 
 ------------------------------------------------------------------------
 
-## 27. Règle fondamentale
+## 27. Fundamental Rule
 
 **Correctness first, performance second.**
 
-Le moteur doit toujours conserver une implémentation simple servant de
-référence.
+The engine must always keep a simple implementation serving as a
+reference.
 
-L'optimisation doit remplacer progressivement cette implémentation sans
-changer son comportement observable.
+Optimization must progressively replace this implementation without
+changing its observable behavior.
 
-Le projet doit être construit de manière à pouvoir répondre précisément
-à la question :
+The project must be built to be able to precisely answer the question:
 
-> « Pour ce token, pourquoi le moteur a-t-il produit ce logit ? »
+> "For this token, why did the engine produce this logit?"
 
-Si cette question ne peut pas être répondue, le moteur est trop abstrait
-ou insuffisamment testable.
+If this question cannot be answered, the engine is too abstract
+or insufficiently testable.

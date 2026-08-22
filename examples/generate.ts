@@ -13,14 +13,14 @@ console.log("=========================================================\n");
 // 1. Initialize Tokenizer with standard vocabulary
 const customVocab: string[] = [
   "The", " quick", " brown", " fox", " jumps", " over", " the", " lazy", " dog",
-  "Bonjour", " je", " m'appelle", " ScriptC", " un", " moteur", " LLM", " ultra", " rapide",
-  "Intelligence", " Artificielle", " Transformer", " Attention", " Llama"
+  "Hello", " my", " name", " is", " ScriptC", " an", " engine", " LLM", " ultra", " fast",
+  "Intelligence", " Artificial", " Transformer", " Attention", " Llama"
 ];
 const tokenizer: Tokenizer = new Tokenizer(customVocab);
 
 console.log(`[1/4] Tokenizer initialized with ${tokenizer.vocabSize} vocabulary tokens.`);
 
-// 2. Configure Miniature Llama Transformer Model (conforme à l'instruction Phase 10)
+// 2. Configure Miniature Llama Transformer Model (per Phase 10 instructions)
 const config: ModelConfig = {
   vocabSize: tokenizer.vocabSize,
   hiddenDim: 128,
@@ -47,7 +47,7 @@ console.log("[3/4] Transformer model weights initialized.\n");
 // 3. Create Generation Pipeline
 const generator: Generator = new Generator(model, tokenizer);
 
-const prompt: string = process.argv.length > 2 ? process.argv[2] : "Bonjour, je m'appelle";
+const prompt: string = process.argv.length > 2 ? process.argv[2] : "Hello, my name is";
 const maxTokens: number = 20;
 
 console.log(`[4/4] Starting generation for prompt: "${prompt}"`);
