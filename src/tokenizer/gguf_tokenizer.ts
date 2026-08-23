@@ -7,8 +7,13 @@ import { Tokenizer } from "./tokenizer";
 
 export class GGUFTokenizer extends Tokenizer {
   tokens: string[] = [];
+  mergeRanks: Map<string, number> = new Map<string, number>();
+  specialTokenIds: Set<number> = new Set<number>();
+  specialTokens: string[] = [];
+  specialIds: number[] = [];
   // Inverse of the GPT-2 bytes_to_unicode map: codepoint -> original byte
   private static cpToByte: Map<number, number> = GGUFTokenizer.buildCpToByteMap();
+  private static byteToCp: number[] = GGUFTokenizer.buildByteToCpMap();
 
   private static buildCpToByteMap(): Map<number, number> {
     const bs: number[] = [];
@@ -31,8 +36,24 @@ export class GGUFTokenizer extends Tokenizer {
     return m;
   }
 
+  private static buildByteToCpMap(): number[] {
+    const byteToCp: number[] = [];
+    for (let i = 0; i < 256; i++) {
+      byteToCp.push(0);
+    }
+    const cpToByte = GGUFTokenizer.buildCpToByteMap();
+    for (let cp = 0; cp < 512; cp++) {
+      const byte = cpToByte.get(cp);
+      if (byte !== undefined) {
+        byteToCp[byte] = cp;
+      }
+    }
+    return byteToCp;
+  }
+
   constructor(filePath: string) {
     super();
+    this.addBosByDefault = false;
     this.loadFromGGUF(filePath);
   }
 
@@ -70,6 +91,15 @@ export class GGUFTokenizer extends Tokenizer {
           this.idToTokenMap.push(tokenStr);
           this.tokenToIdMap.set(tokenStr, t);
         }
+      } else if (key === "tokenizer.ggml.merges" && valType === 9) {
+        const itemType = buf.readUInt32LE(pos); pos += 4;
+        const count = buf.readUInt32LE(pos); pos += 8;
+
+        for (let m = 0; m < count && pos < readSize; m++) {
+          const strLen = buf.readUInt32LE(pos); pos += 8;
+          const merge = buf.toString("utf8", pos, pos + strLen); pos += strLen;
+          this.mergeRanks.set(merge, m);
+        }
       } else if (key === "tokenizer.ggml.bos_token_id" && (valType === 4 || valType === 5)) {
         this.bosTokenId = buf.readUInt32LE(pos); pos += 4;
       } else if (key === "tokenizer.ggml.eos_token_id" && (valType === 4 || valType === 5)) {
@@ -98,6 +128,15 @@ export class GGUFTokenizer extends Tokenizer {
     }
 
     fs.closeSync(fd);
+
+    for (let i = 0; i < this.tokens.length; i++) {
+      const tok = this.tokens[i];
+      if (this.looksLikeSpecialToken(tok)) {
+        this.specialTokenIds.add(i);
+        this.specialTokens.push(tok);
+        this.specialIds.push(i);
+      }
+    }
   }
 
   idToToken(id: number): string {
@@ -107,13 +146,126 @@ export class GGUFTokenizer extends Tokenizer {
     return this.tokens[id];
   }
 
+  encode(text: string, addBos: boolean = false, addEos: boolean = false): number[] {
+    const ids: number[] = [];
+    if (addBos) {
+      ids.push(this.bosTokenId);
+    }
+
+    let pos = 0;
+    while (pos < text.length) {
+      let matchedSpecial = false;
+      let bestSpecial = "";
+      let bestId = -1;
+
+      for (let i = 0; i < this.specialTokens.length; i++) {
+        const tok = this.specialTokens[i];
+        if (tok.length > bestSpecial.length && this.startsWithAt(text, tok, pos)) {
+          bestSpecial = tok;
+          bestId = this.specialIds[i];
+          matchedSpecial = true;
+        }
+      }
+
+      if (matchedSpecial) {
+        ids.push(bestId);
+        pos += bestSpecial.length;
+        continue;
+      }
+
+      let nextSpecialPos = text.length;
+      for (let i = 0; i < this.specialTokens.length; i++) {
+        const tok = this.specialTokens[i];
+        const found = text.indexOf(tok, pos + 1);
+        if (found >= 0 && found < nextSpecialPos) {
+          nextSpecialPos = found;
+        }
+      }
+
+      const segment = text.substring(pos, nextSpecialPos);
+      const pieces = this.bytePairEncode(this.bytesToUnicode(segment));
+      for (let i = 0; i < pieces.length; i++) {
+        const id = this.tokenToIdMap.get(pieces[i]);
+        ids.push(id !== undefined ? id : this.unkTokenId);
+      }
+      pos = nextSpecialPos;
+    }
+
+    if (addEos) {
+      ids.push(this.eosTokenId);
+    }
+    return ids;
+  }
+
+  private looksLikeSpecialToken(tok: string): boolean {
+    return tok.length >= 4
+      && tok.charCodeAt(0) === 60
+      && tok.charCodeAt(1) === 124
+      && tok.charCodeAt(tok.length - 2) === 124
+      && tok.charCodeAt(tok.length - 1) === 62;
+  }
+
+  private startsWithAt(text: string, prefix: string, pos: number): boolean {
+    if (pos + prefix.length > text.length) {
+      return false;
+    }
+    for (let i = 0; i < prefix.length; i++) {
+      if (text.charCodeAt(pos + i) !== prefix.charCodeAt(i)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private bytesToUnicode(text: string): string {
+    const bytes = Buffer.from(text, "utf8");
+    let out = "";
+    for (let i = 0; i < bytes.length; i++) {
+      out += String.fromCharCode(GGUFTokenizer.byteToCp[bytes[i]]);
+    }
+    return out;
+  }
+
+  private bytePairEncode(piece: string): string[] {
+    if (piece.length === 0) {
+      return [];
+    }
+
+    const word: string[] = [];
+    for (let i = 0; i < piece.length; i++) {
+      word.push(piece.charAt(i));
+    }
+
+    while (word.length > 1) {
+      let bestRank = Infinity;
+      let bestIndex = -1;
+
+      for (let i = 0; i < word.length - 1; i++) {
+        const rank = this.mergeRanks.get(word[i] + " " + word[i + 1]);
+        if (rank !== undefined && rank < bestRank) {
+          bestRank = rank;
+          bestIndex = i;
+        }
+      }
+
+      if (bestIndex < 0) {
+        break;
+      }
+
+      word[bestIndex] = word[bestIndex] + word[bestIndex + 1];
+      word.splice(bestIndex + 1, 1);
+    }
+
+    return word;
+  }
+
   decode(tokenIds: number[], skipSpecialTokens: boolean = true): string {
     const rawBytes: number[] = [];
 
     for (let i = 0; i < tokenIds.length; i++) {
       const id = tokenIds[i];
       if (skipSpecialTokens) {
-        if (id === this.bosTokenId || id === this.eosTokenId || id === 151644 || id === 151645) {
+        if (id === this.bosTokenId || id === this.eosTokenId || this.specialTokenIds.has(id)) {
           continue;
         }
       }

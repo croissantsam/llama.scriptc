@@ -12,10 +12,12 @@ export class Tokenizer {
   eosTokenId: number;
   unkTokenId: number;
   padTokenId: number;
+  addBosByDefault: boolean;
 
   constructor(customVocab?: string[]) {
     this.tokenToIdMap = new Map<string, number>();
     this.idToTokenMap = [];
+    this.addBosByDefault = true;
 
     // 1. Special tokens (0..3)
     this.unkTokenId = this.addToken("<unk>");

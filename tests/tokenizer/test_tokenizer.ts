@@ -1,7 +1,9 @@
 // Tests for Tokenizer
 // ====================
 
+import * as fs from "fs";
 import { Tokenizer } from "../../src/tokenizer/tokenizer";
+import { GGUFTokenizer } from "../../src/tokenizer/gguf_tokenizer";
 import { assert, assertEqual, assertArrayEqual, runTests, TestCase } from "../../src/testing/assert";
 
 const tests: TestCase[] = [
@@ -59,6 +61,36 @@ const tests: TestCase[] = [
       assertEqual(tok.decode(encoded), "Hi");
       // With skipSpecialTokens = false
       assertEqual(tok.decode(encoded, false), "<s>Hi</s>");
+    }
+  },
+  {
+    name: "GGUF Qwen tokenizer matches reference chat prompt ids",
+    fn: () => {
+      const modelPath = "models/qwen2.5-0.5b-instruct-q8_0.gguf";
+      if (!fs.existsSync(modelPath)) {
+        return;
+      }
+
+      const tok: GGUFTokenizer = new GGUFTokenizer(modelPath);
+      const prompt = "<|im_start|>user\nHello, my name is<|im_end|>\n<|im_start|>assistant\n";
+      const encoded: number[] = tok.encode(prompt, tok.addBosByDefault, false);
+
+      assertArrayEqual(encoded, [
+        151644,
+        872,
+        198,
+        9707,
+        11,
+        847,
+        829,
+        374,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ]);
+      assertEqual(tok.decode(encoded, true), "user\nHello, my name is\nassistant\n");
     }
   }
 ];

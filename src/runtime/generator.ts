@@ -32,14 +32,14 @@ export class Generator {
     onToken?: (tokenText: string) => void
   ): GenerationResult {
     // 1. Encode prompt
-    const promptTokens: number[] = this.tokenizer.encode(prompt, true, false);
+    const promptTokens: number[] = this.tokenizer.encode(prompt, this.tokenizer.addBosByDefault, false);
     if (promptTokens.length === 0) {
       throw new Error("Prompt produced 0 tokens");
     }
 
     const generatedTokens: number[] = [];
     const allTokens: number[] = promptTokens.slice();
-    let emittedLen = 0; // chars of decoded text already streamed via onToken
+    let emittedLen = this.tokenizer.decode(promptTokens, true).length;
 
     // 2. Initialize KV Cache
     const kvCache: KVCache = this.model.createKVCache();
