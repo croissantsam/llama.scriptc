@@ -12,14 +12,35 @@ export interface SamplerOptions {
 
 export class Sampler {
   sample(logits: Tensor, generatedTokens: number[] = [], options: SamplerOptions = {}): number {
-    const vocabSize: number = logits.size;
+    return this.sampleArray(logits.data, logits.offset, 1, logits.size, generatedTokens, options);
+  }
+
+  sampleTensorRow(logits: Tensor, row: number, generatedTokens: number[] = [], options: SamplerOptions = {}): number {
+    if (logits.shape.length === 1) {
+      return this.sample(logits, generatedTokens, options);
+    }
+    if (logits.shape.length !== 2) {
+      throw new Error(`Expected 1D or 2D logits, got ${logits.shape.length}D`);
+    }
+    if (row < 0 || row >= logits.shape[0]) {
+      throw new Error(`Logit row ${row} out of bounds for ${logits.shape[0]} rows`);
+    }
+    const rowOffset: number = logits.offset + row * logits.strides[0];
+    return this.sampleArray(logits.data, rowOffset, logits.strides[1], logits.shape[1], generatedTokens, options);
+  }
+
+  sampleArray(
+    rawData: number[],
+    offset: number,
+    stride: number,
+    vocabSize: number,
+    generatedTokens: number[] = [],
+    options: SamplerOptions = {}
+  ): number {
     const temp: number = options.temperature !== undefined ? options.temperature : 0.0;
     const topK: number = options.topK !== undefined ? options.topK : 0;
     const topP: number = options.topP !== undefined ? options.topP : 1.0;
     const repPenalty: number = options.repetitionPenalty !== undefined ? options.repetitionPenalty : 1.0;
-
-    // 1. Direct access to raw logits
-    const rawData: number[] = logits.data;
 
     // 2. Greedy Sampling (temperature == 0.0)
     if (temp <= 0.0) {
@@ -30,7 +51,7 @@ export class Sampler {
       const seenSet: Set<number> = new Set<number>(generatedTokens);
 
       for (let i: number = 0; i < vocabSize; i++) {
-        let val: number = rawData[i];
+        let val: number = rawData[offset + i * stride];
         if (repPenalty > 1.0 && seenSet.has(i)) {
           val = val < 0 ? val * repPenalty : val / repPenalty;
         }
@@ -51,7 +72,7 @@ export class Sampler {
     const seenSet: Set<number> = new Set<number>(generatedTokens);
 
     for (let i: number = 0; i < vocabSize; i++) {
-      let val: number = rawData[i];
+      let val: number = rawData[offset + i * stride];
       if (repPenalty > 1.0 && seenSet.has(i)) {
         val = val < 0 ? val * repPenalty : val / repPenalty;
       }

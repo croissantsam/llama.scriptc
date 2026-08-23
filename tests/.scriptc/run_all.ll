@@ -351,119 +351,123 @@ declare void @scr_trap(ptr)
 @sc_lit_158 = internal global { i64, i64, i64, [11 x i8] } { i64 -1, i64 10, i64 10, [11 x i8] c".down_proj\00" }
 @sc_lit_159 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c"utf-8\00" }
 @sc_lit_160 = internal global { i64, i64, i64, [27 x i8] } { i64 -1, i64 26, i64 26, [27 x i8] c"Transformer Model & Loader\00" }
-@sc_lit_161 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Sampling Strategies\00" }
-@sc_lit_162 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"Prompt produced 0 tokens\00" }
-@sc_lit_163 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"End-to-End Generation Pipeline\00" }
-@sc_lit_164 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"shapeToSize calculation\00" }
-@sc_lit_165 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"computeStrides row-major\00" }
-@sc_lit_166 = internal global { i64, i64, i64, [35 x i8] } { i64 -1, i64 34, i64 34, [35 x i8] c"validateShape rejects invalid dims\00" }
-@sc_lit_167 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"shapesEqual comparison\00" }
-@sc_lit_168 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"areBroadcastable checking\00" }
-@sc_lit_169 = internal global { i64, i64, i64, [28 x i8] } { i64 -1, i64 27, i64 27, [28 x i8] c"broadcastShapes calculation\00" }
-@sc_lit_170 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"Tensor.zeros and ones creation\00" }
-@sc_lit_171 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"Tensor.fill and fromArray\00" }
-@sc_lit_172 = internal global { i64, i64, i64, [28 x i8] } { i64 -1, i64 27, i64 27, [28 x i8] c"Tensor.from2D and to2DArray\00" }
-@sc_lit_173 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"Tensor get/set mutability\00" }
-@sc_lit_174 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Tensor bounds checking\00" }
-@sc_lit_175 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Tensor reshape\00" }
-@sc_lit_176 = internal global { i64, i64, i64, [27 x i8] } { i64 -1, i64 26, i64 26, [27 x i8] c"Tensor view sharing buffer\00" }
-@sc_lit_177 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Tensor transpose 2D\00" }
-@sc_lit_178 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Tensor clone deep copy\00" }
-@sc_lit_179 = internal global { i64, i64, i64, [29 x i8] } { i64 -1, i64 28, i64 28, [29 x i8] c"add/sub/mul/div with scalars\00" }
-@sc_lit_180 = internal global { i64, i64, i64, [35 x i8] } { i64 -1, i64 34, i64 34, [35 x i8] c"add/sub/mul/div same shape tensors\00" }
-@sc_lit_181 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"binary ops with broadcasting (2D + 1D)\00" }
-@sc_lit_182 = internal global { i64, i64, i64, [13 x i8] } { i64 -1, i64 12, i64 12, [13 x i8] c"exp function\00" }
-@sc_lit_183 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"sqrt and rsqrt functions\00" }
-@sc_lit_184 = internal global { i64, i64, i64, [43 x i8] } { i64 -1, i64 42, i64 42, [43 x i8] c"rsqrt with epsilon for numerical stability\00" }
-@sc_lit_185 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"neg, abs, and clamp\00" }
-@sc_lit_186 = internal global { i64, i64, i64, [37 x i8] } { i64 -1, i64 36, i64 36, [37 x i8] c"error handling on invalid operations\00" }
-@sc_lit_187 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"Full tensor reductions (sumAll, meanAll, maxAll, minAll, argmaxAll)\00" }
-@sc_lit_188 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"2D sum along axis 0 (columns) and axis 1 (rows)\00" }
-@sc_lit_189 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"2D sum with keepDims\00" }
-@sc_lit_190 = internal global { i64, i64, i64, [19 x i8] } { i64 -1, i64 18, i64 18, [19 x i8] c"2D mean along axis\00" }
-@sc_lit_191 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"2D max along axis\00" }
-@sc_lit_192 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"argmax 1D and 2D row-wise\00" }
-@sc_lit_193 = internal global { i64, i64, i64, [46 x i8] } { i64 -1, i64 45, i64 45, [46 x i8] c"Canonical 2x2 Matmul example from instruction\00" }
-@sc_lit_194 = internal global { i64, i64, i64, [41 x i8] } { i64 -1, i64 40, i64 40, [41 x i8] c"Rectangular 2D Matmul (2x3 @ 3x4 -> 2x4)\00" }
-@sc_lit_195 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"Identity matrix multiplication\00" }
-@sc_lit_196 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"1D @ 2D (vector @ matrix)\00" }
-@sc_lit_197 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"2D @ 1D (matrix @ vector)\00" }
-@sc_lit_198 = internal global { i64, i64, i64, [40 x i8] } { i64 -1, i64 39, i64 39, [40 x i8] c"3D Batched Matmul (2, 2, 2) @ (2, 2, 2)\00" }
-@sc_lit_199 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"Dimension mismatch error handling\00" }
-@sc_lit_200 = internal global { i64, i64, i64, [45 x i8] } { i64 -1, i64 44, i64 44, [45 x i8] c"1D Softmax basic distribution and sum to 1.0\00" }
-@sc_lit_201 = internal global { i64, i64, i64, [64 x i8] } { i64 -1, i64 63, i64 63, [64 x i8] c"Numerical stability with extreme large values (no overflow/NaN)\00" }
-@sc_lit_202 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"Uniform distribution from equal logits\00" }
-@sc_lit_203 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"2D Softmax row-wise across vocab\00" }
-@sc_lit_204 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"3D Softmax for Attention Weights\00" }
-@sc_lit_205 = internal global { i64, i64, i64, [29 x i8] } { i64 -1, i64 28, i64 28, [29 x i8] c"SiLU and Sigmoid activations\00" }
-@sc_lit_206 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Embedding layer lookup\00" }
-@sc_lit_207 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"Linear layer (1D, 2D, 3D with and without bias)\00" }
-@sc_lit_208 = internal global { i64, i64, i64, [22 x i8] } { i64 -1, i64 21, i64 21, [22 x i8] c"RMSNorm normalization\00" }
-@sc_lit_209 = internal global { i64, i64, i64, [17 x i8] } { i64 -1, i64 16, i64 16, [17 x i8] c"SwiGLU MLP Block\00" }
-@sc_lit_210 = internal global { i64, i64, i64, [41 x i8] } { i64 -1, i64 40, i64 40, [41 x i8] c"RoPE at position 0 is Identity transform\00" }
-@sc_lit_211 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"RoPE preserves L2 norm (unitary transformation)\00" }
-@sc_lit_212 = internal global { i64, i64, i64, [51 x i8] } { i64 -1, i64 50, i64 50, [51 x i8] c"RoPE 3D tensor across heads and sequence positions\00" }
-@sc_lit_213 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"Causal Mask creation\00" }
-@sc_lit_214 = internal global { i64, i64, i64, [45 x i8] } { i64 -1, i64 44, i64 44, [45 x i8] c"Multi-Head Attention forward pass dimensions\00" }
-@sc_lit_215 = internal global { i64, i64, i64, [63 x i8] } { i64 -1, i64 62, i64 62, [63 x i8] c"Causality validation: future tokens do NOT affect past outputs\00" }
-@sc_lit_216 = internal global { i64, i64, i64, [43 x i8] } { i64 -1, i64 42, i64 42, [43 x i8] c"Grouped-Query Attention (GQA) forward pass\00" }
-@sc_lit_217 = internal global { i64, i64, i64, [52 x i8] } { i64 -1, i64 51, i64 51, [52 x i8] c"Transformer Block forward pass preserves dimensions\00" }
-@sc_lit_218 = internal global { i64, i64, i64, [53 x i8] } { i64 -1, i64 52, i64 52, [53 x i8] c"Multi-layer stacking (chaining 2 Transformer Blocks)\00" }
-@sc_lit_219 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"LayerKVCache update and retrieval\00" }
-@sc_lit_220 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"Autoregressive Equivalence: Step-by-step KV Cache vs Full Recompute\00" }
-@sc_lit_221 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"Tokenizer special tokens\00" }
-@sc_lit_222 = internal global { i64, i64, i64, [38 x i8] } { i64 -1, i64 37, i64 37, [38 x i8] c"Tokenizer encode and decode roundtrip\00" }
-@sc_lit_223 = internal global { i64, i64, i64, [42 x i8] } { i64 -1, i64 41, i64 41, [42 x i8] c"Tokenizer with custom subwords vocabulary\00" }
-@sc_lit_224 = internal global { i64, i64, i64, [36 x i8] } { i64 -1, i64 35, i64 35, [36 x i8] c"Tokenizer handles BOS and EOS flags\00" }
-@sc_lit_225 = internal global { i64, i64, i64, [54 x i8] } { i64 -1, i64 53, i64 53, [54 x i8] c"GGUF Qwen tokenizer matches reference chat prompt ids\00" }
-@sc_lit_226 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"Transformer Model initialization and forward pass\00" }
-@sc_lit_227 = internal global { i64, i64, i64, [49 x i8] } { i64 -1, i64 48, i64 48, [49 x i8] c"Transformer Model with KV Cache forward decoding\00" }
-@sc_lit_228 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"Model save to JSON and load back\00" }
-@sc_lit_229 = internal global { i64, i64, i64, [61 x i8] } { i64 -1, i64 60, i64 60, [61 x i8] c"Greedy sampling always picks maximum logit (temperature = 0)\00" }
-@sc_lit_230 = internal global { i64, i64, i64, [54 x i8] } { i64 -1, i64 53, i64 53, [54 x i8] c"Repetition penalty reduces probability of seen tokens\00" }
-@sc_lit_231 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"Top-K restricts candidate tokens\00" }
-@sc_lit_232 = internal global { i64, i64, i64, [47 x i8] } { i64 -1, i64 46, i64 46, [47 x i8] c"End-to-End Generation produces tokens and text\00" }
-@sc_lit_233 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"=================================================\00" }
-@sc_lit_234 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"   LLM INFERENCE ENGINE (ScriptC) TEST SUITE     \00" }
-@sc_lit_235 = internal global { i64, i64, i64, [51 x i8] } { i64 -1, i64 50, i64 50, [51 x i8] c"\0A=================================================\00" }
-@sc_lit_236 = internal global { i64, i64, i64, [32 x i8] } { i64 -1, i64 31, i64 31, [32 x i8] c"\F0\9F\8E\89 ALL TEST SUITES PASSED in \00" }
-@sc_lit_237 = internal global { i64, i64, i64, [4 x i8] } { i64 -1, i64 3, i64 3, [4 x i8] c"ms!\00" }
-@sc_lit_238 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"\E2\9D\8C SOME SUITES FAILED!\00" }
-@sc_lit_239 = internal global { i64, i64, i64, [36 x i8] } { i64 -1, i64 35, i64 35, [36 x i8] c"Division by zero in elementwise div\00" }
-@sc_lit_240 = internal global { i64, i64, i64, [112 x i8] } { i64 -1, i64 111, i64 111, [112 x i8] c"undefined is not representable in a 'm4.Tensor' slot (a value narrowed or asserted past the type still held it)\00" }
-@sc_lit_241 = internal global { i64, i64, i64, [104 x i8] } { i64 -1, i64 103, i64 103, [104 x i8] c"undefined is not representable in the target union (a value narrowed or asserted past it still held it)\00" }
-@sc_lit_242 = internal global { i64, i64, i64, [99 x i8] } { i64 -1, i64 98, i64 98, [99 x i8] c"null is not representable in the target union (a value narrowed or asserted past it still held it)\00" }
-@sc_lit_243 = internal global { i64, i64, i64, [109 x i8] } { i64 -1, i64 108, i64 108, [109 x i8] c"undefined is not representable in a 'number' slot (a value narrowed or asserted past the type still held it)\00" }
-@sc_lit_244 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"non-negative integer\00" }
-@sc_lit_245 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Incompatible shapes\00" }
-@sc_lit_246 = internal global { i64, i64, i64, [14 x i8] } { i64 -1, i64 13, i64 13, [14 x i8] c"out of bounds\00" }
-@sc_lit_247 = internal global { i64, i64, i64, [19 x i8] } { i64 -1, i64 18, i64 18, [19 x i8] c"dimension mismatch\00" }
-@sc_lit_248 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Cannot reshape\00" }
-@sc_lit_249 = internal global { i64, i64, i64, [2 x i8] } { i64 -1, i64 1, i64 1, [2 x i8] c"E\00" }
-@sc_lit_250 = internal global { i64, i64, i64, [16 x i8] } { i64 -1, i64 15, i64 15, [16 x i8] c"negative number\00" }
-@sc_lit_251 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"Should not be NaN\00" }
-@sc_lit_252 = internal global { i64, i64, i64, [10 x i8] } { i64 -1, i64 9, i64 9, [10 x i8] c"Element [\00" }
-@sc_lit_253 = internal global { i64, i64, i64, [9 x i8] } { i64 -1, i64 8, i64 8, [9 x i8] c"] is NaN\00" }
-@sc_lit_254 = internal global { i64, i64, i64, [14 x i8] } { i64 -1, i64 13, i64 13, [14 x i8] c"] is Infinite\00" }
-@sc_lit_255 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"Hello, world! 123\00" }
-@sc_lit_256 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c"Hello\00" }
-@sc_lit_257 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c"world\00" }
-@sc_lit_258 = internal global { i64, i64, i64, [4 x i8] } { i64 -1, i64 3, i64 3, [4 x i8] c"LLM\00" }
-@sc_lit_259 = internal global { i64, i64, i64, [8 x i8] } { i64 -1, i64 7, i64 7, [8 x i8] c"ScriptC\00" }
-@sc_lit_260 = internal global { i64, i64, i64, [12 x i8] } { i64 -1, i64 11, i64 11, [12 x i8] c"Hello world\00" }
-@sc_lit_261 = internal global { i64, i64, i64, [3 x i8] } { i64 -1, i64 2, i64 2, [3 x i8] c"Hi\00" }
-@sc_lit_262 = internal global { i64, i64, i64, [10 x i8] } { i64 -1, i64 9, i64 9, [10 x i8] c"<s>Hi</s>\00" }
-@sc_lit_263 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"models/qwen2.5-0.5b-instruct-q8_0.gguf\00" }
-@sc_lit_264 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"<|im_start|>user\0AHello, my name is<|im_end|>\0A<|im_start|>assistant\0A\00" }
-@sc_lit_265 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"user\0AHello, my name is\0Aassistant\0A\00" }
-@sc_lit_266 = internal global { i64, i64, i64, [11 x i8] } { i64 -1, i64 10, i64 10, [11 x i8] c"Logit at [\00" }
-@sc_lit_267 = internal global { i64, i64, i64, [16 x i8] } { i64 -1, i64 15, i64 15, [16 x i8] c"test_model.json\00" }
-@sc_lit_268 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"Model file should exist\00" }
-@sc_lit_269 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Sampled token \00" }
-@sc_lit_270 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c" should be in Top-2\00" }
-@sc_lit_271 = internal global { i64, i64, i64, [3 x i8] } { i64 -1, i64 2, i64 2, [3 x i8] c"is\00" }
-@sc_lit_272 = internal global { i64, i64, i64, [5 x i8] } { i64 -1, i64 4, i64 4, [5 x i8] c"fast\00" }
-@sc_lit_273 = internal global { i64, i64, i64, [32 x i8] } { i64 -1, i64 31, i64 31, [32 x i8] c"Result text should not be empty\00" }
+@sc_lit_161 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"Expected 1D or 2D logits, got \00" }
+@sc_lit_162 = internal global { i64, i64, i64, [11 x i8] } { i64 -1, i64 10, i64 10, [11 x i8] c"Logit row \00" }
+@sc_lit_163 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c" out of bounds for \00" }
+@sc_lit_164 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c" rows\00" }
+@sc_lit_165 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Sampling Strategies\00" }
+@sc_lit_166 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"Prompt produced 0 tokens\00" }
+@sc_lit_167 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"End-to-End Generation Pipeline\00" }
+@sc_lit_168 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"shapeToSize calculation\00" }
+@sc_lit_169 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"computeStrides row-major\00" }
+@sc_lit_170 = internal global { i64, i64, i64, [35 x i8] } { i64 -1, i64 34, i64 34, [35 x i8] c"validateShape rejects invalid dims\00" }
+@sc_lit_171 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"shapesEqual comparison\00" }
+@sc_lit_172 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"areBroadcastable checking\00" }
+@sc_lit_173 = internal global { i64, i64, i64, [28 x i8] } { i64 -1, i64 27, i64 27, [28 x i8] c"broadcastShapes calculation\00" }
+@sc_lit_174 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"Tensor.zeros and ones creation\00" }
+@sc_lit_175 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"Tensor.fill and fromArray\00" }
+@sc_lit_176 = internal global { i64, i64, i64, [28 x i8] } { i64 -1, i64 27, i64 27, [28 x i8] c"Tensor.from2D and to2DArray\00" }
+@sc_lit_177 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"Tensor get/set mutability\00" }
+@sc_lit_178 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Tensor bounds checking\00" }
+@sc_lit_179 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Tensor reshape\00" }
+@sc_lit_180 = internal global { i64, i64, i64, [27 x i8] } { i64 -1, i64 26, i64 26, [27 x i8] c"Tensor view sharing buffer\00" }
+@sc_lit_181 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Tensor transpose 2D\00" }
+@sc_lit_182 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Tensor clone deep copy\00" }
+@sc_lit_183 = internal global { i64, i64, i64, [29 x i8] } { i64 -1, i64 28, i64 28, [29 x i8] c"add/sub/mul/div with scalars\00" }
+@sc_lit_184 = internal global { i64, i64, i64, [35 x i8] } { i64 -1, i64 34, i64 34, [35 x i8] c"add/sub/mul/div same shape tensors\00" }
+@sc_lit_185 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"binary ops with broadcasting (2D + 1D)\00" }
+@sc_lit_186 = internal global { i64, i64, i64, [13 x i8] } { i64 -1, i64 12, i64 12, [13 x i8] c"exp function\00" }
+@sc_lit_187 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"sqrt and rsqrt functions\00" }
+@sc_lit_188 = internal global { i64, i64, i64, [43 x i8] } { i64 -1, i64 42, i64 42, [43 x i8] c"rsqrt with epsilon for numerical stability\00" }
+@sc_lit_189 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"neg, abs, and clamp\00" }
+@sc_lit_190 = internal global { i64, i64, i64, [37 x i8] } { i64 -1, i64 36, i64 36, [37 x i8] c"error handling on invalid operations\00" }
+@sc_lit_191 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"Full tensor reductions (sumAll, meanAll, maxAll, minAll, argmaxAll)\00" }
+@sc_lit_192 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"2D sum along axis 0 (columns) and axis 1 (rows)\00" }
+@sc_lit_193 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"2D sum with keepDims\00" }
+@sc_lit_194 = internal global { i64, i64, i64, [19 x i8] } { i64 -1, i64 18, i64 18, [19 x i8] c"2D mean along axis\00" }
+@sc_lit_195 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"2D max along axis\00" }
+@sc_lit_196 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"argmax 1D and 2D row-wise\00" }
+@sc_lit_197 = internal global { i64, i64, i64, [46 x i8] } { i64 -1, i64 45, i64 45, [46 x i8] c"Canonical 2x2 Matmul example from instruction\00" }
+@sc_lit_198 = internal global { i64, i64, i64, [41 x i8] } { i64 -1, i64 40, i64 40, [41 x i8] c"Rectangular 2D Matmul (2x3 @ 3x4 -> 2x4)\00" }
+@sc_lit_199 = internal global { i64, i64, i64, [31 x i8] } { i64 -1, i64 30, i64 30, [31 x i8] c"Identity matrix multiplication\00" }
+@sc_lit_200 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"1D @ 2D (vector @ matrix)\00" }
+@sc_lit_201 = internal global { i64, i64, i64, [26 x i8] } { i64 -1, i64 25, i64 25, [26 x i8] c"2D @ 1D (matrix @ vector)\00" }
+@sc_lit_202 = internal global { i64, i64, i64, [40 x i8] } { i64 -1, i64 39, i64 39, [40 x i8] c"3D Batched Matmul (2, 2, 2) @ (2, 2, 2)\00" }
+@sc_lit_203 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"Dimension mismatch error handling\00" }
+@sc_lit_204 = internal global { i64, i64, i64, [45 x i8] } { i64 -1, i64 44, i64 44, [45 x i8] c"1D Softmax basic distribution and sum to 1.0\00" }
+@sc_lit_205 = internal global { i64, i64, i64, [64 x i8] } { i64 -1, i64 63, i64 63, [64 x i8] c"Numerical stability with extreme large values (no overflow/NaN)\00" }
+@sc_lit_206 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"Uniform distribution from equal logits\00" }
+@sc_lit_207 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"2D Softmax row-wise across vocab\00" }
+@sc_lit_208 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"3D Softmax for Attention Weights\00" }
+@sc_lit_209 = internal global { i64, i64, i64, [29 x i8] } { i64 -1, i64 28, i64 28, [29 x i8] c"SiLU and Sigmoid activations\00" }
+@sc_lit_210 = internal global { i64, i64, i64, [23 x i8] } { i64 -1, i64 22, i64 22, [23 x i8] c"Embedding layer lookup\00" }
+@sc_lit_211 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"Linear layer (1D, 2D, 3D with and without bias)\00" }
+@sc_lit_212 = internal global { i64, i64, i64, [22 x i8] } { i64 -1, i64 21, i64 21, [22 x i8] c"RMSNorm normalization\00" }
+@sc_lit_213 = internal global { i64, i64, i64, [17 x i8] } { i64 -1, i64 16, i64 16, [17 x i8] c"SwiGLU MLP Block\00" }
+@sc_lit_214 = internal global { i64, i64, i64, [41 x i8] } { i64 -1, i64 40, i64 40, [41 x i8] c"RoPE at position 0 is Identity transform\00" }
+@sc_lit_215 = internal global { i64, i64, i64, [48 x i8] } { i64 -1, i64 47, i64 47, [48 x i8] c"RoPE preserves L2 norm (unitary transformation)\00" }
+@sc_lit_216 = internal global { i64, i64, i64, [51 x i8] } { i64 -1, i64 50, i64 50, [51 x i8] c"RoPE 3D tensor across heads and sequence positions\00" }
+@sc_lit_217 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"Causal Mask creation\00" }
+@sc_lit_218 = internal global { i64, i64, i64, [45 x i8] } { i64 -1, i64 44, i64 44, [45 x i8] c"Multi-Head Attention forward pass dimensions\00" }
+@sc_lit_219 = internal global { i64, i64, i64, [63 x i8] } { i64 -1, i64 62, i64 62, [63 x i8] c"Causality validation: future tokens do NOT affect past outputs\00" }
+@sc_lit_220 = internal global { i64, i64, i64, [43 x i8] } { i64 -1, i64 42, i64 42, [43 x i8] c"Grouped-Query Attention (GQA) forward pass\00" }
+@sc_lit_221 = internal global { i64, i64, i64, [52 x i8] } { i64 -1, i64 51, i64 51, [52 x i8] c"Transformer Block forward pass preserves dimensions\00" }
+@sc_lit_222 = internal global { i64, i64, i64, [53 x i8] } { i64 -1, i64 52, i64 52, [53 x i8] c"Multi-layer stacking (chaining 2 Transformer Blocks)\00" }
+@sc_lit_223 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"LayerKVCache update and retrieval\00" }
+@sc_lit_224 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"Autoregressive Equivalence: Step-by-step KV Cache vs Full Recompute\00" }
+@sc_lit_225 = internal global { i64, i64, i64, [25 x i8] } { i64 -1, i64 24, i64 24, [25 x i8] c"Tokenizer special tokens\00" }
+@sc_lit_226 = internal global { i64, i64, i64, [38 x i8] } { i64 -1, i64 37, i64 37, [38 x i8] c"Tokenizer encode and decode roundtrip\00" }
+@sc_lit_227 = internal global { i64, i64, i64, [42 x i8] } { i64 -1, i64 41, i64 41, [42 x i8] c"Tokenizer with custom subwords vocabulary\00" }
+@sc_lit_228 = internal global { i64, i64, i64, [36 x i8] } { i64 -1, i64 35, i64 35, [36 x i8] c"Tokenizer handles BOS and EOS flags\00" }
+@sc_lit_229 = internal global { i64, i64, i64, [54 x i8] } { i64 -1, i64 53, i64 53, [54 x i8] c"GGUF Qwen tokenizer matches reference chat prompt ids\00" }
+@sc_lit_230 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"Transformer Model initialization and forward pass\00" }
+@sc_lit_231 = internal global { i64, i64, i64, [49 x i8] } { i64 -1, i64 48, i64 48, [49 x i8] c"Transformer Model with KV Cache forward decoding\00" }
+@sc_lit_232 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"Model save to JSON and load back\00" }
+@sc_lit_233 = internal global { i64, i64, i64, [61 x i8] } { i64 -1, i64 60, i64 60, [61 x i8] c"Greedy sampling always picks maximum logit (temperature = 0)\00" }
+@sc_lit_234 = internal global { i64, i64, i64, [54 x i8] } { i64 -1, i64 53, i64 53, [54 x i8] c"Repetition penalty reduces probability of seen tokens\00" }
+@sc_lit_235 = internal global { i64, i64, i64, [33 x i8] } { i64 -1, i64 32, i64 32, [33 x i8] c"Top-K restricts candidate tokens\00" }
+@sc_lit_236 = internal global { i64, i64, i64, [47 x i8] } { i64 -1, i64 46, i64 46, [47 x i8] c"End-to-End Generation produces tokens and text\00" }
+@sc_lit_237 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"=================================================\00" }
+@sc_lit_238 = internal global { i64, i64, i64, [50 x i8] } { i64 -1, i64 49, i64 49, [50 x i8] c"   LLM INFERENCE ENGINE (ScriptC) TEST SUITE     \00" }
+@sc_lit_239 = internal global { i64, i64, i64, [51 x i8] } { i64 -1, i64 50, i64 50, [51 x i8] c"\0A=================================================\00" }
+@sc_lit_240 = internal global { i64, i64, i64, [32 x i8] } { i64 -1, i64 31, i64 31, [32 x i8] c"\F0\9F\8E\89 ALL TEST SUITES PASSED in \00" }
+@sc_lit_241 = internal global { i64, i64, i64, [4 x i8] } { i64 -1, i64 3, i64 3, [4 x i8] c"ms!\00" }
+@sc_lit_242 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"\E2\9D\8C SOME SUITES FAILED!\00" }
+@sc_lit_243 = internal global { i64, i64, i64, [36 x i8] } { i64 -1, i64 35, i64 35, [36 x i8] c"Division by zero in elementwise div\00" }
+@sc_lit_244 = internal global { i64, i64, i64, [112 x i8] } { i64 -1, i64 111, i64 111, [112 x i8] c"undefined is not representable in a 'm4.Tensor' slot (a value narrowed or asserted past the type still held it)\00" }
+@sc_lit_245 = internal global { i64, i64, i64, [104 x i8] } { i64 -1, i64 103, i64 103, [104 x i8] c"undefined is not representable in the target union (a value narrowed or asserted past it still held it)\00" }
+@sc_lit_246 = internal global { i64, i64, i64, [99 x i8] } { i64 -1, i64 98, i64 98, [99 x i8] c"null is not representable in the target union (a value narrowed or asserted past it still held it)\00" }
+@sc_lit_247 = internal global { i64, i64, i64, [109 x i8] } { i64 -1, i64 108, i64 108, [109 x i8] c"undefined is not representable in a 'number' slot (a value narrowed or asserted past the type still held it)\00" }
+@sc_lit_248 = internal global { i64, i64, i64, [21 x i8] } { i64 -1, i64 20, i64 20, [21 x i8] c"non-negative integer\00" }
+@sc_lit_249 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c"Incompatible shapes\00" }
+@sc_lit_250 = internal global { i64, i64, i64, [14 x i8] } { i64 -1, i64 13, i64 13, [14 x i8] c"out of bounds\00" }
+@sc_lit_251 = internal global { i64, i64, i64, [19 x i8] } { i64 -1, i64 18, i64 18, [19 x i8] c"dimension mismatch\00" }
+@sc_lit_252 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Cannot reshape\00" }
+@sc_lit_253 = internal global { i64, i64, i64, [2 x i8] } { i64 -1, i64 1, i64 1, [2 x i8] c"E\00" }
+@sc_lit_254 = internal global { i64, i64, i64, [16 x i8] } { i64 -1, i64 15, i64 15, [16 x i8] c"negative number\00" }
+@sc_lit_255 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"Should not be NaN\00" }
+@sc_lit_256 = internal global { i64, i64, i64, [10 x i8] } { i64 -1, i64 9, i64 9, [10 x i8] c"Element [\00" }
+@sc_lit_257 = internal global { i64, i64, i64, [9 x i8] } { i64 -1, i64 8, i64 8, [9 x i8] c"] is NaN\00" }
+@sc_lit_258 = internal global { i64, i64, i64, [14 x i8] } { i64 -1, i64 13, i64 13, [14 x i8] c"] is Infinite\00" }
+@sc_lit_259 = internal global { i64, i64, i64, [18 x i8] } { i64 -1, i64 17, i64 17, [18 x i8] c"Hello, world! 123\00" }
+@sc_lit_260 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c"Hello\00" }
+@sc_lit_261 = internal global { i64, i64, i64, [6 x i8] } { i64 -1, i64 5, i64 5, [6 x i8] c"world\00" }
+@sc_lit_262 = internal global { i64, i64, i64, [4 x i8] } { i64 -1, i64 3, i64 3, [4 x i8] c"LLM\00" }
+@sc_lit_263 = internal global { i64, i64, i64, [8 x i8] } { i64 -1, i64 7, i64 7, [8 x i8] c"ScriptC\00" }
+@sc_lit_264 = internal global { i64, i64, i64, [12 x i8] } { i64 -1, i64 11, i64 11, [12 x i8] c"Hello world\00" }
+@sc_lit_265 = internal global { i64, i64, i64, [3 x i8] } { i64 -1, i64 2, i64 2, [3 x i8] c"Hi\00" }
+@sc_lit_266 = internal global { i64, i64, i64, [10 x i8] } { i64 -1, i64 9, i64 9, [10 x i8] c"<s>Hi</s>\00" }
+@sc_lit_267 = internal global { i64, i64, i64, [39 x i8] } { i64 -1, i64 38, i64 38, [39 x i8] c"models/qwen2.5-0.5b-instruct-q8_0.gguf\00" }
+@sc_lit_268 = internal global { i64, i64, i64, [68 x i8] } { i64 -1, i64 67, i64 67, [68 x i8] c"<|im_start|>user\0AHello, my name is<|im_end|>\0A<|im_start|>assistant\0A\00" }
+@sc_lit_269 = internal global { i64, i64, i64, [34 x i8] } { i64 -1, i64 33, i64 33, [34 x i8] c"user\0AHello, my name is\0Aassistant\0A\00" }
+@sc_lit_270 = internal global { i64, i64, i64, [11 x i8] } { i64 -1, i64 10, i64 10, [11 x i8] c"Logit at [\00" }
+@sc_lit_271 = internal global { i64, i64, i64, [16 x i8] } { i64 -1, i64 15, i64 15, [16 x i8] c"test_model.json\00" }
+@sc_lit_272 = internal global { i64, i64, i64, [24 x i8] } { i64 -1, i64 23, i64 23, [24 x i8] c"Model file should exist\00" }
+@sc_lit_273 = internal global { i64, i64, i64, [15 x i8] } { i64 -1, i64 14, i64 14, [15 x i8] c"Sampled token \00" }
+@sc_lit_274 = internal global { i64, i64, i64, [20 x i8] } { i64 -1, i64 19, i64 19, [20 x i8] c" should be in Top-2\00" }
+@sc_lit_275 = internal global { i64, i64, i64, [3 x i8] } { i64 -1, i64 2, i64 2, [3 x i8] c"is\00" }
+@sc_lit_276 = internal global { i64, i64, i64, [5 x i8] } { i64 -1, i64 4, i64 4, [5 x i8] c"fast\00" }
+@sc_lit_277 = internal global { i64, i64, i64, [32 x i8] } { i64 -1, i64 31, i64 31, [32 x i8] c"Result text should not be empty\00" }
 
 @sc_unit_0 = internal global %ScrUnion { i64 -1, i32 1, ptr null, ptr null, ptr null, i64 0 } ; u2 unit arm
 @sc_unit_1 = internal global %ScrUnion { i64 -1, i32 1, ptr null, ptr null, ptr null, i64 0 } ; u0 unit arm
@@ -32641,62 +32645,10 @@ entry:
   %sc_l_generatedTokens_1 = alloca ptr ; generatedTokens
   %sc_l_options_0 = alloca ptr ; options
   %sc_l_options_1 = alloca ptr ; options
-  %sc_l_vocabSize_0 = alloca double ; vocabSize
-  %sc_l_temp_0 = alloca double ; temp
-  %sc_l_topK_0 = alloca double ; topK
-  %sc_l_topP_0 = alloca double ; topP
-  %sc_l_repPenalty_0 = alloca double ; repPenalty
-  %sc_l_rawData_0 = alloca ptr ; rawData
-  %sc_l_maxIdx_0 = alloca double ; maxIdx
-  %sc_l_maxVal_0 = alloca double ; maxVal
-  %sc_l_seenSet_0 = alloca ptr ; seenSet
-  %sc_l_i_0 = alloca double ; i
-  %sc_l_val_0 = alloca double ; val
-  %sc_l_effectiveK_0 = alloca double ; effectiveK
-  %sc_l_candIndices_0 = alloca ptr ; candIndices
-  %sc_l_candValues_0 = alloca ptr ; candValues
-  %sc_l_seenSet_1 = alloca ptr ; seenSet
-  %sc_l_i_1 = alloca double ; i
-  %sc_l_val_1 = alloca double ; val
-  %sc_l_minIdx_0 = alloca double ; minIdx
-  %sc_l_minVal_0 = alloca double ; minVal
-  %sc_l_k_0 = alloca double ; k
-  %sc_l_numCands_0 = alloca double ; numCands
-  %sc_l_maxVal_1 = alloca double ; maxVal
-  %sc_l_k_1 = alloca double ; k
-  %sc_l_exps_0 = alloca ptr ; exps
-  %sc_l_expSum_0 = alloca double ; expSum
-  %sc_l_k_2 = alloca double ; k
-  %sc_l_e_0 = alloca double ; e
-  %sc_l_probs_0 = alloca ptr ; probs
-  %sc_l_k_3 = alloca double ; k
-  %sc_l_rand_0 = alloca double ; rand
-  %sc_l_cumProb_0 = alloca double ; cumProb
-  %sc_l_k_4 = alloca double ; k
   %s5 = alloca ptr
   %s18 = alloca ptr
-  %s42 = alloca double
-  %s58 = alloca double
-  %s74 = alloca double
-  %s90 = alloca double
-  %s117 = alloca i1
-  %s125 = alloca double
-  %s151 = alloca i1
-  %s156 = alloca double
-  %s175 = alloca i1
-  %s183 = alloca double
-  %s284 = alloca [1 x ptr]
-  %s299 = alloca double
-  %s331 = alloca double
   store ptr null, ptr %sc_l_generatedTokens_1
   store ptr null, ptr %sc_l_options_1
-  store ptr null, ptr %sc_l_rawData_0
-  store ptr null, ptr %sc_l_seenSet_0
-  store ptr null, ptr %sc_l_candIndices_0
-  store ptr null, ptr %sc_l_candValues_0
-  store ptr null, ptr %sc_l_seenSet_1
-  store ptr null, ptr %sc_l_exps_0
-  store ptr null, ptr %sc_l_probs_0
   store ptr %p_sc_l_this_0, ptr %sc_l_this_0
   store ptr %p_sc_l_logits_0, ptr %sc_l_logits_0
   store ptr %p_sc_l_generatedTokens_0, ptr %sc_l_generatedTokens_0
@@ -32755,724 +32707,1214 @@ tern.j5:
   %t29 = load ptr, ptr %s18
   store ptr %t29, ptr %sc_l_options_1
   call void @scr_union_release(ptr %t14)
+  %t30 = load ptr, ptr %sc_l_this_0
+  %t31 = call ptr @sc_retain__x25_m37_Sampler(ptr %t30)
+  %t32 = load ptr, ptr %sc_l_logits_0
+  %t33 = call ptr @sc_retain__x25_m4_Tensor(ptr %t32)
+  %t34 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t33, i64 0, i32 1
+  %t35 = load ptr, ptr %t34
+  %t36 = call ptr @scr_arr_retain_v(ptr %t35)
+  %t37 = load ptr, ptr %sc_l_logits_0
+  %t38 = call ptr @sc_retain__x25_m4_Tensor(ptr %t37)
+  %t39 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t38, i64 0, i32 4
+  %t40 = load double, ptr %t39
+  %t41 = load ptr, ptr %sc_l_logits_0
+  %t42 = call ptr @sc_retain__x25_m4_Tensor(ptr %t41)
+  %t43 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t42, i64 0, i32 5
+  %t44 = load double, ptr %t43
+  %t45 = load ptr, ptr %sc_l_generatedTokens_1
+  %t46 = call ptr @scr_arr_retain_v(ptr %t45)
+  %t47 = call ptr @scr_union_new_ref(i32 0, ptr %t46, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t48 = load ptr, ptr %sc_l_options_1
+  %t49 = call ptr @sc_rretain_r6(ptr %t48)
+  %t50 = call ptr @scr_union_new_ref(i32 0, ptr %t49, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
+  %t51 = call double @sc_f__x25__x25_m37_Sampler_sampleArray(ptr %t31, ptr %t36, double %t40, double 0x3FF0000000000000, double %t44, ptr %t47, ptr %t50)
+  %t52 = call zeroext i1 @scr_exc_pending()
+  br i1 %t52, label %exc.u6, label %exc.k7
+exc.u6:
+  call void @sc_release__x25_m4_Tensor(ptr %t33)
+  call void @sc_release__x25_m4_Tensor(ptr %t38)
+  call void @sc_release__x25_m4_Tensor(ptr %t42)
+  %t53 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t53)
+  %t54 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t54)
+  %t55 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t55)
+  %t56 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t56)
+  %t57 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t57)
+  %t58 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t58)
+  ret double 0x0000000000000000
+exc.k7:
+  call void @sc_release__x25_m4_Tensor(ptr %t33)
+  call void @sc_release__x25_m4_Tensor(ptr %t38)
+  call void @sc_release__x25_m4_Tensor(ptr %t42)
+  %t59 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t59)
+  %t60 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t60)
+  %t61 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t61)
+  %t62 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t62)
+  %t63 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t63)
+  %t64 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t64)
+  ret double %t51
+}
+
+define internal double @sc_f__x25__x25_m37_Sampler_sampleTensorRow(ptr %p_sc_l_this_0, ptr %p_sc_l_logits_0, double %p_sc_l_row_0, ptr %p_sc_l_generatedTokens_0, ptr %p_sc_l_options_0) #0 { ; %%m37.Sampler.sampleTensorRow
+entry:
+  %sc_l_this_0 = alloca ptr ; this
+  %sc_l_logits_0 = alloca ptr ; logits
+  %sc_l_row_0 = alloca double ; row
+  %sc_l_generatedTokens_0 = alloca ptr ; generatedTokens
+  %sc_l_generatedTokens_1 = alloca ptr ; generatedTokens
+  %sc_l_options_0 = alloca ptr ; options
+  %sc_l_options_1 = alloca ptr ; options
+  %sc_l_rowOffset_0 = alloca double ; rowOffset
+  %s5 = alloca ptr
+  %s18 = alloca ptr
+  %s88 = alloca i1
+  store ptr null, ptr %sc_l_generatedTokens_1
+  store ptr null, ptr %sc_l_options_1
+  store ptr %p_sc_l_this_0, ptr %sc_l_this_0
+  store ptr %p_sc_l_logits_0, ptr %sc_l_logits_0
+  store double %p_sc_l_row_0, ptr %sc_l_row_0
+  store ptr %p_sc_l_generatedTokens_0, ptr %sc_l_generatedTokens_0
+  store ptr %p_sc_l_options_0, ptr %sc_l_options_0
+  %t0 = load ptr, ptr %sc_l_generatedTokens_0
+  %t1 = call ptr @scr_union_retain_v(ptr %t0)
+  %t2 = getelementptr inbounds %ScrUnion, ptr %t1, i64 0, i32 1
+  %t3 = load i32, ptr %t2
+  %t4 = icmp eq i32 %t3, 1
+  br i1 %t4, label %tern.t0, label %tern.f1
+tern.t0:
+  %t6 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t6, ptr %s5
+  br label %tern.j2
+tern.f1:
+  %t7 = load ptr, ptr %sc_l_generatedTokens_0
+  %t8 = call ptr @scr_union_retain_v(ptr %t7)
+  %t9 = getelementptr inbounds %ScrUnion, ptr %t8, i64 0, i32 5
+  %t10 = load ptr, ptr %t9
+  %t11 = call ptr @scr_arr_retain_v(ptr %t10)
+  store ptr %t11, ptr %s5
+  call void @scr_union_release(ptr %t8)
+  br label %tern.j2
+tern.j2:
+  %t12 = load ptr, ptr %s5
+  store ptr %t12, ptr %sc_l_generatedTokens_1
+  call void @scr_union_release(ptr %t1)
+  %t13 = load ptr, ptr %sc_l_options_0
+  %t14 = call ptr @scr_union_retain_v(ptr %t13)
+  %t15 = getelementptr inbounds %ScrUnion, ptr %t14, i64 0, i32 1
+  %t16 = load i32, ptr %t15
+  %t17 = icmp eq i32 %t16, 1
+  br i1 %t17, label %tern.t3, label %tern.f4
+tern.t3:
+  %t19 = call ptr @sc_rnew_r6()
+  %t20 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 1
+  store ptr @sc_unit_2, ptr %t20
+  %t21 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 2
+  store ptr @sc_unit_2, ptr %t21
+  %t22 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 3
+  store ptr @sc_unit_2, ptr %t22
+  %t23 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 4
+  store ptr @sc_unit_2, ptr %t23
+  store ptr %t19, ptr %s18
+  br label %tern.j5
+tern.f4:
+  %t24 = load ptr, ptr %sc_l_options_0
+  %t25 = call ptr @scr_union_retain_v(ptr %t24)
+  %t26 = getelementptr inbounds %ScrUnion, ptr %t25, i64 0, i32 5
+  %t27 = load ptr, ptr %t26
+  %t28 = call ptr @sc_rretain_r6(ptr %t27)
+  store ptr %t28, ptr %s18
+  call void @scr_union_release(ptr %t25)
+  br label %tern.j5
+tern.j5:
+  %t29 = load ptr, ptr %s18
+  store ptr %t29, ptr %sc_l_options_1
+  call void @scr_union_release(ptr %t14)
   %t30 = load ptr, ptr %sc_l_logits_0
   %t31 = call ptr @sc_retain__x25_m4_Tensor(ptr %t30)
-  %t32 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t31, i64 0, i32 5
-  %t33 = load double, ptr %t32
-  store double %t33, ptr %sc_l_vocabSize_0
+  %t32 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t31, i64 0, i32 2
+  %t33 = load ptr, ptr %t32
+  %t34 = call ptr @scr_arr_retain_v(ptr %t33)
+  %t35 = call double @scr_arr_len(ptr %t34)
+  %t36 = fcmp oeq double %t35, 0x3FF0000000000000
   call void @sc_release__x25_m4_Tensor(ptr %t31)
-  %t34 = load ptr, ptr %sc_l_options_1
-  %t35 = call ptr @sc_rretain_r6(ptr %t34)
-  %t36 = getelementptr inbounds %sc_rs_r6, ptr %t35, i64 0, i32 2
-  %t37 = load ptr, ptr %t36
-  %t38 = call ptr @scr_union_retain_v(ptr %t37)
-  %t39 = getelementptr inbounds %ScrUnion, ptr %t38, i64 0, i32 1
-  %t40 = load i32, ptr %t39
-  %t41 = icmp ne i32 %t40, 1
-  br i1 %t41, label %tern.t6, label %tern.f7
+  call void @scr_arr_release(ptr %t34)
+  br i1 %t36, label %if.t6, label %if.j7
+if.t6:
+  %t37 = load ptr, ptr %sc_l_this_0
+  %t38 = call ptr @sc_retain__x25_m37_Sampler(ptr %t37)
+  %t39 = load ptr, ptr %sc_l_logits_0
+  %t40 = call ptr @sc_retain__x25_m4_Tensor(ptr %t39)
+  %t41 = load ptr, ptr %sc_l_generatedTokens_1
+  %t42 = call ptr @scr_arr_retain_v(ptr %t41)
+  %t43 = call ptr @scr_union_new_ref(i32 0, ptr %t42, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t44 = load ptr, ptr %sc_l_options_1
+  %t45 = call ptr @sc_rretain_r6(ptr %t44)
+  %t46 = call ptr @scr_union_new_ref(i32 0, ptr %t45, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
+  %t47 = call double @sc_f__x25__x25_m37_Sampler_sample(ptr %t38, ptr %t40, ptr %t43, ptr %t46)
+  %t48 = call zeroext i1 @scr_exc_pending()
+  br i1 %t48, label %exc.u8, label %exc.k9
+exc.u8:
+  %t49 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t49)
+  %t50 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t50)
+  %t51 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t51)
+  %t52 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t52)
+  %t53 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t53)
+  %t54 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t54)
+  ret double 0x0000000000000000
+exc.k9:
+  %t55 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t55)
+  %t56 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t56)
+  %t57 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t57)
+  %t58 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t58)
+  %t59 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t59)
+  %t60 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t60)
+  ret double %t47
+if.j7:
+  %t61 = load ptr, ptr %sc_l_logits_0
+  %t62 = call ptr @sc_retain__x25_m4_Tensor(ptr %t61)
+  %t63 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t62, i64 0, i32 2
+  %t64 = load ptr, ptr %t63
+  %t65 = call ptr @scr_arr_retain_v(ptr %t64)
+  %t66 = call double @scr_arr_len(ptr %t65)
+  %t67 = fcmp une double %t66, 0x4000000000000000
+  call void @sc_release__x25_m4_Tensor(ptr %t62)
+  call void @scr_arr_release(ptr %t65)
+  br i1 %t67, label %if.t10, label %if.j11
+if.t10:
+  %t68 = call ptr @scr_str_retain_v(ptr @sc_lit_161)
+  %t69 = load ptr, ptr %sc_l_logits_0
+  %t70 = call ptr @sc_retain__x25_m4_Tensor(ptr %t69)
+  %t71 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t70, i64 0, i32 2
+  %t72 = load ptr, ptr %t71
+  %t73 = call ptr @scr_arr_retain_v(ptr %t72)
+  %t74 = call double @scr_arr_len(ptr %t73)
+  %t75 = call ptr @scr_f64_to_scrstr(double %t74)
+  %t76 = call ptr @scr_str_concat(ptr %t68, ptr %t75)
+  %t77 = call ptr @scr_str_retain_v(ptr @sc_lit_53)
+  %t78 = call ptr @scr_str_concat(ptr %t76, ptr %t77)
+  %t79 = call ptr @scr_error_new(i32 0, ptr %t78)
+  call void @scr_throw_obj(ptr %t79, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
+  call void @scr_str_release(ptr %t68)
+  call void @sc_release__x25_m4_Tensor(ptr %t70)
+  call void @scr_arr_release(ptr %t73)
+  call void @scr_str_release(ptr %t75)
+  call void @scr_str_release(ptr %t76)
+  call void @scr_str_release(ptr %t77)
+  call void @scr_str_release(ptr %t78)
+  %t80 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t80)
+  %t81 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t81)
+  %t82 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t82)
+  %t83 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t83)
+  %t84 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t84)
+  %t85 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t85)
+  ret double 0x0000000000000000
+if.j11:
+  %t86 = load double, ptr %sc_l_row_0
+  %t87 = fcmp olt double %t86, 0x0000000000000000
+  store i1 %t87, ptr %s88
+  br i1 %t87, label %log.j13, label %log.r12
+log.r12:
+  %t89 = load double, ptr %sc_l_row_0
+  %t90 = load ptr, ptr %sc_l_logits_0
+  %t91 = call ptr @sc_retain__x25_m4_Tensor(ptr %t90)
+  %t92 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t91, i64 0, i32 2
+  %t93 = load ptr, ptr %t92
+  %t94 = call ptr @scr_arr_retain_v(ptr %t93)
+  %t95 = call double @scr_arr_get_f64(ptr %t94, double 0x0000000000000000)
+  %t96 = fcmp oge double %t89, %t95
+  store i1 %t96, ptr %s88
+  call void @sc_release__x25_m4_Tensor(ptr %t91)
+  call void @scr_arr_release(ptr %t94)
+  br label %log.j13
+log.j13:
+  %t97 = load i1, ptr %s88
+  br i1 %t97, label %if.t14, label %if.j15
+if.t14:
+  %t98 = call ptr @scr_str_retain_v(ptr @sc_lit_162)
+  %t99 = load double, ptr %sc_l_row_0
+  %t100 = call ptr @scr_f64_to_scrstr(double %t99)
+  %t101 = call ptr @scr_str_concat(ptr %t98, ptr %t100)
+  %t102 = call ptr @scr_str_retain_v(ptr @sc_lit_163)
+  %t103 = call ptr @scr_str_concat(ptr %t101, ptr %t102)
+  %t104 = load ptr, ptr %sc_l_logits_0
+  %t105 = call ptr @sc_retain__x25_m4_Tensor(ptr %t104)
+  %t106 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t105, i64 0, i32 2
+  %t107 = load ptr, ptr %t106
+  %t108 = call ptr @scr_arr_retain_v(ptr %t107)
+  %t109 = call double @scr_arr_get_f64(ptr %t108, double 0x0000000000000000)
+  %t110 = call ptr @scr_f64_to_scrstr(double %t109)
+  %t111 = call ptr @scr_str_concat(ptr %t103, ptr %t110)
+  %t112 = call ptr @scr_str_retain_v(ptr @sc_lit_164)
+  %t113 = call ptr @scr_str_concat(ptr %t111, ptr %t112)
+  %t114 = call ptr @scr_error_new(i32 0, ptr %t113)
+  call void @scr_throw_obj(ptr %t114, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
+  call void @scr_str_release(ptr %t98)
+  call void @scr_str_release(ptr %t100)
+  call void @scr_str_release(ptr %t101)
+  call void @scr_str_release(ptr %t102)
+  call void @scr_str_release(ptr %t103)
+  call void @sc_release__x25_m4_Tensor(ptr %t105)
+  call void @scr_arr_release(ptr %t108)
+  call void @scr_str_release(ptr %t110)
+  call void @scr_str_release(ptr %t111)
+  call void @scr_str_release(ptr %t112)
+  call void @scr_str_release(ptr %t113)
+  %t115 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t115)
+  %t116 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t116)
+  %t117 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t117)
+  %t118 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t118)
+  %t119 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t119)
+  %t120 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t120)
+  ret double 0x0000000000000000
+if.j15:
+  %t121 = load ptr, ptr %sc_l_logits_0
+  %t122 = call ptr @sc_retain__x25_m4_Tensor(ptr %t121)
+  %t123 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t122, i64 0, i32 4
+  %t124 = load double, ptr %t123
+  %t125 = load double, ptr %sc_l_row_0
+  %t126 = load ptr, ptr %sc_l_logits_0
+  %t127 = call ptr @sc_retain__x25_m4_Tensor(ptr %t126)
+  %t128 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t127, i64 0, i32 3
+  %t129 = load ptr, ptr %t128
+  %t130 = call ptr @scr_arr_retain_v(ptr %t129)
+  %t131 = call double @scr_arr_get_f64(ptr %t130, double 0x0000000000000000)
+  %t132 = fmul double %t125, %t131
+  %t133 = fadd double %t124, %t132
+  store double %t133, ptr %sc_l_rowOffset_0
+  call void @sc_release__x25_m4_Tensor(ptr %t122)
+  call void @sc_release__x25_m4_Tensor(ptr %t127)
+  call void @scr_arr_release(ptr %t130)
+  %t134 = load ptr, ptr %sc_l_this_0
+  %t135 = call ptr @sc_retain__x25_m37_Sampler(ptr %t134)
+  %t136 = load ptr, ptr %sc_l_logits_0
+  %t137 = call ptr @sc_retain__x25_m4_Tensor(ptr %t136)
+  %t138 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t137, i64 0, i32 1
+  %t139 = load ptr, ptr %t138
+  %t140 = call ptr @scr_arr_retain_v(ptr %t139)
+  %t141 = load double, ptr %sc_l_rowOffset_0
+  %t142 = load ptr, ptr %sc_l_logits_0
+  %t143 = call ptr @sc_retain__x25_m4_Tensor(ptr %t142)
+  %t144 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t143, i64 0, i32 3
+  %t145 = load ptr, ptr %t144
+  %t146 = call ptr @scr_arr_retain_v(ptr %t145)
+  %t147 = call double @scr_arr_get_f64(ptr %t146, double 0x3FF0000000000000)
+  %t148 = load ptr, ptr %sc_l_logits_0
+  %t149 = call ptr @sc_retain__x25_m4_Tensor(ptr %t148)
+  %t150 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t149, i64 0, i32 2
+  %t151 = load ptr, ptr %t150
+  %t152 = call ptr @scr_arr_retain_v(ptr %t151)
+  %t153 = call double @scr_arr_get_f64(ptr %t152, double 0x3FF0000000000000)
+  %t154 = load ptr, ptr %sc_l_generatedTokens_1
+  %t155 = call ptr @scr_arr_retain_v(ptr %t154)
+  %t156 = call ptr @scr_union_new_ref(i32 0, ptr %t155, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t157 = load ptr, ptr %sc_l_options_1
+  %t158 = call ptr @sc_rretain_r6(ptr %t157)
+  %t159 = call ptr @scr_union_new_ref(i32 0, ptr %t158, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
+  %t160 = call double @sc_f__x25__x25_m37_Sampler_sampleArray(ptr %t135, ptr %t140, double %t141, double %t147, double %t153, ptr %t156, ptr %t159)
+  %t161 = call zeroext i1 @scr_exc_pending()
+  br i1 %t161, label %exc.u16, label %exc.k17
+exc.u16:
+  call void @sc_release__x25_m4_Tensor(ptr %t137)
+  call void @sc_release__x25_m4_Tensor(ptr %t143)
+  call void @scr_arr_release(ptr %t146)
+  call void @sc_release__x25_m4_Tensor(ptr %t149)
+  call void @scr_arr_release(ptr %t152)
+  %t162 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t162)
+  %t163 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t163)
+  %t164 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t164)
+  %t165 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t165)
+  %t166 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t166)
+  %t167 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t167)
+  ret double 0x0000000000000000
+exc.k17:
+  call void @sc_release__x25_m4_Tensor(ptr %t137)
+  call void @sc_release__x25_m4_Tensor(ptr %t143)
+  call void @scr_arr_release(ptr %t146)
+  call void @sc_release__x25_m4_Tensor(ptr %t149)
+  call void @scr_arr_release(ptr %t152)
+  %t168 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t168)
+  %t169 = load ptr, ptr %sc_l_logits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t169)
+  %t170 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t170)
+  %t171 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t171)
+  %t172 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t172)
+  %t173 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t173)
+  ret double %t160
+}
+
+define internal double @sc_f__x25__x25_m37_Sampler_sampleArray(ptr %p_sc_l_this_0, ptr %p_sc_l_rawData_0, double %p_sc_l_offset_0, double %p_sc_l_stride_0, double %p_sc_l_vocabSize_0, ptr %p_sc_l_generatedTokens_0, ptr %p_sc_l_options_0) #0 { ; %%m37.Sampler.sampleArray
+entry:
+  %sc_l_this_0 = alloca ptr ; this
+  %sc_l_rawData_0 = alloca ptr ; rawData
+  %sc_l_offset_0 = alloca double ; offset
+  %sc_l_stride_0 = alloca double ; stride
+  %sc_l_vocabSize_0 = alloca double ; vocabSize
+  %sc_l_generatedTokens_0 = alloca ptr ; generatedTokens
+  %sc_l_generatedTokens_1 = alloca ptr ; generatedTokens
+  %sc_l_options_0 = alloca ptr ; options
+  %sc_l_options_1 = alloca ptr ; options
+  %sc_l_temp_0 = alloca double ; temp
+  %sc_l_topK_0 = alloca double ; topK
+  %sc_l_topP_0 = alloca double ; topP
+  %sc_l_repPenalty_0 = alloca double ; repPenalty
+  %sc_l_maxIdx_0 = alloca double ; maxIdx
+  %sc_l_maxVal_0 = alloca double ; maxVal
+  %sc_l_seenSet_0 = alloca ptr ; seenSet
+  %sc_l_i_0 = alloca double ; i
+  %sc_l_val_0 = alloca double ; val
+  %sc_l_effectiveK_0 = alloca double ; effectiveK
+  %sc_l_candIndices_0 = alloca ptr ; candIndices
+  %sc_l_candValues_0 = alloca ptr ; candValues
+  %sc_l_seenSet_1 = alloca ptr ; seenSet
+  %sc_l_i_1 = alloca double ; i
+  %sc_l_val_1 = alloca double ; val
+  %sc_l_minIdx_0 = alloca double ; minIdx
+  %sc_l_minVal_0 = alloca double ; minVal
+  %sc_l_k_0 = alloca double ; k
+  %sc_l_numCands_0 = alloca double ; numCands
+  %sc_l_maxVal_1 = alloca double ; maxVal
+  %sc_l_k_1 = alloca double ; k
+  %sc_l_exps_0 = alloca ptr ; exps
+  %sc_l_expSum_0 = alloca double ; expSum
+  %sc_l_k_2 = alloca double ; k
+  %sc_l_e_0 = alloca double ; e
+  %sc_l_probs_0 = alloca ptr ; probs
+  %sc_l_k_3 = alloca double ; k
+  %sc_l_rand_0 = alloca double ; rand
+  %sc_l_cumProb_0 = alloca double ; cumProb
+  %sc_l_k_4 = alloca double ; k
+  %s5 = alloca ptr
+  %s18 = alloca ptr
+  %s38 = alloca double
+  %s54 = alloca double
+  %s70 = alloca double
+  %s86 = alloca double
+  %s112 = alloca i1
+  %s120 = alloca double
+  %s145 = alloca i1
+  %s150 = alloca double
+  %s173 = alloca i1
+  %s181 = alloca double
+  %s281 = alloca [1 x ptr]
+  %s295 = alloca double
+  %s326 = alloca double
+  store ptr null, ptr %sc_l_generatedTokens_1
+  store ptr null, ptr %sc_l_options_1
+  store ptr null, ptr %sc_l_seenSet_0
+  store ptr null, ptr %sc_l_candIndices_0
+  store ptr null, ptr %sc_l_candValues_0
+  store ptr null, ptr %sc_l_seenSet_1
+  store ptr null, ptr %sc_l_exps_0
+  store ptr null, ptr %sc_l_probs_0
+  store ptr %p_sc_l_this_0, ptr %sc_l_this_0
+  store ptr %p_sc_l_rawData_0, ptr %sc_l_rawData_0
+  store double %p_sc_l_offset_0, ptr %sc_l_offset_0
+  store double %p_sc_l_stride_0, ptr %sc_l_stride_0
+  store double %p_sc_l_vocabSize_0, ptr %sc_l_vocabSize_0
+  store ptr %p_sc_l_generatedTokens_0, ptr %sc_l_generatedTokens_0
+  store ptr %p_sc_l_options_0, ptr %sc_l_options_0
+  %t0 = load ptr, ptr %sc_l_generatedTokens_0
+  %t1 = call ptr @scr_union_retain_v(ptr %t0)
+  %t2 = getelementptr inbounds %ScrUnion, ptr %t1, i64 0, i32 1
+  %t3 = load i32, ptr %t2
+  %t4 = icmp eq i32 %t3, 1
+  br i1 %t4, label %tern.t0, label %tern.f1
+tern.t0:
+  %t6 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t6, ptr %s5
+  br label %tern.j2
+tern.f1:
+  %t7 = load ptr, ptr %sc_l_generatedTokens_0
+  %t8 = call ptr @scr_union_retain_v(ptr %t7)
+  %t9 = getelementptr inbounds %ScrUnion, ptr %t8, i64 0, i32 5
+  %t10 = load ptr, ptr %t9
+  %t11 = call ptr @scr_arr_retain_v(ptr %t10)
+  store ptr %t11, ptr %s5
+  call void @scr_union_release(ptr %t8)
+  br label %tern.j2
+tern.j2:
+  %t12 = load ptr, ptr %s5
+  store ptr %t12, ptr %sc_l_generatedTokens_1
+  call void @scr_union_release(ptr %t1)
+  %t13 = load ptr, ptr %sc_l_options_0
+  %t14 = call ptr @scr_union_retain_v(ptr %t13)
+  %t15 = getelementptr inbounds %ScrUnion, ptr %t14, i64 0, i32 1
+  %t16 = load i32, ptr %t15
+  %t17 = icmp eq i32 %t16, 1
+  br i1 %t17, label %tern.t3, label %tern.f4
+tern.t3:
+  %t19 = call ptr @sc_rnew_r6()
+  %t20 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 1
+  store ptr @sc_unit_2, ptr %t20
+  %t21 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 2
+  store ptr @sc_unit_2, ptr %t21
+  %t22 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 3
+  store ptr @sc_unit_2, ptr %t22
+  %t23 = getelementptr inbounds %sc_rs_r6, ptr %t19, i64 0, i32 4
+  store ptr @sc_unit_2, ptr %t23
+  store ptr %t19, ptr %s18
+  br label %tern.j5
+tern.f4:
+  %t24 = load ptr, ptr %sc_l_options_0
+  %t25 = call ptr @scr_union_retain_v(ptr %t24)
+  %t26 = getelementptr inbounds %ScrUnion, ptr %t25, i64 0, i32 5
+  %t27 = load ptr, ptr %t26
+  %t28 = call ptr @sc_rretain_r6(ptr %t27)
+  store ptr %t28, ptr %s18
+  call void @scr_union_release(ptr %t25)
+  br label %tern.j5
+tern.j5:
+  %t29 = load ptr, ptr %s18
+  store ptr %t29, ptr %sc_l_options_1
+  call void @scr_union_release(ptr %t14)
+  %t30 = load ptr, ptr %sc_l_options_1
+  %t31 = call ptr @sc_rretain_r6(ptr %t30)
+  %t32 = getelementptr inbounds %sc_rs_r6, ptr %t31, i64 0, i32 2
+  %t33 = load ptr, ptr %t32
+  %t34 = call ptr @scr_union_retain_v(ptr %t33)
+  %t35 = getelementptr inbounds %ScrUnion, ptr %t34, i64 0, i32 1
+  %t36 = load i32, ptr %t35
+  %t37 = icmp ne i32 %t36, 1
+  br i1 %t37, label %tern.t6, label %tern.f7
 tern.t6:
-  %t43 = load ptr, ptr %sc_l_options_1
-  %t44 = call ptr @sc_rretain_r6(ptr %t43)
-  %t45 = getelementptr inbounds %sc_rs_r6, ptr %t44, i64 0, i32 2
-  %t46 = load ptr, ptr %t45
-  %t47 = call ptr @scr_union_retain_v(ptr %t46)
-  %t48 = call double @scr_union_get_f64(ptr %t47)
-  store double %t48, ptr %s42
-  call void @sc_rrelease_r6(ptr %t44)
-  call void @scr_union_release(ptr %t47)
+  %t39 = load ptr, ptr %sc_l_options_1
+  %t40 = call ptr @sc_rretain_r6(ptr %t39)
+  %t41 = getelementptr inbounds %sc_rs_r6, ptr %t40, i64 0, i32 2
+  %t42 = load ptr, ptr %t41
+  %t43 = call ptr @scr_union_retain_v(ptr %t42)
+  %t44 = call double @scr_union_get_f64(ptr %t43)
+  store double %t44, ptr %s38
+  call void @sc_rrelease_r6(ptr %t40)
+  call void @scr_union_release(ptr %t43)
   br label %tern.j8
 tern.f7:
-  store double 0x0000000000000000, ptr %s42
+  store double 0x0000000000000000, ptr %s38
   br label %tern.j8
 tern.j8:
-  %t49 = load double, ptr %s42
-  store double %t49, ptr %sc_l_temp_0
-  call void @sc_rrelease_r6(ptr %t35)
-  call void @scr_union_release(ptr %t38)
-  %t50 = load ptr, ptr %sc_l_options_1
-  %t51 = call ptr @sc_rretain_r6(ptr %t50)
-  %t52 = getelementptr inbounds %sc_rs_r6, ptr %t51, i64 0, i32 3
-  %t53 = load ptr, ptr %t52
-  %t54 = call ptr @scr_union_retain_v(ptr %t53)
-  %t55 = getelementptr inbounds %ScrUnion, ptr %t54, i64 0, i32 1
-  %t56 = load i32, ptr %t55
-  %t57 = icmp ne i32 %t56, 1
-  br i1 %t57, label %tern.t9, label %tern.f10
+  %t45 = load double, ptr %s38
+  store double %t45, ptr %sc_l_temp_0
+  call void @sc_rrelease_r6(ptr %t31)
+  call void @scr_union_release(ptr %t34)
+  %t46 = load ptr, ptr %sc_l_options_1
+  %t47 = call ptr @sc_rretain_r6(ptr %t46)
+  %t48 = getelementptr inbounds %sc_rs_r6, ptr %t47, i64 0, i32 3
+  %t49 = load ptr, ptr %t48
+  %t50 = call ptr @scr_union_retain_v(ptr %t49)
+  %t51 = getelementptr inbounds %ScrUnion, ptr %t50, i64 0, i32 1
+  %t52 = load i32, ptr %t51
+  %t53 = icmp ne i32 %t52, 1
+  br i1 %t53, label %tern.t9, label %tern.f10
 tern.t9:
-  %t59 = load ptr, ptr %sc_l_options_1
-  %t60 = call ptr @sc_rretain_r6(ptr %t59)
-  %t61 = getelementptr inbounds %sc_rs_r6, ptr %t60, i64 0, i32 3
-  %t62 = load ptr, ptr %t61
-  %t63 = call ptr @scr_union_retain_v(ptr %t62)
-  %t64 = call double @scr_union_get_f64(ptr %t63)
-  store double %t64, ptr %s58
-  call void @sc_rrelease_r6(ptr %t60)
-  call void @scr_union_release(ptr %t63)
+  %t55 = load ptr, ptr %sc_l_options_1
+  %t56 = call ptr @sc_rretain_r6(ptr %t55)
+  %t57 = getelementptr inbounds %sc_rs_r6, ptr %t56, i64 0, i32 3
+  %t58 = load ptr, ptr %t57
+  %t59 = call ptr @scr_union_retain_v(ptr %t58)
+  %t60 = call double @scr_union_get_f64(ptr %t59)
+  store double %t60, ptr %s54
+  call void @sc_rrelease_r6(ptr %t56)
+  call void @scr_union_release(ptr %t59)
   br label %tern.j11
 tern.f10:
-  store double 0x0000000000000000, ptr %s58
+  store double 0x0000000000000000, ptr %s54
   br label %tern.j11
 tern.j11:
-  %t65 = load double, ptr %s58
-  store double %t65, ptr %sc_l_topK_0
-  call void @sc_rrelease_r6(ptr %t51)
-  call void @scr_union_release(ptr %t54)
-  %t66 = load ptr, ptr %sc_l_options_1
-  %t67 = call ptr @sc_rretain_r6(ptr %t66)
-  %t68 = getelementptr inbounds %sc_rs_r6, ptr %t67, i64 0, i32 4
-  %t69 = load ptr, ptr %t68
-  %t70 = call ptr @scr_union_retain_v(ptr %t69)
-  %t71 = getelementptr inbounds %ScrUnion, ptr %t70, i64 0, i32 1
-  %t72 = load i32, ptr %t71
-  %t73 = icmp ne i32 %t72, 1
-  br i1 %t73, label %tern.t12, label %tern.f13
+  %t61 = load double, ptr %s54
+  store double %t61, ptr %sc_l_topK_0
+  call void @sc_rrelease_r6(ptr %t47)
+  call void @scr_union_release(ptr %t50)
+  %t62 = load ptr, ptr %sc_l_options_1
+  %t63 = call ptr @sc_rretain_r6(ptr %t62)
+  %t64 = getelementptr inbounds %sc_rs_r6, ptr %t63, i64 0, i32 4
+  %t65 = load ptr, ptr %t64
+  %t66 = call ptr @scr_union_retain_v(ptr %t65)
+  %t67 = getelementptr inbounds %ScrUnion, ptr %t66, i64 0, i32 1
+  %t68 = load i32, ptr %t67
+  %t69 = icmp ne i32 %t68, 1
+  br i1 %t69, label %tern.t12, label %tern.f13
 tern.t12:
-  %t75 = load ptr, ptr %sc_l_options_1
-  %t76 = call ptr @sc_rretain_r6(ptr %t75)
-  %t77 = getelementptr inbounds %sc_rs_r6, ptr %t76, i64 0, i32 4
-  %t78 = load ptr, ptr %t77
-  %t79 = call ptr @scr_union_retain_v(ptr %t78)
-  %t80 = call double @scr_union_get_f64(ptr %t79)
-  store double %t80, ptr %s74
-  call void @sc_rrelease_r6(ptr %t76)
-  call void @scr_union_release(ptr %t79)
+  %t71 = load ptr, ptr %sc_l_options_1
+  %t72 = call ptr @sc_rretain_r6(ptr %t71)
+  %t73 = getelementptr inbounds %sc_rs_r6, ptr %t72, i64 0, i32 4
+  %t74 = load ptr, ptr %t73
+  %t75 = call ptr @scr_union_retain_v(ptr %t74)
+  %t76 = call double @scr_union_get_f64(ptr %t75)
+  store double %t76, ptr %s70
+  call void @sc_rrelease_r6(ptr %t72)
+  call void @scr_union_release(ptr %t75)
   br label %tern.j14
 tern.f13:
-  store double 0x3FF0000000000000, ptr %s74
+  store double 0x3FF0000000000000, ptr %s70
   br label %tern.j14
 tern.j14:
-  %t81 = load double, ptr %s74
-  store double %t81, ptr %sc_l_topP_0
-  call void @sc_rrelease_r6(ptr %t67)
-  call void @scr_union_release(ptr %t70)
-  %t82 = load ptr, ptr %sc_l_options_1
-  %t83 = call ptr @sc_rretain_r6(ptr %t82)
-  %t84 = getelementptr inbounds %sc_rs_r6, ptr %t83, i64 0, i32 1
-  %t85 = load ptr, ptr %t84
-  %t86 = call ptr @scr_union_retain_v(ptr %t85)
-  %t87 = getelementptr inbounds %ScrUnion, ptr %t86, i64 0, i32 1
-  %t88 = load i32, ptr %t87
-  %t89 = icmp ne i32 %t88, 1
-  br i1 %t89, label %tern.t15, label %tern.f16
+  %t77 = load double, ptr %s70
+  store double %t77, ptr %sc_l_topP_0
+  call void @sc_rrelease_r6(ptr %t63)
+  call void @scr_union_release(ptr %t66)
+  %t78 = load ptr, ptr %sc_l_options_1
+  %t79 = call ptr @sc_rretain_r6(ptr %t78)
+  %t80 = getelementptr inbounds %sc_rs_r6, ptr %t79, i64 0, i32 1
+  %t81 = load ptr, ptr %t80
+  %t82 = call ptr @scr_union_retain_v(ptr %t81)
+  %t83 = getelementptr inbounds %ScrUnion, ptr %t82, i64 0, i32 1
+  %t84 = load i32, ptr %t83
+  %t85 = icmp ne i32 %t84, 1
+  br i1 %t85, label %tern.t15, label %tern.f16
 tern.t15:
-  %t91 = load ptr, ptr %sc_l_options_1
-  %t92 = call ptr @sc_rretain_r6(ptr %t91)
-  %t93 = getelementptr inbounds %sc_rs_r6, ptr %t92, i64 0, i32 1
-  %t94 = load ptr, ptr %t93
-  %t95 = call ptr @scr_union_retain_v(ptr %t94)
-  %t96 = call double @scr_union_get_f64(ptr %t95)
-  store double %t96, ptr %s90
-  call void @sc_rrelease_r6(ptr %t92)
-  call void @scr_union_release(ptr %t95)
+  %t87 = load ptr, ptr %sc_l_options_1
+  %t88 = call ptr @sc_rretain_r6(ptr %t87)
+  %t89 = getelementptr inbounds %sc_rs_r6, ptr %t88, i64 0, i32 1
+  %t90 = load ptr, ptr %t89
+  %t91 = call ptr @scr_union_retain_v(ptr %t90)
+  %t92 = call double @scr_union_get_f64(ptr %t91)
+  store double %t92, ptr %s86
+  call void @sc_rrelease_r6(ptr %t88)
+  call void @scr_union_release(ptr %t91)
   br label %tern.j17
 tern.f16:
-  store double 0x3FF0000000000000, ptr %s90
+  store double 0x3FF0000000000000, ptr %s86
   br label %tern.j17
 tern.j17:
-  %t97 = load double, ptr %s90
-  store double %t97, ptr %sc_l_repPenalty_0
-  call void @sc_rrelease_r6(ptr %t83)
-  call void @scr_union_release(ptr %t86)
-  %t98 = load ptr, ptr %sc_l_logits_0
-  %t99 = call ptr @sc_retain__x25_m4_Tensor(ptr %t98)
-  %t100 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t99, i64 0, i32 1
-  %t101 = load ptr, ptr %t100
-  %t102 = call ptr @scr_arr_retain_v(ptr %t101)
-  store ptr %t102, ptr %sc_l_rawData_0
-  call void @sc_release__x25_m4_Tensor(ptr %t99)
-  %t103 = load double, ptr %sc_l_temp_0
-  %t104 = fcmp ole double %t103, 0x0000000000000000
-  br i1 %t104, label %if.t18, label %if.j19
+  %t93 = load double, ptr %s86
+  store double %t93, ptr %sc_l_repPenalty_0
+  call void @sc_rrelease_r6(ptr %t79)
+  call void @scr_union_release(ptr %t82)
+  %t94 = load double, ptr %sc_l_temp_0
+  %t95 = fcmp ole double %t94, 0x0000000000000000
+  br i1 %t95, label %if.t18, label %if.j19
 if.t18:
   store double 0x0000000000000000, ptr %sc_l_maxIdx_0
   store double 0xFFF0000000000000, ptr %sc_l_maxVal_0
-  %t105 = call ptr @scr_map_new(i32 0, i32 0, ptr null, ptr null, ptr null)
-  %t106 = load ptr, ptr %sc_l_generatedTokens_1
-  %t107 = call ptr @scr_arr_retain_v(ptr %t106)
-  call void @scr_set_add_all(ptr %t105, ptr %t107)
-  store ptr %t105, ptr %sc_l_seenSet_0
-  call void @scr_arr_release(ptr %t107)
+  %t96 = call ptr @scr_map_new(i32 0, i32 0, ptr null, ptr null, ptr null)
+  %t97 = load ptr, ptr %sc_l_generatedTokens_1
+  %t98 = call ptr @scr_arr_retain_v(ptr %t97)
+  call void @scr_set_add_all(ptr %t96, ptr %t98)
+  store ptr %t96, ptr %sc_l_seenSet_0
+  call void @scr_arr_release(ptr %t98)
   store double 0x0000000000000000, ptr %sc_l_i_0
   br label %loop.c20
 loop.c20:
-  %t108 = load double, ptr %sc_l_i_0
-  %t109 = load double, ptr %sc_l_vocabSize_0
-  %t110 = fcmp olt double %t108, %t109
-  br i1 %t110, label %loop.b21, label %loop.e22
+  %t99 = load double, ptr %sc_l_i_0
+  %t100 = load double, ptr %sc_l_vocabSize_0
+  %t101 = fcmp olt double %t99, %t100
+  br i1 %t101, label %loop.b21, label %loop.e22
 loop.b21:
-  %t111 = load ptr, ptr %sc_l_rawData_0
-  %t112 = call ptr @scr_arr_retain_v(ptr %t111)
-  %t113 = load double, ptr %sc_l_i_0
-  %t114 = call double @scr_arr_get_f64(ptr %t112, double %t113)
-  store double %t114, ptr %sc_l_val_0
-  call void @scr_arr_release(ptr %t112)
-  %t115 = load double, ptr %sc_l_repPenalty_0
-  %t116 = fcmp ogt double %t115, 0x3FF0000000000000
-  store i1 %t116, ptr %s117
-  br i1 %t116, label %log.r24, label %log.j25
+  %t102 = load ptr, ptr %sc_l_rawData_0
+  %t103 = call ptr @scr_arr_retain_v(ptr %t102)
+  %t104 = load double, ptr %sc_l_offset_0
+  %t105 = load double, ptr %sc_l_i_0
+  %t106 = load double, ptr %sc_l_stride_0
+  %t107 = fmul double %t105, %t106
+  %t108 = fadd double %t104, %t107
+  %t109 = call double @scr_arr_get_f64(ptr %t103, double %t108)
+  store double %t109, ptr %sc_l_val_0
+  call void @scr_arr_release(ptr %t103)
+  %t110 = load double, ptr %sc_l_repPenalty_0
+  %t111 = fcmp ogt double %t110, 0x3FF0000000000000
+  store i1 %t111, ptr %s112
+  br i1 %t111, label %log.r24, label %log.j25
 log.r24:
-  %t118 = load ptr, ptr %sc_l_seenSet_0
-  %t119 = call ptr @scr_map_retain_v(ptr %t118)
-  %t120 = load double, ptr %sc_l_i_0
-  %t121 = call zeroext i1 @scr_map_has_f64(ptr %t119, double %t120)
-  store i1 %t121, ptr %s117
-  call void @scr_map_release(ptr %t119)
+  %t113 = load ptr, ptr %sc_l_seenSet_0
+  %t114 = call ptr @scr_map_retain_v(ptr %t113)
+  %t115 = load double, ptr %sc_l_i_0
+  %t116 = call zeroext i1 @scr_map_has_f64(ptr %t114, double %t115)
+  store i1 %t116, ptr %s112
+  call void @scr_map_release(ptr %t114)
   br label %log.j25
 log.j25:
-  %t122 = load i1, ptr %s117
-  br i1 %t122, label %if.t26, label %if.j27
+  %t117 = load i1, ptr %s112
+  br i1 %t117, label %if.t26, label %if.j27
 if.t26:
-  %t123 = load double, ptr %sc_l_val_0
-  %t124 = fcmp olt double %t123, 0x0000000000000000
-  br i1 %t124, label %tern.t28, label %tern.f29
+  %t118 = load double, ptr %sc_l_val_0
+  %t119 = fcmp olt double %t118, 0x0000000000000000
+  br i1 %t119, label %tern.t28, label %tern.f29
 tern.t28:
-  %t126 = load double, ptr %sc_l_val_0
-  %t127 = load double, ptr %sc_l_repPenalty_0
-  %t128 = fmul double %t126, %t127
-  store double %t128, ptr %s125
+  %t121 = load double, ptr %sc_l_val_0
+  %t122 = load double, ptr %sc_l_repPenalty_0
+  %t123 = fmul double %t121, %t122
+  store double %t123, ptr %s120
   br label %tern.j30
 tern.f29:
-  %t129 = load double, ptr %sc_l_val_0
-  %t130 = load double, ptr %sc_l_repPenalty_0
-  %t131 = fdiv double %t129, %t130
-  store double %t131, ptr %s125
+  %t124 = load double, ptr %sc_l_val_0
+  %t125 = load double, ptr %sc_l_repPenalty_0
+  %t126 = fdiv double %t124, %t125
+  store double %t126, ptr %s120
   br label %tern.j30
 tern.j30:
-  %t132 = load double, ptr %s125
-  store double %t132, ptr %sc_l_val_0
+  %t127 = load double, ptr %s120
+  store double %t127, ptr %sc_l_val_0
   br label %if.j27
 if.j27:
-  %t133 = load double, ptr %sc_l_val_0
-  %t134 = load double, ptr %sc_l_maxVal_0
-  %t135 = fcmp ogt double %t133, %t134
-  br i1 %t135, label %if.t31, label %if.j32
+  %t128 = load double, ptr %sc_l_val_0
+  %t129 = load double, ptr %sc_l_maxVal_0
+  %t130 = fcmp ogt double %t128, %t129
+  br i1 %t130, label %if.t31, label %if.j32
 if.t31:
-  %t136 = load double, ptr %sc_l_val_0
-  store double %t136, ptr %sc_l_maxVal_0
-  %t137 = load double, ptr %sc_l_i_0
-  store double %t137, ptr %sc_l_maxIdx_0
+  %t131 = load double, ptr %sc_l_val_0
+  store double %t131, ptr %sc_l_maxVal_0
+  %t132 = load double, ptr %sc_l_i_0
+  store double %t132, ptr %sc_l_maxIdx_0
   br label %if.j32
 if.j32:
   br label %loop.u23
 loop.u23:
-  %t138 = load double, ptr %sc_l_i_0
-  %t139 = fadd double %t138, 0x3FF0000000000000
-  store double %t139, ptr %sc_l_i_0
+  %t133 = load double, ptr %sc_l_i_0
+  %t134 = fadd double %t133, 0x3FF0000000000000
+  store double %t134, ptr %sc_l_i_0
   br label %loop.c20
 loop.e22:
-  %t140 = load double, ptr %sc_l_maxIdx_0
-  %t141 = load ptr, ptr %sc_l_seenSet_0
-  call void @scr_map_release(ptr %t141)
-  %t142 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t142)
-  %t143 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t143)
-  %t144 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t144)
-  %t145 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t145)
-  %t146 = load ptr, ptr %sc_l_generatedTokens_1
-  call void @scr_arr_release(ptr %t146)
-  %t147 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t147)
-  %t148 = load ptr, ptr %sc_l_rawData_0
-  call void @scr_arr_release(ptr %t148)
-  ret double %t140
+  %t135 = load double, ptr %sc_l_maxIdx_0
+  %t136 = load ptr, ptr %sc_l_seenSet_0
+  call void @scr_map_release(ptr %t136)
+  %t137 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t137)
+  %t138 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t138)
+  %t139 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t139)
+  %t140 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t140)
+  %t141 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t141)
+  %t142 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t142)
+  ret double %t135
 if.j19:
-  %t149 = load double, ptr %sc_l_topK_0
-  %t150 = fcmp ogt double %t149, 0x0000000000000000
-  store i1 %t150, ptr %s151
-  br i1 %t150, label %log.r33, label %log.j34
+  %t143 = load double, ptr %sc_l_topK_0
+  %t144 = fcmp ogt double %t143, 0x0000000000000000
+  store i1 %t144, ptr %s145
+  br i1 %t144, label %log.r33, label %log.j34
 log.r33:
-  %t152 = load double, ptr %sc_l_topK_0
-  %t153 = load double, ptr %sc_l_vocabSize_0
-  %t154 = fcmp olt double %t152, %t153
-  store i1 %t154, ptr %s151
+  %t146 = load double, ptr %sc_l_topK_0
+  %t147 = load double, ptr %sc_l_vocabSize_0
+  %t148 = fcmp olt double %t146, %t147
+  store i1 %t148, ptr %s145
   br label %log.j34
 log.j34:
-  %t155 = load i1, ptr %s151
-  br i1 %t155, label %tern.t35, label %tern.f36
+  %t149 = load i1, ptr %s145
+  br i1 %t149, label %tern.t35, label %tern.f36
 tern.t35:
-  %t157 = load double, ptr %sc_l_topK_0
-  store double %t157, ptr %s156
+  %t151 = load double, ptr %sc_l_topK_0
+  store double %t151, ptr %s150
   br label %tern.j37
 tern.f36:
-  %t158 = load double, ptr %sc_l_vocabSize_0
-  %t159 = call double @scr_math_min(double 0x4049000000000000, double %t158)
-  store double %t159, ptr %s156
+  %t152 = load double, ptr %sc_l_vocabSize_0
+  %t153 = call double @scr_math_min(double 0x4049000000000000, double %t152)
+  store double %t153, ptr %s150
   br label %tern.j37
 tern.j37:
-  %t160 = load double, ptr %s156
-  store double %t160, ptr %sc_l_effectiveK_0
-  %t161 = call ptr @scr_arr_new(i32 0, i64 0)
-  store ptr %t161, ptr %sc_l_candIndices_0
-  %t162 = call ptr @scr_arr_new(i32 0, i64 0)
-  store ptr %t162, ptr %sc_l_candValues_0
-  %t163 = call ptr @scr_map_new(i32 0, i32 0, ptr null, ptr null, ptr null)
-  %t164 = load ptr, ptr %sc_l_generatedTokens_1
-  %t165 = call ptr @scr_arr_retain_v(ptr %t164)
-  call void @scr_set_add_all(ptr %t163, ptr %t165)
-  store ptr %t163, ptr %sc_l_seenSet_1
-  call void @scr_arr_release(ptr %t165)
+  %t154 = load double, ptr %s150
+  store double %t154, ptr %sc_l_effectiveK_0
+  %t155 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t155, ptr %sc_l_candIndices_0
+  %t156 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t156, ptr %sc_l_candValues_0
+  %t157 = call ptr @scr_map_new(i32 0, i32 0, ptr null, ptr null, ptr null)
+  %t158 = load ptr, ptr %sc_l_generatedTokens_1
+  %t159 = call ptr @scr_arr_retain_v(ptr %t158)
+  call void @scr_set_add_all(ptr %t157, ptr %t159)
+  store ptr %t157, ptr %sc_l_seenSet_1
+  call void @scr_arr_release(ptr %t159)
   store double 0x0000000000000000, ptr %sc_l_i_1
   br label %loop.c38
 loop.c38:
-  %t166 = load double, ptr %sc_l_i_1
-  %t167 = load double, ptr %sc_l_vocabSize_0
-  %t168 = fcmp olt double %t166, %t167
-  br i1 %t168, label %loop.b39, label %loop.e40
+  %t160 = load double, ptr %sc_l_i_1
+  %t161 = load double, ptr %sc_l_vocabSize_0
+  %t162 = fcmp olt double %t160, %t161
+  br i1 %t162, label %loop.b39, label %loop.e40
 loop.b39:
-  %t169 = load ptr, ptr %sc_l_rawData_0
-  %t170 = call ptr @scr_arr_retain_v(ptr %t169)
-  %t171 = load double, ptr %sc_l_i_1
-  %t172 = call double @scr_arr_get_f64(ptr %t170, double %t171)
-  store double %t172, ptr %sc_l_val_1
-  call void @scr_arr_release(ptr %t170)
-  %t173 = load double, ptr %sc_l_repPenalty_0
-  %t174 = fcmp ogt double %t173, 0x3FF0000000000000
-  store i1 %t174, ptr %s175
-  br i1 %t174, label %log.r42, label %log.j43
+  %t163 = load ptr, ptr %sc_l_rawData_0
+  %t164 = call ptr @scr_arr_retain_v(ptr %t163)
+  %t165 = load double, ptr %sc_l_offset_0
+  %t166 = load double, ptr %sc_l_i_1
+  %t167 = load double, ptr %sc_l_stride_0
+  %t168 = fmul double %t166, %t167
+  %t169 = fadd double %t165, %t168
+  %t170 = call double @scr_arr_get_f64(ptr %t164, double %t169)
+  store double %t170, ptr %sc_l_val_1
+  call void @scr_arr_release(ptr %t164)
+  %t171 = load double, ptr %sc_l_repPenalty_0
+  %t172 = fcmp ogt double %t171, 0x3FF0000000000000
+  store i1 %t172, ptr %s173
+  br i1 %t172, label %log.r42, label %log.j43
 log.r42:
-  %t176 = load ptr, ptr %sc_l_seenSet_1
-  %t177 = call ptr @scr_map_retain_v(ptr %t176)
-  %t178 = load double, ptr %sc_l_i_1
-  %t179 = call zeroext i1 @scr_map_has_f64(ptr %t177, double %t178)
-  store i1 %t179, ptr %s175
-  call void @scr_map_release(ptr %t177)
+  %t174 = load ptr, ptr %sc_l_seenSet_1
+  %t175 = call ptr @scr_map_retain_v(ptr %t174)
+  %t176 = load double, ptr %sc_l_i_1
+  %t177 = call zeroext i1 @scr_map_has_f64(ptr %t175, double %t176)
+  store i1 %t177, ptr %s173
+  call void @scr_map_release(ptr %t175)
   br label %log.j43
 log.j43:
-  %t180 = load i1, ptr %s175
-  br i1 %t180, label %if.t44, label %if.j45
+  %t178 = load i1, ptr %s173
+  br i1 %t178, label %if.t44, label %if.j45
 if.t44:
-  %t181 = load double, ptr %sc_l_val_1
-  %t182 = fcmp olt double %t181, 0x0000000000000000
-  br i1 %t182, label %tern.t46, label %tern.f47
+  %t179 = load double, ptr %sc_l_val_1
+  %t180 = fcmp olt double %t179, 0x0000000000000000
+  br i1 %t180, label %tern.t46, label %tern.f47
 tern.t46:
-  %t184 = load double, ptr %sc_l_val_1
-  %t185 = load double, ptr %sc_l_repPenalty_0
-  %t186 = fmul double %t184, %t185
-  store double %t186, ptr %s183
+  %t182 = load double, ptr %sc_l_val_1
+  %t183 = load double, ptr %sc_l_repPenalty_0
+  %t184 = fmul double %t182, %t183
+  store double %t184, ptr %s181
   br label %tern.j48
 tern.f47:
-  %t187 = load double, ptr %sc_l_val_1
-  %t188 = load double, ptr %sc_l_repPenalty_0
-  %t189 = fdiv double %t187, %t188
-  store double %t189, ptr %s183
+  %t185 = load double, ptr %sc_l_val_1
+  %t186 = load double, ptr %sc_l_repPenalty_0
+  %t187 = fdiv double %t185, %t186
+  store double %t187, ptr %s181
   br label %tern.j48
 tern.j48:
-  %t190 = load double, ptr %s183
-  store double %t190, ptr %sc_l_val_1
+  %t188 = load double, ptr %s181
+  store double %t188, ptr %sc_l_val_1
   br label %if.j45
 if.j45:
-  %t191 = load double, ptr %sc_l_val_1
-  %t192 = load double, ptr %sc_l_temp_0
-  %t193 = fdiv double %t191, %t192
-  store double %t193, ptr %sc_l_val_1
-  %t194 = load ptr, ptr %sc_l_candValues_0
-  %t195 = call ptr @scr_arr_retain_v(ptr %t194)
-  %t196 = call double @scr_arr_len(ptr %t195)
-  %t197 = load double, ptr %sc_l_effectiveK_0
-  %t198 = fcmp olt double %t196, %t197
-  call void @scr_arr_release(ptr %t195)
-  br i1 %t198, label %if.t49, label %if.f51
+  %t189 = load double, ptr %sc_l_val_1
+  %t190 = load double, ptr %sc_l_temp_0
+  %t191 = fdiv double %t189, %t190
+  store double %t191, ptr %sc_l_val_1
+  %t192 = load ptr, ptr %sc_l_candValues_0
+  %t193 = call ptr @scr_arr_retain_v(ptr %t192)
+  %t194 = call double @scr_arr_len(ptr %t193)
+  %t195 = load double, ptr %sc_l_effectiveK_0
+  %t196 = fcmp olt double %t194, %t195
+  call void @scr_arr_release(ptr %t193)
+  br i1 %t196, label %if.t49, label %if.f51
 if.t49:
-  %t199 = load ptr, ptr %sc_l_candIndices_0
-  %t200 = call ptr @scr_arr_retain_v(ptr %t199)
-  %t201 = load double, ptr %sc_l_i_1
-  %t202 = call double @scr_arr_push_f64(ptr %t200, double %t201)
-  call void @scr_arr_release(ptr %t200)
-  %t203 = load ptr, ptr %sc_l_candValues_0
-  %t204 = call ptr @scr_arr_retain_v(ptr %t203)
-  %t205 = load double, ptr %sc_l_val_1
-  %t206 = call double @scr_arr_push_f64(ptr %t204, double %t205)
-  call void @scr_arr_release(ptr %t204)
+  %t197 = load ptr, ptr %sc_l_candIndices_0
+  %t198 = call ptr @scr_arr_retain_v(ptr %t197)
+  %t199 = load double, ptr %sc_l_i_1
+  %t200 = call double @scr_arr_push_f64(ptr %t198, double %t199)
+  call void @scr_arr_release(ptr %t198)
+  %t201 = load ptr, ptr %sc_l_candValues_0
+  %t202 = call ptr @scr_arr_retain_v(ptr %t201)
+  %t203 = load double, ptr %sc_l_val_1
+  %t204 = call double @scr_arr_push_f64(ptr %t202, double %t203)
+  call void @scr_arr_release(ptr %t202)
   br label %if.j50
 if.f51:
   store double 0x0000000000000000, ptr %sc_l_minIdx_0
-  %t207 = load ptr, ptr %sc_l_candValues_0
-  %t208 = call ptr @scr_arr_retain_v(ptr %t207)
-  %t209 = call double @scr_arr_get_f64(ptr %t208, double 0x0000000000000000)
-  store double %t209, ptr %sc_l_minVal_0
-  call void @scr_arr_release(ptr %t208)
+  %t205 = load ptr, ptr %sc_l_candValues_0
+  %t206 = call ptr @scr_arr_retain_v(ptr %t205)
+  %t207 = call double @scr_arr_get_f64(ptr %t206, double 0x0000000000000000)
+  store double %t207, ptr %sc_l_minVal_0
+  call void @scr_arr_release(ptr %t206)
   store double 0x3FF0000000000000, ptr %sc_l_k_0
   br label %loop.c52
 loop.c52:
-  %t210 = load double, ptr %sc_l_k_0
-  %t211 = load double, ptr %sc_l_effectiveK_0
-  %t212 = fcmp olt double %t210, %t211
-  br i1 %t212, label %loop.b53, label %loop.e54
+  %t208 = load double, ptr %sc_l_k_0
+  %t209 = load double, ptr %sc_l_effectiveK_0
+  %t210 = fcmp olt double %t208, %t209
+  br i1 %t210, label %loop.b53, label %loop.e54
 loop.b53:
-  %t213 = load ptr, ptr %sc_l_candValues_0
-  %t214 = call ptr @scr_arr_retain_v(ptr %t213)
-  %t215 = load double, ptr %sc_l_k_0
-  %t216 = call double @scr_arr_get_f64(ptr %t214, double %t215)
-  %t217 = load double, ptr %sc_l_minVal_0
-  %t218 = fcmp olt double %t216, %t217
-  call void @scr_arr_release(ptr %t214)
-  br i1 %t218, label %if.t56, label %if.j57
+  %t211 = load ptr, ptr %sc_l_candValues_0
+  %t212 = call ptr @scr_arr_retain_v(ptr %t211)
+  %t213 = load double, ptr %sc_l_k_0
+  %t214 = call double @scr_arr_get_f64(ptr %t212, double %t213)
+  %t215 = load double, ptr %sc_l_minVal_0
+  %t216 = fcmp olt double %t214, %t215
+  call void @scr_arr_release(ptr %t212)
+  br i1 %t216, label %if.t56, label %if.j57
 if.t56:
-  %t219 = load ptr, ptr %sc_l_candValues_0
-  %t220 = call ptr @scr_arr_retain_v(ptr %t219)
+  %t217 = load ptr, ptr %sc_l_candValues_0
+  %t218 = call ptr @scr_arr_retain_v(ptr %t217)
+  %t219 = load double, ptr %sc_l_k_0
+  %t220 = call double @scr_arr_get_f64(ptr %t218, double %t219)
+  store double %t220, ptr %sc_l_minVal_0
+  call void @scr_arr_release(ptr %t218)
   %t221 = load double, ptr %sc_l_k_0
-  %t222 = call double @scr_arr_get_f64(ptr %t220, double %t221)
-  store double %t222, ptr %sc_l_minVal_0
-  call void @scr_arr_release(ptr %t220)
-  %t223 = load double, ptr %sc_l_k_0
-  store double %t223, ptr %sc_l_minIdx_0
+  store double %t221, ptr %sc_l_minIdx_0
   br label %if.j57
 if.j57:
   br label %loop.u55
 loop.u55:
-  %t224 = load double, ptr %sc_l_k_0
-  %t225 = fadd double %t224, 0x3FF0000000000000
-  store double %t225, ptr %sc_l_k_0
+  %t222 = load double, ptr %sc_l_k_0
+  %t223 = fadd double %t222, 0x3FF0000000000000
+  store double %t223, ptr %sc_l_k_0
   br label %loop.c52
 loop.e54:
-  %t226 = load double, ptr %sc_l_val_1
-  %t227 = load double, ptr %sc_l_minVal_0
-  %t228 = fcmp ogt double %t226, %t227
-  br i1 %t228, label %if.t58, label %if.j59
+  %t224 = load double, ptr %sc_l_val_1
+  %t225 = load double, ptr %sc_l_minVal_0
+  %t226 = fcmp ogt double %t224, %t225
+  br i1 %t226, label %if.t58, label %if.j59
 if.t58:
-  %t229 = load ptr, ptr %sc_l_candIndices_0
-  %t230 = call ptr @scr_arr_retain_v(ptr %t229)
-  %t231 = load double, ptr %sc_l_minIdx_0
-  %t232 = load double, ptr %sc_l_i_1
-  call void @scr_arr_set_f64(ptr %t230, double %t231, double %t232)
-  call void @scr_arr_release(ptr %t230)
-  %t233 = load ptr, ptr %sc_l_candValues_0
-  %t234 = call ptr @scr_arr_retain_v(ptr %t233)
-  %t235 = load double, ptr %sc_l_minIdx_0
-  %t236 = load double, ptr %sc_l_val_1
-  call void @scr_arr_set_f64(ptr %t234, double %t235, double %t236)
-  call void @scr_arr_release(ptr %t234)
+  %t227 = load ptr, ptr %sc_l_candIndices_0
+  %t228 = call ptr @scr_arr_retain_v(ptr %t227)
+  %t229 = load double, ptr %sc_l_minIdx_0
+  %t230 = load double, ptr %sc_l_i_1
+  call void @scr_arr_set_f64(ptr %t228, double %t229, double %t230)
+  call void @scr_arr_release(ptr %t228)
+  %t231 = load ptr, ptr %sc_l_candValues_0
+  %t232 = call ptr @scr_arr_retain_v(ptr %t231)
+  %t233 = load double, ptr %sc_l_minIdx_0
+  %t234 = load double, ptr %sc_l_val_1
+  call void @scr_arr_set_f64(ptr %t232, double %t233, double %t234)
+  call void @scr_arr_release(ptr %t232)
   br label %if.j59
 if.j59:
   br label %if.j50
 if.j50:
   br label %loop.u41
 loop.u41:
-  %t237 = load double, ptr %sc_l_i_1
-  %t238 = fadd double %t237, 0x3FF0000000000000
-  store double %t238, ptr %sc_l_i_1
+  %t235 = load double, ptr %sc_l_i_1
+  %t236 = fadd double %t235, 0x3FF0000000000000
+  store double %t236, ptr %sc_l_i_1
   br label %loop.c38
 loop.e40:
-  %t239 = load ptr, ptr %sc_l_candValues_0
-  %t240 = call ptr @scr_arr_retain_v(ptr %t239)
-  %t241 = call double @scr_arr_len(ptr %t240)
-  store double %t241, ptr %sc_l_numCands_0
-  call void @scr_arr_release(ptr %t240)
-  %t242 = load ptr, ptr %sc_l_candValues_0
-  %t243 = call ptr @scr_arr_retain_v(ptr %t242)
-  %t244 = call double @scr_arr_get_f64(ptr %t243, double 0x0000000000000000)
-  store double %t244, ptr %sc_l_maxVal_1
-  call void @scr_arr_release(ptr %t243)
+  %t237 = load ptr, ptr %sc_l_candValues_0
+  %t238 = call ptr @scr_arr_retain_v(ptr %t237)
+  %t239 = call double @scr_arr_len(ptr %t238)
+  store double %t239, ptr %sc_l_numCands_0
+  call void @scr_arr_release(ptr %t238)
+  %t240 = load ptr, ptr %sc_l_candValues_0
+  %t241 = call ptr @scr_arr_retain_v(ptr %t240)
+  %t242 = call double @scr_arr_get_f64(ptr %t241, double 0x0000000000000000)
+  store double %t242, ptr %sc_l_maxVal_1
+  call void @scr_arr_release(ptr %t241)
   store double 0x3FF0000000000000, ptr %sc_l_k_1
   br label %loop.c60
 loop.c60:
-  %t245 = load double, ptr %sc_l_k_1
-  %t246 = load double, ptr %sc_l_numCands_0
-  %t247 = fcmp olt double %t245, %t246
-  br i1 %t247, label %loop.b61, label %loop.e62
+  %t243 = load double, ptr %sc_l_k_1
+  %t244 = load double, ptr %sc_l_numCands_0
+  %t245 = fcmp olt double %t243, %t244
+  br i1 %t245, label %loop.b61, label %loop.e62
 loop.b61:
-  %t248 = load ptr, ptr %sc_l_candValues_0
-  %t249 = call ptr @scr_arr_retain_v(ptr %t248)
-  %t250 = load double, ptr %sc_l_k_1
-  %t251 = call double @scr_arr_get_f64(ptr %t249, double %t250)
-  %t252 = load double, ptr %sc_l_maxVal_1
-  %t253 = fcmp ogt double %t251, %t252
-  call void @scr_arr_release(ptr %t249)
-  br i1 %t253, label %if.t64, label %if.j65
+  %t246 = load ptr, ptr %sc_l_candValues_0
+  %t247 = call ptr @scr_arr_retain_v(ptr %t246)
+  %t248 = load double, ptr %sc_l_k_1
+  %t249 = call double @scr_arr_get_f64(ptr %t247, double %t248)
+  %t250 = load double, ptr %sc_l_maxVal_1
+  %t251 = fcmp ogt double %t249, %t250
+  call void @scr_arr_release(ptr %t247)
+  br i1 %t251, label %if.t64, label %if.j65
 if.t64:
-  %t254 = load ptr, ptr %sc_l_candValues_0
-  %t255 = call ptr @scr_arr_retain_v(ptr %t254)
-  %t256 = load double, ptr %sc_l_k_1
-  %t257 = call double @scr_arr_get_f64(ptr %t255, double %t256)
-  store double %t257, ptr %sc_l_maxVal_1
-  call void @scr_arr_release(ptr %t255)
+  %t252 = load ptr, ptr %sc_l_candValues_0
+  %t253 = call ptr @scr_arr_retain_v(ptr %t252)
+  %t254 = load double, ptr %sc_l_k_1
+  %t255 = call double @scr_arr_get_f64(ptr %t253, double %t254)
+  store double %t255, ptr %sc_l_maxVal_1
+  call void @scr_arr_release(ptr %t253)
   br label %if.j65
 if.j65:
   br label %loop.u63
 loop.u63:
-  %t258 = load double, ptr %sc_l_k_1
-  %t259 = fadd double %t258, 0x3FF0000000000000
-  store double %t259, ptr %sc_l_k_1
+  %t256 = load double, ptr %sc_l_k_1
+  %t257 = fadd double %t256, 0x3FF0000000000000
+  store double %t257, ptr %sc_l_k_1
   br label %loop.c60
 loop.e62:
-  %t260 = call ptr @scr_arr_new(i32 0, i64 0)
-  store ptr %t260, ptr %sc_l_exps_0
+  %t258 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t258, ptr %sc_l_exps_0
   store double 0x0000000000000000, ptr %sc_l_expSum_0
   store double 0x0000000000000000, ptr %sc_l_k_2
   br label %loop.c66
 loop.c66:
-  %t261 = load double, ptr %sc_l_k_2
-  %t262 = load double, ptr %sc_l_numCands_0
-  %t263 = fcmp olt double %t261, %t262
-  br i1 %t263, label %loop.b67, label %loop.e68
+  %t259 = load double, ptr %sc_l_k_2
+  %t260 = load double, ptr %sc_l_numCands_0
+  %t261 = fcmp olt double %t259, %t260
+  br i1 %t261, label %loop.b67, label %loop.e68
 loop.b67:
-  %t264 = call ptr @scr_jsval_global_get(ptr @sc_lit_61)
-  %t265 = call zeroext i1 @scr_exc_pending()
-  br i1 %t265, label %exc.u70, label %exc.k71
+  %t262 = call ptr @scr_jsval_global_get(ptr @sc_lit_61)
+  %t263 = call zeroext i1 @scr_exc_pending()
+  br i1 %t263, label %exc.u70, label %exc.k71
 exc.u70:
-  call void @scr_jsval_release_v(ptr %t264)
-  %t266 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t266)
-  %t267 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t267)
-  %t268 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t268)
-  %t269 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t269)
-  %t270 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_jsval_release_v(ptr %t262)
+  %t264 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t264)
+  %t265 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t265)
+  %t266 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t266)
+  %t267 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t267)
+  %t268 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t268)
+  %t269 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t269)
+  %t270 = load ptr, ptr %sc_l_candIndices_0
   call void @scr_arr_release(ptr %t270)
-  %t271 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t271)
-  %t272 = load ptr, ptr %sc_l_rawData_0
-  call void @scr_arr_release(ptr %t272)
-  %t273 = load ptr, ptr %sc_l_candIndices_0
+  %t271 = load ptr, ptr %sc_l_candValues_0
+  call void @scr_arr_release(ptr %t271)
+  %t272 = load ptr, ptr %sc_l_seenSet_1
+  call void @scr_map_release(ptr %t272)
+  %t273 = load ptr, ptr %sc_l_exps_0
   call void @scr_arr_release(ptr %t273)
-  %t274 = load ptr, ptr %sc_l_candValues_0
-  call void @scr_arr_release(ptr %t274)
-  %t275 = load ptr, ptr %sc_l_seenSet_1
-  call void @scr_map_release(ptr %t275)
-  %t276 = load ptr, ptr %sc_l_exps_0
-  call void @scr_arr_release(ptr %t276)
   ret double 0x0000000000000000
 exc.k71:
-  %t277 = load ptr, ptr %sc_l_candValues_0
-  %t278 = call ptr @scr_arr_retain_v(ptr %t277)
-  %t279 = load double, ptr %sc_l_k_2
-  %t280 = call double @scr_arr_get_f64(ptr %t278, double %t279)
-  %t281 = load double, ptr %sc_l_maxVal_1
-  %t282 = fsub double %t280, %t281
-  %t283 = call ptr @scr_jsval_from_f64(double %t282)
-  %t285 = getelementptr inbounds [1 x ptr], ptr %s284, i64 0, i64 0
-  store ptr %t283, ptr %t285
-  %t286 = call ptr @scr_jsval_call_method(ptr %t264, ptr @sc_lit_62, i32 1, ptr %s284)
-  %t287 = call zeroext i1 @scr_exc_pending()
-  br i1 %t287, label %exc.u72, label %exc.k73
+  %t274 = load ptr, ptr %sc_l_candValues_0
+  %t275 = call ptr @scr_arr_retain_v(ptr %t274)
+  %t276 = load double, ptr %sc_l_k_2
+  %t277 = call double @scr_arr_get_f64(ptr %t275, double %t276)
+  %t278 = load double, ptr %sc_l_maxVal_1
+  %t279 = fsub double %t277, %t278
+  %t280 = call ptr @scr_jsval_from_f64(double %t279)
+  %t282 = getelementptr inbounds [1 x ptr], ptr %s281, i64 0, i64 0
+  store ptr %t280, ptr %t282
+  %t283 = call ptr @scr_jsval_call_method(ptr %t262, ptr @sc_lit_62, i32 1, ptr %s281)
+  %t284 = call zeroext i1 @scr_exc_pending()
+  br i1 %t284, label %exc.u72, label %exc.k73
 exc.u72:
-  call void @scr_jsval_release_v(ptr %t264)
-  call void @scr_arr_release(ptr %t278)
+  call void @scr_jsval_release_v(ptr %t262)
+  call void @scr_arr_release(ptr %t275)
+  call void @scr_jsval_release_v(ptr %t280)
   call void @scr_jsval_release_v(ptr %t283)
-  call void @scr_jsval_release_v(ptr %t286)
-  %t288 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t288)
-  %t289 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t289)
-  %t290 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t290)
-  %t291 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t291)
-  %t292 = load ptr, ptr %sc_l_generatedTokens_1
+  %t285 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t285)
+  %t286 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t286)
+  %t287 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t287)
+  %t288 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t288)
+  %t289 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t289)
+  %t290 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t290)
+  %t291 = load ptr, ptr %sc_l_candIndices_0
+  call void @scr_arr_release(ptr %t291)
+  %t292 = load ptr, ptr %sc_l_candValues_0
   call void @scr_arr_release(ptr %t292)
-  %t293 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t293)
-  %t294 = load ptr, ptr %sc_l_rawData_0
+  %t293 = load ptr, ptr %sc_l_seenSet_1
+  call void @scr_map_release(ptr %t293)
+  %t294 = load ptr, ptr %sc_l_exps_0
   call void @scr_arr_release(ptr %t294)
-  %t295 = load ptr, ptr %sc_l_candIndices_0
-  call void @scr_arr_release(ptr %t295)
-  %t296 = load ptr, ptr %sc_l_candValues_0
-  call void @scr_arr_release(ptr %t296)
-  %t297 = load ptr, ptr %sc_l_seenSet_1
-  call void @scr_map_release(ptr %t297)
-  %t298 = load ptr, ptr %sc_l_exps_0
-  call void @scr_arr_release(ptr %t298)
   ret double 0x0000000000000000
 exc.k73:
-  store double 0x0000000000000000, ptr %s299
-  %t300 = call i32 @scr_jsval_exit_f64(ptr %t286, ptr %s299)
-  %t301 = call zeroext i1 @scr_exc_pending()
-  br i1 %t301, label %exc.u74, label %exc.k75
+  store double 0x0000000000000000, ptr %s295
+  %t296 = call i32 @scr_jsval_exit_f64(ptr %t283, ptr %s295)
+  %t297 = call zeroext i1 @scr_exc_pending()
+  br i1 %t297, label %exc.u74, label %exc.k75
 exc.u74:
-  call void @scr_jsval_release_v(ptr %t264)
-  call void @scr_arr_release(ptr %t278)
+  call void @scr_jsval_release_v(ptr %t262)
+  call void @scr_arr_release(ptr %t275)
+  call void @scr_jsval_release_v(ptr %t280)
   call void @scr_jsval_release_v(ptr %t283)
-  call void @scr_jsval_release_v(ptr %t286)
-  %t302 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t302)
-  %t303 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t303)
-  %t304 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t304)
-  %t305 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t305)
-  %t306 = load ptr, ptr %sc_l_generatedTokens_1
-  call void @scr_arr_release(ptr %t306)
-  %t307 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t307)
-  %t308 = load ptr, ptr %sc_l_rawData_0
-  call void @scr_arr_release(ptr %t308)
-  %t309 = load ptr, ptr %sc_l_candIndices_0
-  call void @scr_arr_release(ptr %t309)
-  %t310 = load ptr, ptr %sc_l_candValues_0
-  call void @scr_arr_release(ptr %t310)
-  %t311 = load ptr, ptr %sc_l_seenSet_1
-  call void @scr_map_release(ptr %t311)
-  %t312 = load ptr, ptr %sc_l_exps_0
-  call void @scr_arr_release(ptr %t312)
+  %t298 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t298)
+  %t299 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t299)
+  %t300 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t300)
+  %t301 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t301)
+  %t302 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t302)
+  %t303 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t303)
+  %t304 = load ptr, ptr %sc_l_candIndices_0
+  call void @scr_arr_release(ptr %t304)
+  %t305 = load ptr, ptr %sc_l_candValues_0
+  call void @scr_arr_release(ptr %t305)
+  %t306 = load ptr, ptr %sc_l_seenSet_1
+  call void @scr_map_release(ptr %t306)
+  %t307 = load ptr, ptr %sc_l_exps_0
+  call void @scr_arr_release(ptr %t307)
   ret double 0x0000000000000000
 exc.k75:
-  %t313 = load double, ptr %s299
-  store double %t313, ptr %sc_l_e_0
-  call void @scr_jsval_release_v(ptr %t264)
-  call void @scr_arr_release(ptr %t278)
+  %t308 = load double, ptr %s295
+  store double %t308, ptr %sc_l_e_0
+  call void @scr_jsval_release_v(ptr %t262)
+  call void @scr_arr_release(ptr %t275)
+  call void @scr_jsval_release_v(ptr %t280)
   call void @scr_jsval_release_v(ptr %t283)
-  call void @scr_jsval_release_v(ptr %t286)
-  %t314 = load ptr, ptr %sc_l_exps_0
-  %t315 = call ptr @scr_arr_retain_v(ptr %t314)
-  %t316 = load double, ptr %sc_l_e_0
-  %t317 = call double @scr_arr_push_f64(ptr %t315, double %t316)
-  call void @scr_arr_release(ptr %t315)
-  %t318 = load double, ptr %sc_l_expSum_0
-  %t319 = load double, ptr %sc_l_e_0
-  %t320 = fadd double %t318, %t319
-  store double %t320, ptr %sc_l_expSum_0
+  %t309 = load ptr, ptr %sc_l_exps_0
+  %t310 = call ptr @scr_arr_retain_v(ptr %t309)
+  %t311 = load double, ptr %sc_l_e_0
+  %t312 = call double @scr_arr_push_f64(ptr %t310, double %t311)
+  call void @scr_arr_release(ptr %t310)
+  %t313 = load double, ptr %sc_l_expSum_0
+  %t314 = load double, ptr %sc_l_e_0
+  %t315 = fadd double %t313, %t314
+  store double %t315, ptr %sc_l_expSum_0
   br label %loop.u69
 loop.u69:
-  %t321 = load double, ptr %sc_l_k_2
-  %t322 = fadd double %t321, 0x3FF0000000000000
-  store double %t322, ptr %sc_l_k_2
+  %t316 = load double, ptr %sc_l_k_2
+  %t317 = fadd double %t316, 0x3FF0000000000000
+  store double %t317, ptr %sc_l_k_2
   br label %loop.c66
 loop.e68:
-  %t323 = call ptr @scr_arr_new(i32 0, i64 0)
-  store ptr %t323, ptr %sc_l_probs_0
+  %t318 = call ptr @scr_arr_new(i32 0, i64 0)
+  store ptr %t318, ptr %sc_l_probs_0
   store double 0x0000000000000000, ptr %sc_l_k_3
   br label %loop.c76
 loop.c76:
-  %t324 = load double, ptr %sc_l_k_3
-  %t325 = load double, ptr %sc_l_numCands_0
-  %t326 = fcmp olt double %t324, %t325
-  br i1 %t326, label %loop.b77, label %loop.e78
+  %t319 = load double, ptr %sc_l_k_3
+  %t320 = load double, ptr %sc_l_numCands_0
+  %t321 = fcmp olt double %t319, %t320
+  br i1 %t321, label %loop.b77, label %loop.e78
 loop.b77:
-  %t327 = load ptr, ptr %sc_l_probs_0
-  %t328 = call ptr @scr_arr_retain_v(ptr %t327)
-  %t329 = load double, ptr %sc_l_expSum_0
-  %t330 = fcmp ogt double %t329, 0x0000000000000000
-  br i1 %t330, label %tern.t80, label %tern.f81
+  %t322 = load ptr, ptr %sc_l_probs_0
+  %t323 = call ptr @scr_arr_retain_v(ptr %t322)
+  %t324 = load double, ptr %sc_l_expSum_0
+  %t325 = fcmp ogt double %t324, 0x0000000000000000
+  br i1 %t325, label %tern.t80, label %tern.f81
 tern.t80:
-  %t332 = load ptr, ptr %sc_l_exps_0
-  %t333 = call ptr @scr_arr_retain_v(ptr %t332)
-  %t334 = load double, ptr %sc_l_k_3
-  %t335 = call double @scr_arr_get_f64(ptr %t333, double %t334)
-  %t336 = load double, ptr %sc_l_expSum_0
-  %t337 = fdiv double %t335, %t336
-  store double %t337, ptr %s331
-  call void @scr_arr_release(ptr %t333)
+  %t327 = load ptr, ptr %sc_l_exps_0
+  %t328 = call ptr @scr_arr_retain_v(ptr %t327)
+  %t329 = load double, ptr %sc_l_k_3
+  %t330 = call double @scr_arr_get_f64(ptr %t328, double %t329)
+  %t331 = load double, ptr %sc_l_expSum_0
+  %t332 = fdiv double %t330, %t331
+  store double %t332, ptr %s326
+  call void @scr_arr_release(ptr %t328)
   br label %tern.j82
 tern.f81:
-  %t338 = load double, ptr %sc_l_numCands_0
-  %t339 = fdiv double 0x3FF0000000000000, %t338
-  store double %t339, ptr %s331
+  %t333 = load double, ptr %sc_l_numCands_0
+  %t334 = fdiv double 0x3FF0000000000000, %t333
+  store double %t334, ptr %s326
   br label %tern.j82
 tern.j82:
-  %t340 = load double, ptr %s331
-  %t341 = call double @scr_arr_push_f64(ptr %t328, double %t340)
-  call void @scr_arr_release(ptr %t328)
+  %t335 = load double, ptr %s326
+  %t336 = call double @scr_arr_push_f64(ptr %t323, double %t335)
+  call void @scr_arr_release(ptr %t323)
   br label %loop.u79
 loop.u79:
-  %t342 = load double, ptr %sc_l_k_3
-  %t343 = fadd double %t342, 0x3FF0000000000000
-  store double %t343, ptr %sc_l_k_3
+  %t337 = load double, ptr %sc_l_k_3
+  %t338 = fadd double %t337, 0x3FF0000000000000
+  store double %t338, ptr %sc_l_k_3
   br label %loop.c76
 loop.e78:
-  %t344 = call double @scr_math_random()
-  store double %t344, ptr %sc_l_rand_0
+  %t339 = call double @scr_math_random()
+  store double %t339, ptr %sc_l_rand_0
   store double 0x0000000000000000, ptr %sc_l_cumProb_0
   store double 0x0000000000000000, ptr %sc_l_k_4
   br label %loop.c83
 loop.c83:
-  %t345 = load double, ptr %sc_l_k_4
-  %t346 = load double, ptr %sc_l_numCands_0
-  %t347 = fcmp olt double %t345, %t346
-  br i1 %t347, label %loop.b84, label %loop.e85
+  %t340 = load double, ptr %sc_l_k_4
+  %t341 = load double, ptr %sc_l_numCands_0
+  %t342 = fcmp olt double %t340, %t341
+  br i1 %t342, label %loop.b84, label %loop.e85
 loop.b84:
-  %t348 = load double, ptr %sc_l_cumProb_0
-  %t349 = load ptr, ptr %sc_l_probs_0
-  %t350 = call ptr @scr_arr_retain_v(ptr %t349)
-  %t351 = load double, ptr %sc_l_k_4
-  %t352 = call double @scr_arr_get_f64(ptr %t350, double %t351)
-  %t353 = fadd double %t348, %t352
-  store double %t353, ptr %sc_l_cumProb_0
-  call void @scr_arr_release(ptr %t350)
-  %t354 = load double, ptr %sc_l_rand_0
-  %t355 = load double, ptr %sc_l_cumProb_0
-  %t356 = fcmp ole double %t354, %t355
-  br i1 %t356, label %if.t87, label %if.j88
+  %t343 = load double, ptr %sc_l_cumProb_0
+  %t344 = load ptr, ptr %sc_l_probs_0
+  %t345 = call ptr @scr_arr_retain_v(ptr %t344)
+  %t346 = load double, ptr %sc_l_k_4
+  %t347 = call double @scr_arr_get_f64(ptr %t345, double %t346)
+  %t348 = fadd double %t343, %t347
+  store double %t348, ptr %sc_l_cumProb_0
+  call void @scr_arr_release(ptr %t345)
+  %t349 = load double, ptr %sc_l_rand_0
+  %t350 = load double, ptr %sc_l_cumProb_0
+  %t351 = fcmp ole double %t349, %t350
+  br i1 %t351, label %if.t87, label %if.j88
 if.t87:
-  %t357 = load ptr, ptr %sc_l_candIndices_0
-  %t358 = call ptr @scr_arr_retain_v(ptr %t357)
-  %t359 = load double, ptr %sc_l_k_4
-  %t360 = call double @scr_arr_get_f64(ptr %t358, double %t359)
-  call void @scr_arr_release(ptr %t358)
-  %t361 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t361)
-  %t362 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t362)
-  %t363 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t363)
-  %t364 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t364)
-  %t365 = load ptr, ptr %sc_l_generatedTokens_1
+  %t352 = load ptr, ptr %sc_l_candIndices_0
+  %t353 = call ptr @scr_arr_retain_v(ptr %t352)
+  %t354 = load double, ptr %sc_l_k_4
+  %t355 = call double @scr_arr_get_f64(ptr %t353, double %t354)
+  call void @scr_arr_release(ptr %t353)
+  %t356 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t356)
+  %t357 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t357)
+  %t358 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t358)
+  %t359 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t359)
+  %t360 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t360)
+  %t361 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t361)
+  %t362 = load ptr, ptr %sc_l_candIndices_0
+  call void @scr_arr_release(ptr %t362)
+  %t363 = load ptr, ptr %sc_l_candValues_0
+  call void @scr_arr_release(ptr %t363)
+  %t364 = load ptr, ptr %sc_l_seenSet_1
+  call void @scr_map_release(ptr %t364)
+  %t365 = load ptr, ptr %sc_l_exps_0
   call void @scr_arr_release(ptr %t365)
-  %t366 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t366)
-  %t367 = load ptr, ptr %sc_l_rawData_0
-  call void @scr_arr_release(ptr %t367)
-  %t368 = load ptr, ptr %sc_l_candIndices_0
-  call void @scr_arr_release(ptr %t368)
-  %t369 = load ptr, ptr %sc_l_candValues_0
-  call void @scr_arr_release(ptr %t369)
-  %t370 = load ptr, ptr %sc_l_seenSet_1
-  call void @scr_map_release(ptr %t370)
-  %t371 = load ptr, ptr %sc_l_exps_0
-  call void @scr_arr_release(ptr %t371)
-  %t372 = load ptr, ptr %sc_l_probs_0
-  call void @scr_arr_release(ptr %t372)
-  ret double %t360
+  %t366 = load ptr, ptr %sc_l_probs_0
+  call void @scr_arr_release(ptr %t366)
+  ret double %t355
 if.j88:
   br label %loop.u86
 loop.u86:
-  %t373 = load double, ptr %sc_l_k_4
-  %t374 = fadd double %t373, 0x3FF0000000000000
-  store double %t374, ptr %sc_l_k_4
+  %t367 = load double, ptr %sc_l_k_4
+  %t368 = fadd double %t367, 0x3FF0000000000000
+  store double %t368, ptr %sc_l_k_4
   br label %loop.c83
 loop.e85:
-  %t375 = load ptr, ptr %sc_l_candIndices_0
-  %t376 = call ptr @scr_arr_retain_v(ptr %t375)
-  %t377 = load double, ptr %sc_l_numCands_0
-  %t378 = fsub double %t377, 0x3FF0000000000000
-  %t379 = call double @scr_arr_get_f64(ptr %t376, double %t378)
-  call void @scr_arr_release(ptr %t376)
-  %t380 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m37_Sampler(ptr %t380)
-  %t381 = load ptr, ptr %sc_l_logits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t381)
-  %t382 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_union_release(ptr %t382)
-  %t383 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t383)
-  %t384 = load ptr, ptr %sc_l_generatedTokens_1
+  %t369 = load ptr, ptr %sc_l_candIndices_0
+  %t370 = call ptr @scr_arr_retain_v(ptr %t369)
+  %t371 = load double, ptr %sc_l_numCands_0
+  %t372 = fsub double %t371, 0x3FF0000000000000
+  %t373 = call double @scr_arr_get_f64(ptr %t370, double %t372)
+  call void @scr_arr_release(ptr %t370)
+  %t374 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m37_Sampler(ptr %t374)
+  %t375 = load ptr, ptr %sc_l_rawData_0
+  call void @scr_arr_release(ptr %t375)
+  %t376 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_union_release(ptr %t376)
+  %t377 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t377)
+  %t378 = load ptr, ptr %sc_l_generatedTokens_1
+  call void @scr_arr_release(ptr %t378)
+  %t379 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t379)
+  %t380 = load ptr, ptr %sc_l_candIndices_0
+  call void @scr_arr_release(ptr %t380)
+  %t381 = load ptr, ptr %sc_l_candValues_0
+  call void @scr_arr_release(ptr %t381)
+  %t382 = load ptr, ptr %sc_l_seenSet_1
+  call void @scr_map_release(ptr %t382)
+  %t383 = load ptr, ptr %sc_l_exps_0
+  call void @scr_arr_release(ptr %t383)
+  %t384 = load ptr, ptr %sc_l_probs_0
   call void @scr_arr_release(ptr %t384)
-  %t385 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t385)
-  %t386 = load ptr, ptr %sc_l_rawData_0
-  call void @scr_arr_release(ptr %t386)
-  %t387 = load ptr, ptr %sc_l_candIndices_0
-  call void @scr_arr_release(ptr %t387)
-  %t388 = load ptr, ptr %sc_l_candValues_0
-  call void @scr_arr_release(ptr %t388)
-  %t389 = load ptr, ptr %sc_l_seenSet_1
-  call void @scr_map_release(ptr %t389)
-  %t390 = load ptr, ptr %sc_l_exps_0
-  call void @scr_arr_release(ptr %t390)
-  %t391 = load ptr, ptr %sc_l_probs_0
-  call void @scr_arr_release(ptr %t391)
-  ret double %t379
+  ret double %t373
 }
 
 define internal i1 @sc_f__x25_m38_runSamplerTests() #0 { ; %m38.runSamplerTests
 entry:
-  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_161)
+  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_165)
   %t1 = load ptr, ptr @sc_g_m38_tests
   %t2 = call ptr @scr_arr_retain_v(ptr %t1)
   %t3 = call i1 @sc_f__x25_m1_runTests(ptr %t0, ptr %t2)
@@ -33580,30 +34022,24 @@ entry:
   %sc_l_emittedLen_0 = alloca double ; emittedLen
   %sc_l_kvCache_0 = alloca ptr ; kvCache
   %sc_l_prefillLogits_0 = alloca ptr ; prefillLogits
-  %sc_l_lastLogits_0 = alloca ptr ; lastLogits
   %sc_l_rowIdx_0 = alloca double ; rowIdx
-  %sc_l_v_0 = alloca double ; v
   %sc_l_nextTok_0 = alloca double ; nextTok
   %sc_l_decodedSoFar_0 = alloca ptr ; decodedSoFar
   %sc_l_curPos_0 = alloca double ; curPos
   %sc_l_decodeLogits_0 = alloca ptr ; decodeLogits
-  %sc_l_nextLogits1D_0 = alloca ptr ; nextLogits1D
-  %sc_l_v_1 = alloca double ; v
   %sc_l_fullText_0 = alloca ptr ; fullText
   %s5 = alloca double
   %s15 = alloca ptr
-  %s160 = alloca double
-  %s273 = alloca i1
+  %s121 = alloca double
+  %s181 = alloca i1
   store ptr null, ptr %sc_l_options_1
   store ptr null, ptr %sc_l_promptTokens_0
   store ptr null, ptr %sc_l_generatedTokens_0
   store ptr null, ptr %sc_l_allTokens_0
   store ptr null, ptr %sc_l_kvCache_0
   store ptr null, ptr %sc_l_prefillLogits_0
-  store ptr null, ptr %sc_l_lastLogits_0
   store ptr null, ptr %sc_l_decodedSoFar_0
   store ptr null, ptr %sc_l_decodeLogits_0
-  store ptr null, ptr %sc_l_nextLogits1D_0
   store ptr null, ptr %sc_l_fullText_0
   store ptr %p_sc_l_this_0, ptr %sc_l_this_0
   store ptr %p_sc_l_prompt_0, ptr %sc_l_prompt_0
@@ -33715,7 +34151,7 @@ exc.k7:
   call void @scr_arr_release(ptr %t57)
   br i1 %t59, label %if.t8, label %if.j9
 if.t8:
-  %t60 = call ptr @scr_str_retain_v(ptr @sc_lit_162)
+  %t60 = call ptr @scr_str_retain_v(ptr @sc_lit_166)
   %t61 = call ptr @scr_error_new(i32 0, ptr %t60)
   call void @scr_throw_obj(ptr %t61, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t60)
@@ -33742,798 +34178,462 @@ if.j9:
   %t72 = call ptr @scr_arr_slice(ptr %t71, double 0x0000000000000000, double 0x7FF0000000000000)
   store ptr %t72, ptr %sc_l_allTokens_0
   call void @scr_arr_release(ptr %t71)
+  store double 0x0000000000000000, ptr %sc_l_emittedLen_0
   %t73 = load ptr, ptr %sc_l_this_0
   %t74 = call ptr @sc_retain__x25_m39_Generator(ptr %t73)
-  %t75 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t74, i64 0, i32 2
+  %t75 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t74, i64 0, i32 1
   %t76 = load ptr, ptr %t75
-  %t77 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t76)
-  %t78 = load ptr, ptr %sc_l_promptTokens_0
-  %t79 = call ptr @scr_arr_retain_v(ptr %t78)
-  %t80 = call ptr @scr_union_new_bool(i32 0, i1 true)
-  %t81 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t77, i64 0, i32 1
-  %t82 = load ptr, ptr %t81
-  %t83 = getelementptr inbounds %sc_vtt__x25_m29_Tokenizer, ptr %t82, i64 0, i32 4
-  %t84 = load ptr, ptr %t83 ; decode
-  %t85 = call ptr %t84(ptr %t77, ptr %t79, ptr %t80)
-  %t86 = call double @scr_str_utf16_len(ptr %t85)
-  store double %t86, ptr %sc_l_emittedLen_0
-  call void @sc_release__x25_m39_Generator(ptr %t74)
-  call void @scr_str_release(ptr %t85)
-  %t87 = load ptr, ptr %sc_l_this_0
-  %t88 = call ptr @sc_retain__x25_m39_Generator(ptr %t87)
-  %t89 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t88, i64 0, i32 1
-  %t90 = load ptr, ptr %t89
-  %t91 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t90)
-  %t92 = call ptr @sc_f__x25__x25_m34_TransformerModel_createKVCache(ptr %t91)
-  %t93 = call zeroext i1 @scr_exc_pending()
-  br i1 %t93, label %exc.u10, label %exc.k11
+  %t77 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t76)
+  %t78 = call ptr @sc_f__x25__x25_m34_TransformerModel_createKVCache(ptr %t77)
+  %t79 = call zeroext i1 @scr_exc_pending()
+  br i1 %t79, label %exc.u10, label %exc.k11
 exc.u10:
-  call void @sc_release__x25_m39_Generator(ptr %t88)
-  call void @sc_release__x25_m27_KVCache(ptr %t92)
-  %t94 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t94)
-  %t95 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t95)
-  %t96 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t96)
-  %t97 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t97)
-  %t98 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t98)
-  %t99 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t99)
-  %t100 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t100)
-  %t101 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t101)
-  %t102 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t102)
+  call void @sc_release__x25_m39_Generator(ptr %t74)
+  call void @sc_release__x25_m27_KVCache(ptr %t78)
+  %t80 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t80)
+  %t81 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t81)
+  %t82 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t82)
+  %t83 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t83)
+  %t84 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t84)
+  %t85 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t85)
+  %t86 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t86)
+  %t87 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t87)
+  %t88 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t88)
   ret ptr null
 exc.k11:
-  store ptr %t92, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m39_Generator(ptr %t88)
-  %t103 = load ptr, ptr %sc_l_this_0
-  %t104 = call ptr @sc_retain__x25_m39_Generator(ptr %t103)
-  %t105 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t104, i64 0, i32 1
-  %t106 = load ptr, ptr %t105
-  %t107 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t106)
-  %t108 = load ptr, ptr %sc_l_promptTokens_0
-  %t109 = call ptr @scr_arr_retain_v(ptr %t108)
-  %t110 = call ptr @scr_union_new_ref(i32 0, ptr %t109, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
-  %t111 = call ptr @scr_union_new_f64(i32 0, double 0x0000000000000000)
-  %t112 = load ptr, ptr %sc_l_kvCache_0
-  %t113 = call ptr @sc_retain__x25_m27_KVCache(ptr %t112)
-  %t114 = call ptr @scr_union_new_ref(i32 0, ptr %t113, ptr @sc_retain__x25_m27_KVCache, ptr @sc_release__x25_m27_KVCache, ptr null)
-  %t115 = call ptr @scr_union_new_bool(i32 0, i1 true)
-  %t116 = call ptr @sc_f__x25__x25_m34_TransformerModel_forward(ptr %t107, ptr %t110, ptr %t111, ptr %t114, ptr %t115)
-  %t117 = call zeroext i1 @scr_exc_pending()
-  br i1 %t117, label %exc.u12, label %exc.k13
+  store ptr %t78, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m39_Generator(ptr %t74)
+  %t89 = load ptr, ptr %sc_l_this_0
+  %t90 = call ptr @sc_retain__x25_m39_Generator(ptr %t89)
+  %t91 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t90, i64 0, i32 1
+  %t92 = load ptr, ptr %t91
+  %t93 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t92)
+  %t94 = load ptr, ptr %sc_l_promptTokens_0
+  %t95 = call ptr @scr_arr_retain_v(ptr %t94)
+  %t96 = call ptr @scr_union_new_ref(i32 0, ptr %t95, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t97 = call ptr @scr_union_new_f64(i32 0, double 0x0000000000000000)
+  %t98 = load ptr, ptr %sc_l_kvCache_0
+  %t99 = call ptr @sc_retain__x25_m27_KVCache(ptr %t98)
+  %t100 = call ptr @scr_union_new_ref(i32 0, ptr %t99, ptr @sc_retain__x25_m27_KVCache, ptr @sc_release__x25_m27_KVCache, ptr null)
+  %t101 = call ptr @scr_union_new_bool(i32 0, i1 true)
+  %t102 = call ptr @sc_f__x25__x25_m34_TransformerModel_forward(ptr %t93, ptr %t96, ptr %t97, ptr %t100, ptr %t101)
+  %t103 = call zeroext i1 @scr_exc_pending()
+  br i1 %t103, label %exc.u12, label %exc.k13
 exc.u12:
+  call void @sc_release__x25_m39_Generator(ptr %t90)
+  call void @sc_release__x25_m4_Tensor(ptr %t102)
+  %t104 = load ptr, ptr %sc_l_this_0
   call void @sc_release__x25_m39_Generator(ptr %t104)
-  call void @sc_release__x25_m4_Tensor(ptr %t116)
-  %t118 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t118)
-  %t119 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t119)
-  %t120 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t120)
-  %t121 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t121)
-  %t122 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t122)
-  %t123 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t123)
-  %t124 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t124)
-  %t125 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t125)
-  %t126 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t126)
-  %t127 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t127)
+  %t105 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t105)
+  %t106 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t106)
+  %t107 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t107)
+  %t108 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t108)
+  %t109 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t109)
+  %t110 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t110)
+  %t111 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t111)
+  %t112 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t112)
+  %t113 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t113)
   ret ptr null
 exc.k13:
-  store ptr %t116, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m39_Generator(ptr %t104)
-  %t128 = call ptr @scr_arr_new(i32 0, i64 1)
-  %t129 = load ptr, ptr %sc_l_this_0
-  %t130 = call ptr @sc_retain__x25_m39_Generator(ptr %t129)
-  %t131 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t130, i64 0, i32 1
-  %t132 = load ptr, ptr %t131
-  %t133 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t132)
-  %t134 = getelementptr inbounds %sc_o__x25_m34_TransformerModel, ptr %t133, i64 0, i32 1
-  %t135 = load ptr, ptr %t134
-  %t136 = call ptr @sc_rretain_r5(ptr %t135)
-  %t137 = getelementptr inbounds %sc_rs_r5, ptr %t136, i64 0, i32 9
-  %t138 = load double, ptr %t137
-  %t139 = call double @scr_arr_push_f64(ptr %t128, double %t138)
-  %t140 = call ptr @sc_f__x25__x25_m4_Tensor_static_x3a_zeros(ptr %t128, ptr @sc_unit_1)
-  %t141 = call zeroext i1 @scr_exc_pending()
-  br i1 %t141, label %exc.u14, label %exc.k15
-exc.u14:
-  call void @sc_release__x25_m39_Generator(ptr %t130)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t133)
-  call void @sc_rrelease_r5(ptr %t136)
-  call void @sc_release__x25_m4_Tensor(ptr %t140)
-  %t142 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t142)
-  %t143 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t143)
-  %t144 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t144)
-  %t145 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t145)
-  %t146 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t146)
-  %t147 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t147)
-  %t148 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t148)
-  %t149 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t149)
-  %t150 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t150)
-  %t151 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t151)
-  %t152 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t152)
+  store ptr %t102, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m39_Generator(ptr %t90)
+  %t114 = load ptr, ptr %sc_l_prefillLogits_0
+  %t115 = call ptr @sc_retain__x25_m4_Tensor(ptr %t114)
+  %t116 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t115, i64 0, i32 2
+  %t117 = load ptr, ptr %t116
+  %t118 = call ptr @scr_arr_retain_v(ptr %t117)
+  %t119 = call double @scr_arr_len(ptr %t118)
+  %t120 = fcmp ogt double %t119, 0x3FF0000000000000
+  br i1 %t120, label %tern.t14, label %tern.f15
+tern.t14:
+  %t122 = load ptr, ptr %sc_l_prefillLogits_0
+  %t123 = call ptr @sc_retain__x25_m4_Tensor(ptr %t122)
+  %t124 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t123, i64 0, i32 2
+  %t125 = load ptr, ptr %t124
+  %t126 = call ptr @scr_arr_retain_v(ptr %t125)
+  %t127 = call double @scr_arr_get_f64(ptr %t126, double 0x0000000000000000)
+  %t128 = fsub double %t127, 0x3FF0000000000000
+  store double %t128, ptr %s121
+  call void @sc_release__x25_m4_Tensor(ptr %t123)
+  call void @scr_arr_release(ptr %t126)
+  br label %tern.j16
+tern.f15:
+  store double 0x0000000000000000, ptr %s121
+  br label %tern.j16
+tern.j16:
+  %t129 = load double, ptr %s121
+  store double %t129, ptr %sc_l_rowIdx_0
+  call void @sc_release__x25_m4_Tensor(ptr %t115)
+  call void @scr_arr_release(ptr %t118)
+  %t130 = load ptr, ptr %sc_l_this_0
+  %t131 = call ptr @sc_retain__x25_m39_Generator(ptr %t130)
+  %t132 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t131, i64 0, i32 3
+  %t133 = load ptr, ptr %t132
+  %t134 = call ptr @sc_retain__x25_m37_Sampler(ptr %t133)
+  %t135 = load ptr, ptr %sc_l_prefillLogits_0
+  %t136 = call ptr @sc_retain__x25_m4_Tensor(ptr %t135)
+  %t137 = load double, ptr %sc_l_rowIdx_0
+  %t138 = load ptr, ptr %sc_l_allTokens_0
+  %t139 = call ptr @scr_arr_retain_v(ptr %t138)
+  %t140 = call ptr @scr_union_new_ref(i32 0, ptr %t139, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t141 = load ptr, ptr %sc_l_options_1
+  %t142 = call ptr @sc_rretain_r6(ptr %t141)
+  %t143 = call ptr @scr_union_new_ref(i32 0, ptr %t142, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
+  %t144 = call double @sc_f__x25__x25_m37_Sampler_sampleTensorRow(ptr %t134, ptr %t136, double %t137, ptr %t140, ptr %t143)
+  %t145 = call zeroext i1 @scr_exc_pending()
+  br i1 %t145, label %exc.u17, label %exc.k18
+exc.u17:
+  call void @sc_release__x25_m39_Generator(ptr %t131)
+  %t146 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t146)
+  %t147 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t147)
+  %t148 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t148)
+  %t149 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t149)
+  %t150 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t150)
+  %t151 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t151)
+  %t152 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t152)
+  %t153 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t153)
+  %t154 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t154)
+  %t155 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t155)
+  %t156 = load ptr, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t156)
   ret ptr null
-exc.k15:
-  store ptr %t140, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m39_Generator(ptr %t130)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t133)
-  call void @sc_rrelease_r5(ptr %t136)
-  %t153 = load ptr, ptr %sc_l_prefillLogits_0
-  %t154 = call ptr @sc_retain__x25_m4_Tensor(ptr %t153)
-  %t155 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t154, i64 0, i32 2
-  %t156 = load ptr, ptr %t155
-  %t157 = call ptr @scr_arr_retain_v(ptr %t156)
-  %t158 = call double @scr_arr_len(ptr %t157)
-  %t159 = fcmp ogt double %t158, 0x3FF0000000000000
-  br i1 %t159, label %tern.t16, label %tern.f17
-tern.t16:
-  %t161 = load ptr, ptr %sc_l_prefillLogits_0
-  %t162 = call ptr @sc_retain__x25_m4_Tensor(ptr %t161)
-  %t163 = getelementptr inbounds %sc_o__x25_m4_Tensor, ptr %t162, i64 0, i32 2
-  %t164 = load ptr, ptr %t163
-  %t165 = call ptr @scr_arr_retain_v(ptr %t164)
-  %t166 = call double @scr_arr_get_f64(ptr %t165, double 0x0000000000000000)
-  %t167 = fsub double %t166, 0x3FF0000000000000
-  store double %t167, ptr %s160
-  call void @sc_release__x25_m4_Tensor(ptr %t162)
-  call void @scr_arr_release(ptr %t165)
-  br label %tern.j18
-tern.f17:
-  store double 0x0000000000000000, ptr %s160
-  br label %tern.j18
-tern.j18:
-  %t168 = load double, ptr %s160
-  store double %t168, ptr %sc_l_rowIdx_0
-  call void @sc_release__x25_m4_Tensor(ptr %t154)
-  call void @scr_arr_release(ptr %t157)
-  store double 0x0000000000000000, ptr %sc_l_v_0
+exc.k18:
+  store double %t144, ptr %sc_l_nextTok_0
+  call void @sc_release__x25_m39_Generator(ptr %t131)
   br label %loop.c19
 loop.c19:
-  %t169 = load double, ptr %sc_l_v_0
-  %t170 = load ptr, ptr %sc_l_this_0
-  %t171 = call ptr @sc_retain__x25_m39_Generator(ptr %t170)
-  %t172 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t171, i64 0, i32 1
-  %t173 = load ptr, ptr %t172
-  %t174 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t173)
-  %t175 = getelementptr inbounds %sc_o__x25_m34_TransformerModel, ptr %t174, i64 0, i32 1
-  %t176 = load ptr, ptr %t175
-  %t177 = call ptr @sc_rretain_r5(ptr %t176)
-  %t178 = getelementptr inbounds %sc_rs_r5, ptr %t177, i64 0, i32 9
-  %t179 = load double, ptr %t178
-  %t180 = fcmp olt double %t169, %t179
-  call void @sc_release__x25_m39_Generator(ptr %t171)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t174)
-  call void @sc_rrelease_r5(ptr %t177)
-  br i1 %t180, label %loop.b20, label %loop.e21
+  %t157 = load ptr, ptr %sc_l_generatedTokens_0
+  %t158 = call ptr @scr_arr_retain_v(ptr %t157)
+  %t159 = call double @scr_arr_len(ptr %t158)
+  %t160 = load double, ptr %sc_l_maxNewTokens_1
+  %t161 = fcmp olt double %t159, %t160
+  call void @scr_arr_release(ptr %t158)
+  br i1 %t161, label %loop.b20, label %loop.e21
 loop.b20:
-  %t181 = load ptr, ptr %sc_l_lastLogits_0
-  %t182 = call ptr @sc_retain__x25_m4_Tensor(ptr %t181)
-  %t183 = load ptr, ptr %sc_l_prefillLogits_0
-  %t184 = call ptr @sc_retain__x25_m4_Tensor(ptr %t183)
-  %t185 = call ptr @scr_arr_new(i32 0, i64 2)
-  %t186 = load double, ptr %sc_l_rowIdx_0
-  %t187 = call double @scr_arr_push_f64(ptr %t185, double %t186)
-  %t188 = load double, ptr %sc_l_v_0
-  %t189 = call double @scr_arr_push_f64(ptr %t185, double %t188)
-  %t190 = call double @sc_f__x25__x25_m4_Tensor_get(ptr %t184, ptr %t185)
-  %t191 = call zeroext i1 @scr_exc_pending()
-  br i1 %t191, label %exc.u23, label %exc.k24
-exc.u23:
-  call void @sc_release__x25_m4_Tensor(ptr %t182)
-  %t192 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t192)
-  %t193 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t193)
-  %t194 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t194)
-  %t195 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t195)
-  %t196 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t196)
-  %t197 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t197)
-  %t198 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t198)
-  %t199 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t199)
-  %t200 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t200)
-  %t201 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t201)
-  %t202 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t202)
-  %t203 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t203)
-  ret ptr null
-exc.k24:
-  %t204 = call ptr @scr_arr_new(i32 0, i64 1)
-  %t205 = load double, ptr %sc_l_v_0
-  %t206 = call double @scr_arr_push_f64(ptr %t204, double %t205)
-  call void @sc_f__x25__x25_m4_Tensor_set(ptr %t182, double %t190, ptr %t204)
-  %t207 = call zeroext i1 @scr_exc_pending()
-  br i1 %t207, label %exc.u25, label %exc.k26
-exc.u25:
-  %t208 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t208)
-  %t209 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t209)
-  %t210 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t210)
-  %t211 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t211)
-  %t212 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t212)
-  %t213 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t213)
-  %t214 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t214)
-  %t215 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t215)
-  %t216 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t216)
-  %t217 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t217)
-  %t218 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t218)
-  %t219 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t219)
-  ret ptr null
-exc.k26:
-  br label %loop.u22
-loop.u22:
-  %t220 = load double, ptr %sc_l_v_0
-  %t221 = fadd double %t220, 0x3FF0000000000000
-  store double %t221, ptr %sc_l_v_0
-  br label %loop.c19
-loop.e21:
-  %t222 = load ptr, ptr %sc_l_this_0
-  %t223 = call ptr @sc_retain__x25_m39_Generator(ptr %t222)
-  %t224 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t223, i64 0, i32 3
-  %t225 = load ptr, ptr %t224
-  %t226 = call ptr @sc_retain__x25_m37_Sampler(ptr %t225)
-  %t227 = load ptr, ptr %sc_l_lastLogits_0
-  %t228 = call ptr @sc_retain__x25_m4_Tensor(ptr %t227)
-  %t229 = load ptr, ptr %sc_l_allTokens_0
-  %t230 = call ptr @scr_arr_retain_v(ptr %t229)
-  %t231 = call ptr @scr_union_new_ref(i32 0, ptr %t230, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
-  %t232 = load ptr, ptr %sc_l_options_1
-  %t233 = call ptr @sc_rretain_r6(ptr %t232)
-  %t234 = call ptr @scr_union_new_ref(i32 0, ptr %t233, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
-  %t235 = call double @sc_f__x25__x25_m37_Sampler_sample(ptr %t226, ptr %t228, ptr %t231, ptr %t234)
-  %t236 = call zeroext i1 @scr_exc_pending()
-  br i1 %t236, label %exc.u27, label %exc.k28
-exc.u27:
-  call void @sc_release__x25_m39_Generator(ptr %t223)
-  %t237 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t237)
-  %t238 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t238)
-  %t239 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t239)
-  %t240 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t240)
-  %t241 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t241)
-  %t242 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t242)
-  %t243 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t243)
-  %t244 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t244)
-  %t245 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t245)
-  %t246 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t246)
-  %t247 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t247)
-  %t248 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t248)
-  ret ptr null
-exc.k28:
-  store double %t235, ptr %sc_l_nextTok_0
-  call void @sc_release__x25_m39_Generator(ptr %t223)
-  br label %loop.c29
-loop.c29:
-  %t249 = load ptr, ptr %sc_l_generatedTokens_0
-  %t250 = call ptr @scr_arr_retain_v(ptr %t249)
-  %t251 = call double @scr_arr_len(ptr %t250)
-  %t252 = load double, ptr %sc_l_maxNewTokens_1
-  %t253 = fcmp olt double %t251, %t252
-  call void @scr_arr_release(ptr %t250)
-  br i1 %t253, label %loop.b30, label %loop.e31
-loop.b30:
-  %t254 = load double, ptr %sc_l_nextTok_0
-  %t255 = load ptr, ptr %sc_l_this_0
-  %t256 = call ptr @sc_retain__x25_m39_Generator(ptr %t255)
-  %t257 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t256, i64 0, i32 2
-  %t258 = load ptr, ptr %t257
-  %t259 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t258)
-  %t260 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t259, i64 0, i32 5
-  %t261 = load double, ptr %t260
-  %t262 = fcmp oeq double %t254, %t261
-  call void @sc_release__x25_m39_Generator(ptr %t256)
-  call void @sc_release__x25_m29_Tokenizer(ptr %t259)
-  br i1 %t262, label %if.t32, label %if.j33
-if.t32:
-  br label %loop.e31
-if.j33:
-  %t263 = load ptr, ptr %sc_l_generatedTokens_0
-  %t264 = call ptr @scr_arr_retain_v(ptr %t263)
-  %t265 = load double, ptr %sc_l_nextTok_0
-  %t266 = call double @scr_arr_push_f64(ptr %t264, double %t265)
-  call void @scr_arr_release(ptr %t264)
-  %t267 = load ptr, ptr %sc_l_allTokens_0
-  %t268 = call ptr @scr_arr_retain_v(ptr %t267)
-  %t269 = load double, ptr %sc_l_nextTok_0
-  %t270 = call double @scr_arr_push_f64(ptr %t268, double %t269)
-  call void @scr_arr_release(ptr %t268)
-  %t271 = load ptr, ptr %sc_l_onToken_0
-  %t272 = call ptr @scr_union_retain_v(ptr %t271)
-  %t274 = getelementptr inbounds %ScrUnion, ptr %t272, i64 0, i32 1
-  %t275 = load i32, ptr %t274
-  switch i32 %t275, label %u.bad35 [ i32 0, label %u.a36 i32 1, label %u.a37 ]
-u.a36:
-  store i1 true, ptr %s273 ; func: objects are truthy
-  br label %ut.j34
-u.a37:
-  store i1 false, ptr %s273
-  br label %ut.j34
-u.bad35:
+  %t162 = load double, ptr %sc_l_nextTok_0
+  %t163 = load ptr, ptr %sc_l_this_0
+  %t164 = call ptr @sc_retain__x25_m39_Generator(ptr %t163)
+  %t165 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t164, i64 0, i32 2
+  %t166 = load ptr, ptr %t165
+  %t167 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t166)
+  %t168 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t167, i64 0, i32 5
+  %t169 = load double, ptr %t168
+  %t170 = fcmp oeq double %t162, %t169
+  call void @sc_release__x25_m39_Generator(ptr %t164)
+  call void @sc_release__x25_m29_Tokenizer(ptr %t167)
+  br i1 %t170, label %if.t22, label %if.j23
+if.t22:
+  br label %loop.e21
+if.j23:
+  %t171 = load ptr, ptr %sc_l_generatedTokens_0
+  %t172 = call ptr @scr_arr_retain_v(ptr %t171)
+  %t173 = load double, ptr %sc_l_nextTok_0
+  %t174 = call double @scr_arr_push_f64(ptr %t172, double %t173)
+  call void @scr_arr_release(ptr %t172)
+  %t175 = load ptr, ptr %sc_l_allTokens_0
+  %t176 = call ptr @scr_arr_retain_v(ptr %t175)
+  %t177 = load double, ptr %sc_l_nextTok_0
+  %t178 = call double @scr_arr_push_f64(ptr %t176, double %t177)
+  call void @scr_arr_release(ptr %t176)
+  %t179 = load ptr, ptr %sc_l_onToken_0
+  %t180 = call ptr @scr_union_retain_v(ptr %t179)
+  %t182 = getelementptr inbounds %ScrUnion, ptr %t180, i64 0, i32 1
+  %t183 = load i32, ptr %t182
+  switch i32 %t183, label %u.bad25 [ i32 0, label %u.a26 i32 1, label %u.a27 ]
+u.a26:
+  store i1 true, ptr %s181 ; func: objects are truthy
+  br label %ut.j24
+u.a27:
+  store i1 false, ptr %s181
+  br label %ut.j24
+u.bad25:
   call void @sc_bad_tag()
   unreachable
-ut.j34:
-  %t276 = load i1, ptr %s273
-  call void @scr_union_release(ptr %t272)
-  br i1 %t276, label %if.t38, label %if.j39
-if.t38:
-  %t277 = load ptr, ptr %sc_l_this_0
-  %t278 = call ptr @sc_retain__x25_m39_Generator(ptr %t277)
-  %t279 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t278, i64 0, i32 2
-  %t280 = load ptr, ptr %t279
-  %t281 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t280)
-  %t282 = load ptr, ptr %sc_l_allTokens_0
-  %t283 = call ptr @scr_arr_retain_v(ptr %t282)
-  %t284 = call ptr @scr_union_new_bool(i32 0, i1 true)
-  %t285 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t281, i64 0, i32 1
-  %t286 = load ptr, ptr %t285
-  %t287 = getelementptr inbounds %sc_vtt__x25_m29_Tokenizer, ptr %t286, i64 0, i32 4
-  %t288 = load ptr, ptr %t287 ; decode
-  %t289 = call ptr %t288(ptr %t281, ptr %t283, ptr %t284)
-  store ptr %t289, ptr %sc_l_decodedSoFar_0
-  call void @sc_release__x25_m39_Generator(ptr %t278)
-  %t290 = load ptr, ptr %sc_l_decodedSoFar_0
-  %t291 = call ptr @scr_str_retain_v(ptr %t290)
-  %t292 = call double @scr_str_utf16_len(ptr %t291)
-  %t293 = load double, ptr %sc_l_emittedLen_0
-  %t294 = fcmp ogt double %t292, %t293
-  call void @scr_str_release(ptr %t291)
-  br i1 %t294, label %if.t40, label %if.j41
-if.t40:
-  %t295 = load ptr, ptr %sc_l_onToken_0
-  %t296 = call ptr @scr_union_retain_v(ptr %t295)
-  %t297 = getelementptr inbounds %ScrUnion, ptr %t296, i64 0, i32 5
-  %t298 = load ptr, ptr %t297
-  %t299 = call ptr @scr_closure_retain_v(ptr %t298)
-  %t300 = load ptr, ptr %sc_l_decodedSoFar_0
-  %t301 = call ptr @scr_str_retain_v(ptr %t300)
-  %t302 = load double, ptr %sc_l_emittedLen_0
-  %t303 = call ptr @scr_str_substring(ptr %t301, double %t302, double 0x7FF0000000000000)
-  %t304 = getelementptr inbounds %ScrClosure, ptr %t299, i64 0, i32 1
-  %t305 = load ptr, ptr %t304
-  call void %t305(ptr %t299, ptr %t303)
-  %t306 = call zeroext i1 @scr_exc_pending()
-  br i1 %t306, label %exc.u42, label %exc.k43
-exc.u42:
-  call void @scr_union_release(ptr %t296)
-  call void @scr_closure_release(ptr %t299)
-  call void @scr_str_release(ptr %t301)
-  %t307 = load ptr, ptr %sc_l_decodedSoFar_0
-  call void @scr_str_release(ptr %t307)
-  %t308 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t308)
-  %t309 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t309)
-  %t310 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t310)
-  %t311 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t311)
-  %t312 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t312)
-  %t313 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t313)
-  %t314 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t314)
-  %t315 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t315)
-  %t316 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t316)
-  %t317 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t317)
-  %t318 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t318)
-  %t319 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t319)
+ut.j24:
+  %t184 = load i1, ptr %s181
+  call void @scr_union_release(ptr %t180)
+  br i1 %t184, label %if.t28, label %if.j29
+if.t28:
+  %t185 = load ptr, ptr %sc_l_this_0
+  %t186 = call ptr @sc_retain__x25_m39_Generator(ptr %t185)
+  %t187 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t186, i64 0, i32 2
+  %t188 = load ptr, ptr %t187
+  %t189 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t188)
+  %t190 = load ptr, ptr %sc_l_generatedTokens_0
+  %t191 = call ptr @scr_arr_retain_v(ptr %t190)
+  %t192 = call ptr @scr_union_new_bool(i32 0, i1 true)
+  %t193 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t189, i64 0, i32 1
+  %t194 = load ptr, ptr %t193
+  %t195 = getelementptr inbounds %sc_vtt__x25_m29_Tokenizer, ptr %t194, i64 0, i32 4
+  %t196 = load ptr, ptr %t195 ; decode
+  %t197 = call ptr %t196(ptr %t189, ptr %t191, ptr %t192)
+  store ptr %t197, ptr %sc_l_decodedSoFar_0
+  call void @sc_release__x25_m39_Generator(ptr %t186)
+  %t198 = load ptr, ptr %sc_l_decodedSoFar_0
+  %t199 = call ptr @scr_str_retain_v(ptr %t198)
+  %t200 = call double @scr_str_utf16_len(ptr %t199)
+  %t201 = load double, ptr %sc_l_emittedLen_0
+  %t202 = fcmp ogt double %t200, %t201
+  call void @scr_str_release(ptr %t199)
+  br i1 %t202, label %if.t30, label %if.j31
+if.t30:
+  %t203 = load ptr, ptr %sc_l_onToken_0
+  %t204 = call ptr @scr_union_retain_v(ptr %t203)
+  %t205 = getelementptr inbounds %ScrUnion, ptr %t204, i64 0, i32 5
+  %t206 = load ptr, ptr %t205
+  %t207 = call ptr @scr_closure_retain_v(ptr %t206)
+  %t208 = load ptr, ptr %sc_l_decodedSoFar_0
+  %t209 = call ptr @scr_str_retain_v(ptr %t208)
+  %t210 = load double, ptr %sc_l_emittedLen_0
+  %t211 = call ptr @scr_str_substring(ptr %t209, double %t210, double 0x7FF0000000000000)
+  %t212 = getelementptr inbounds %ScrClosure, ptr %t207, i64 0, i32 1
+  %t213 = load ptr, ptr %t212
+  call void %t213(ptr %t207, ptr %t211)
+  %t214 = call zeroext i1 @scr_exc_pending()
+  br i1 %t214, label %exc.u32, label %exc.k33
+exc.u32:
+  call void @scr_union_release(ptr %t204)
+  call void @scr_closure_release(ptr %t207)
+  call void @scr_str_release(ptr %t209)
+  %t215 = load ptr, ptr %sc_l_decodedSoFar_0
+  call void @scr_str_release(ptr %t215)
+  %t216 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t216)
+  %t217 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t217)
+  %t218 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t218)
+  %t219 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t219)
+  %t220 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t220)
+  %t221 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t221)
+  %t222 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t222)
+  %t223 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t223)
+  %t224 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t224)
+  %t225 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t225)
+  %t226 = load ptr, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t226)
   ret ptr null
-exc.k43:
-  call void @scr_union_release(ptr %t296)
-  call void @scr_closure_release(ptr %t299)
-  call void @scr_str_release(ptr %t301)
-  %t320 = load ptr, ptr %sc_l_decodedSoFar_0
-  %t321 = call ptr @scr_str_retain_v(ptr %t320)
-  %t322 = call double @scr_str_utf16_len(ptr %t321)
-  store double %t322, ptr %sc_l_emittedLen_0
-  call void @scr_str_release(ptr %t321)
-  br label %if.j41
-if.j41:
-  %t323 = load ptr, ptr %sc_l_decodedSoFar_0
-  call void @scr_str_release(ptr %t323)
-  br label %if.j39
-if.j39:
-  %t324 = load ptr, ptr %sc_l_promptTokens_0
-  %t325 = call ptr @scr_arr_retain_v(ptr %t324)
-  %t326 = call double @scr_arr_len(ptr %t325)
-  %t327 = load ptr, ptr %sc_l_generatedTokens_0
-  %t328 = call ptr @scr_arr_retain_v(ptr %t327)
-  %t329 = call double @scr_arr_len(ptr %t328)
-  %t330 = fadd double %t326, %t329
-  %t331 = fsub double %t330, 0x3FF0000000000000
-  store double %t331, ptr %sc_l_curPos_0
-  call void @scr_arr_release(ptr %t325)
+exc.k33:
+  call void @scr_union_release(ptr %t204)
+  call void @scr_closure_release(ptr %t207)
+  call void @scr_str_release(ptr %t209)
+  %t227 = load ptr, ptr %sc_l_decodedSoFar_0
+  %t228 = call ptr @scr_str_retain_v(ptr %t227)
+  %t229 = call double @scr_str_utf16_len(ptr %t228)
+  store double %t229, ptr %sc_l_emittedLen_0
+  call void @scr_str_release(ptr %t228)
+  br label %if.j31
+if.j31:
+  %t230 = load ptr, ptr %sc_l_decodedSoFar_0
+  call void @scr_str_release(ptr %t230)
+  br label %if.j29
+if.j29:
+  %t231 = load ptr, ptr %sc_l_promptTokens_0
+  %t232 = call ptr @scr_arr_retain_v(ptr %t231)
+  %t233 = call double @scr_arr_len(ptr %t232)
+  %t234 = load ptr, ptr %sc_l_generatedTokens_0
+  %t235 = call ptr @scr_arr_retain_v(ptr %t234)
+  %t236 = call double @scr_arr_len(ptr %t235)
+  %t237 = fadd double %t233, %t236
+  %t238 = fsub double %t237, 0x3FF0000000000000
+  store double %t238, ptr %sc_l_curPos_0
+  call void @scr_arr_release(ptr %t232)
+  call void @scr_arr_release(ptr %t235)
+  %t239 = load ptr, ptr %sc_l_this_0
+  %t240 = call ptr @sc_retain__x25_m39_Generator(ptr %t239)
+  %t241 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t240, i64 0, i32 1
+  %t242 = load ptr, ptr %t241
+  %t243 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t242)
+  %t244 = call ptr @scr_arr_new(i32 0, i64 1)
+  %t245 = load double, ptr %sc_l_nextTok_0
+  %t246 = call double @scr_arr_push_f64(ptr %t244, double %t245)
+  %t247 = call ptr @scr_union_new_ref(i32 0, ptr %t244, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t248 = load double, ptr %sc_l_curPos_0
+  %t249 = call ptr @scr_union_new_f64(i32 0, double %t248)
+  %t250 = load ptr, ptr %sc_l_kvCache_0
+  %t251 = call ptr @sc_retain__x25_m27_KVCache(ptr %t250)
+  %t252 = call ptr @scr_union_new_ref(i32 0, ptr %t251, ptr @sc_retain__x25_m27_KVCache, ptr @sc_release__x25_m27_KVCache, ptr null)
+  %t253 = call ptr @sc_f__x25__x25_m34_TransformerModel_forward(ptr %t243, ptr %t247, ptr %t249, ptr %t252, ptr @sc_unit_7)
+  %t254 = call zeroext i1 @scr_exc_pending()
+  br i1 %t254, label %exc.u34, label %exc.k35
+exc.u34:
+  call void @sc_release__x25_m39_Generator(ptr %t240)
+  call void @sc_release__x25_m4_Tensor(ptr %t253)
+  %t255 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t255)
+  %t256 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t256)
+  %t257 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t257)
+  %t258 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t258)
+  %t259 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t259)
+  %t260 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t260)
+  %t261 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t261)
+  %t262 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t262)
+  %t263 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t263)
+  %t264 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t264)
+  %t265 = load ptr, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t265)
+  ret ptr null
+exc.k35:
+  store ptr %t253, ptr %sc_l_decodeLogits_0
+  call void @sc_release__x25_m39_Generator(ptr %t240)
+  %t266 = load ptr, ptr %sc_l_this_0
+  %t267 = call ptr @sc_retain__x25_m39_Generator(ptr %t266)
+  %t268 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t267, i64 0, i32 3
+  %t269 = load ptr, ptr %t268
+  %t270 = call ptr @sc_retain__x25_m37_Sampler(ptr %t269)
+  %t271 = load ptr, ptr %sc_l_decodeLogits_0
+  %t272 = call ptr @sc_retain__x25_m4_Tensor(ptr %t271)
+  %t273 = load ptr, ptr %sc_l_allTokens_0
+  %t274 = call ptr @scr_arr_retain_v(ptr %t273)
+  %t275 = call ptr @scr_union_new_ref(i32 0, ptr %t274, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
+  %t276 = load ptr, ptr %sc_l_options_1
+  %t277 = call ptr @sc_rretain_r6(ptr %t276)
+  %t278 = call ptr @scr_union_new_ref(i32 0, ptr %t277, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
+  %t279 = call double @sc_f__x25__x25_m37_Sampler_sampleTensorRow(ptr %t270, ptr %t272, double 0x0000000000000000, ptr %t275, ptr %t278)
+  %t280 = call zeroext i1 @scr_exc_pending()
+  br i1 %t280, label %exc.u36, label %exc.k37
+exc.u36:
+  call void @sc_release__x25_m39_Generator(ptr %t267)
+  %t281 = load ptr, ptr %sc_l_decodeLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t281)
+  %t282 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t282)
+  %t283 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t283)
+  %t284 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t284)
+  %t285 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t285)
+  %t286 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t286)
+  %t287 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t287)
+  %t288 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t288)
+  %t289 = load ptr, ptr %sc_l_generatedTokens_0
+  call void @scr_arr_release(ptr %t289)
+  %t290 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t290)
+  %t291 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t291)
+  %t292 = load ptr, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t292)
+  ret ptr null
+exc.k37:
+  store double %t279, ptr %sc_l_nextTok_0
+  call void @sc_release__x25_m39_Generator(ptr %t267)
+  %t293 = load ptr, ptr %sc_l_decodeLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t293)
+  br label %loop.c19
+loop.e21:
+  %t294 = load ptr, ptr %sc_l_this_0
+  %t295 = call ptr @sc_retain__x25_m39_Generator(ptr %t294)
+  %t296 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t295, i64 0, i32 2
+  %t297 = load ptr, ptr %t296
+  %t298 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t297)
+  %t299 = load ptr, ptr %sc_l_allTokens_0
+  %t300 = call ptr @scr_arr_retain_v(ptr %t299)
+  %t301 = call ptr @scr_union_new_bool(i32 0, i1 true)
+  %t302 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t298, i64 0, i32 1
+  %t303 = load ptr, ptr %t302
+  %t304 = getelementptr inbounds %sc_vtt__x25_m29_Tokenizer, ptr %t303, i64 0, i32 4
+  %t305 = load ptr, ptr %t304 ; decode
+  %t306 = call ptr %t305(ptr %t298, ptr %t300, ptr %t301)
+  store ptr %t306, ptr %sc_l_fullText_0
+  call void @sc_release__x25_m39_Generator(ptr %t295)
+  %t307 = call ptr @sc_rnew_r7()
+  %t308 = load ptr, ptr %sc_l_fullText_0
+  %t309 = call ptr @scr_str_retain_v(ptr %t308)
+  %t310 = getelementptr inbounds %sc_rs_r7, ptr %t307, i64 0, i32 3
+  store ptr %t309, ptr %t310
+  %t311 = load ptr, ptr %sc_l_promptTokens_0
+  %t312 = call ptr @scr_arr_retain_v(ptr %t311)
+  %t313 = getelementptr inbounds %sc_rs_r7, ptr %t307, i64 0, i32 2
+  store ptr %t312, ptr %t313
+  %t314 = load ptr, ptr %sc_l_generatedTokens_0
+  %t315 = call ptr @scr_arr_retain_v(ptr %t314)
+  %t316 = getelementptr inbounds %sc_rs_r7, ptr %t307, i64 0, i32 1
+  store ptr %t315, ptr %t316
+  %t317 = load ptr, ptr %sc_l_allTokens_0
+  %t318 = call ptr @scr_arr_retain_v(ptr %t317)
+  %t319 = call double @scr_arr_len(ptr %t318)
+  %t320 = getelementptr inbounds %sc_rs_r7, ptr %t307, i64 0, i32 4
+  store double %t319, ptr %t320
+  call void @scr_arr_release(ptr %t318)
+  %t321 = load ptr, ptr %sc_l_this_0
+  call void @sc_release__x25_m39_Generator(ptr %t321)
+  %t322 = load ptr, ptr %sc_l_prompt_0
+  call void @scr_str_release(ptr %t322)
+  %t323 = load ptr, ptr %sc_l_maxNewTokens_0
+  call void @scr_union_release(ptr %t323)
+  %t324 = load ptr, ptr %sc_l_options_0
+  call void @scr_union_release(ptr %t324)
+  %t325 = load ptr, ptr %sc_l_onToken_0
+  call void @scr_union_release(ptr %t325)
+  %t326 = load ptr, ptr %sc_l_options_1
+  call void @sc_rrelease_r6(ptr %t326)
+  %t327 = load ptr, ptr %sc_l_promptTokens_0
+  call void @scr_arr_release(ptr %t327)
+  %t328 = load ptr, ptr %sc_l_generatedTokens_0
   call void @scr_arr_release(ptr %t328)
-  %t332 = load ptr, ptr %sc_l_this_0
-  %t333 = call ptr @sc_retain__x25_m39_Generator(ptr %t332)
-  %t334 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t333, i64 0, i32 1
-  %t335 = load ptr, ptr %t334
-  %t336 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t335)
-  %t337 = call ptr @scr_arr_new(i32 0, i64 1)
-  %t338 = load double, ptr %sc_l_nextTok_0
-  %t339 = call double @scr_arr_push_f64(ptr %t337, double %t338)
-  %t340 = call ptr @scr_union_new_ref(i32 0, ptr %t337, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
-  %t341 = load double, ptr %sc_l_curPos_0
-  %t342 = call ptr @scr_union_new_f64(i32 0, double %t341)
-  %t343 = load ptr, ptr %sc_l_kvCache_0
-  %t344 = call ptr @sc_retain__x25_m27_KVCache(ptr %t343)
-  %t345 = call ptr @scr_union_new_ref(i32 0, ptr %t344, ptr @sc_retain__x25_m27_KVCache, ptr @sc_release__x25_m27_KVCache, ptr null)
-  %t346 = call ptr @sc_f__x25__x25_m34_TransformerModel_forward(ptr %t336, ptr %t340, ptr %t342, ptr %t345, ptr @sc_unit_7)
-  %t347 = call zeroext i1 @scr_exc_pending()
-  br i1 %t347, label %exc.u44, label %exc.k45
-exc.u44:
-  call void @sc_release__x25_m39_Generator(ptr %t333)
-  call void @sc_release__x25_m4_Tensor(ptr %t346)
-  %t348 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t348)
-  %t349 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t349)
-  %t350 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t350)
-  %t351 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t351)
-  %t352 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t352)
-  %t353 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t353)
-  %t354 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t354)
-  %t355 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t355)
-  %t356 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t356)
-  %t357 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t357)
-  %t358 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t358)
-  %t359 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t359)
-  ret ptr null
-exc.k45:
-  store ptr %t346, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m39_Generator(ptr %t333)
-  %t360 = call ptr @scr_arr_new(i32 0, i64 1)
-  %t361 = load ptr, ptr %sc_l_this_0
-  %t362 = call ptr @sc_retain__x25_m39_Generator(ptr %t361)
-  %t363 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t362, i64 0, i32 1
-  %t364 = load ptr, ptr %t363
-  %t365 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t364)
-  %t366 = getelementptr inbounds %sc_o__x25_m34_TransformerModel, ptr %t365, i64 0, i32 1
-  %t367 = load ptr, ptr %t366
-  %t368 = call ptr @sc_rretain_r5(ptr %t367)
-  %t369 = getelementptr inbounds %sc_rs_r5, ptr %t368, i64 0, i32 9
-  %t370 = load double, ptr %t369
-  %t371 = call double @scr_arr_push_f64(ptr %t360, double %t370)
-  %t372 = call ptr @sc_f__x25__x25_m4_Tensor_static_x3a_zeros(ptr %t360, ptr @sc_unit_1)
-  %t373 = call zeroext i1 @scr_exc_pending()
-  br i1 %t373, label %exc.u46, label %exc.k47
-exc.u46:
-  call void @sc_release__x25_m39_Generator(ptr %t362)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t365)
-  call void @sc_rrelease_r5(ptr %t368)
-  call void @sc_release__x25_m4_Tensor(ptr %t372)
-  %t374 = load ptr, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t374)
-  %t375 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t375)
-  %t376 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t376)
-  %t377 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t377)
-  %t378 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t378)
-  %t379 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t379)
-  %t380 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t380)
-  %t381 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t381)
-  %t382 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t382)
-  %t383 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t383)
-  %t384 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t384)
-  %t385 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t385)
-  %t386 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t386)
-  ret ptr null
-exc.k47:
-  store ptr %t372, ptr %sc_l_nextLogits1D_0
-  call void @sc_release__x25_m39_Generator(ptr %t362)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t365)
-  call void @sc_rrelease_r5(ptr %t368)
-  store double 0x0000000000000000, ptr %sc_l_v_1
-  br label %loop.c48
-loop.c48:
-  %t387 = load double, ptr %sc_l_v_1
-  %t388 = load ptr, ptr %sc_l_this_0
-  %t389 = call ptr @sc_retain__x25_m39_Generator(ptr %t388)
-  %t390 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t389, i64 0, i32 1
-  %t391 = load ptr, ptr %t390
-  %t392 = call ptr @sc_retain__x25_m34_TransformerModel(ptr %t391)
-  %t393 = getelementptr inbounds %sc_o__x25_m34_TransformerModel, ptr %t392, i64 0, i32 1
-  %t394 = load ptr, ptr %t393
-  %t395 = call ptr @sc_rretain_r5(ptr %t394)
-  %t396 = getelementptr inbounds %sc_rs_r5, ptr %t395, i64 0, i32 9
-  %t397 = load double, ptr %t396
-  %t398 = fcmp olt double %t387, %t397
-  call void @sc_release__x25_m39_Generator(ptr %t389)
-  call void @sc_release__x25_m34_TransformerModel(ptr %t392)
-  call void @sc_rrelease_r5(ptr %t395)
-  br i1 %t398, label %loop.b49, label %loop.e50
-loop.b49:
-  %t399 = load ptr, ptr %sc_l_nextLogits1D_0
-  %t400 = call ptr @sc_retain__x25_m4_Tensor(ptr %t399)
-  %t401 = load ptr, ptr %sc_l_decodeLogits_0
-  %t402 = call ptr @sc_retain__x25_m4_Tensor(ptr %t401)
-  %t403 = call ptr @scr_arr_new(i32 0, i64 2)
-  %t404 = call double @scr_arr_push_f64(ptr %t403, double 0x0000000000000000)
-  %t405 = load double, ptr %sc_l_v_1
-  %t406 = call double @scr_arr_push_f64(ptr %t403, double %t405)
-  %t407 = call double @sc_f__x25__x25_m4_Tensor_get(ptr %t402, ptr %t403)
-  %t408 = call zeroext i1 @scr_exc_pending()
-  br i1 %t408, label %exc.u52, label %exc.k53
-exc.u52:
-  call void @sc_release__x25_m4_Tensor(ptr %t400)
-  %t409 = load ptr, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t409)
-  %t410 = load ptr, ptr %sc_l_nextLogits1D_0
-  call void @sc_release__x25_m4_Tensor(ptr %t410)
-  %t411 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t411)
-  %t412 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t412)
-  %t413 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t413)
-  %t414 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t414)
-  %t415 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t415)
-  %t416 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t416)
-  %t417 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t417)
-  %t418 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t418)
-  %t419 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t419)
-  %t420 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t420)
-  %t421 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t421)
-  %t422 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t422)
-  ret ptr null
-exc.k53:
-  %t423 = call ptr @scr_arr_new(i32 0, i64 1)
-  %t424 = load double, ptr %sc_l_v_1
-  %t425 = call double @scr_arr_push_f64(ptr %t423, double %t424)
-  call void @sc_f__x25__x25_m4_Tensor_set(ptr %t400, double %t407, ptr %t423)
-  %t426 = call zeroext i1 @scr_exc_pending()
-  br i1 %t426, label %exc.u54, label %exc.k55
-exc.u54:
-  %t427 = load ptr, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t427)
-  %t428 = load ptr, ptr %sc_l_nextLogits1D_0
-  call void @sc_release__x25_m4_Tensor(ptr %t428)
-  %t429 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t429)
-  %t430 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t430)
-  %t431 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t431)
-  %t432 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t432)
-  %t433 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t433)
-  %t434 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t434)
-  %t435 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t435)
-  %t436 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t436)
-  %t437 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t437)
-  %t438 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t438)
-  %t439 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t439)
-  %t440 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t440)
-  ret ptr null
-exc.k55:
-  br label %loop.u51
-loop.u51:
-  %t441 = load double, ptr %sc_l_v_1
-  %t442 = fadd double %t441, 0x3FF0000000000000
-  store double %t442, ptr %sc_l_v_1
-  br label %loop.c48
-loop.e50:
-  %t443 = load ptr, ptr %sc_l_this_0
-  %t444 = call ptr @sc_retain__x25_m39_Generator(ptr %t443)
-  %t445 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t444, i64 0, i32 3
-  %t446 = load ptr, ptr %t445
-  %t447 = call ptr @sc_retain__x25_m37_Sampler(ptr %t446)
-  %t448 = load ptr, ptr %sc_l_nextLogits1D_0
-  %t449 = call ptr @sc_retain__x25_m4_Tensor(ptr %t448)
-  %t450 = load ptr, ptr %sc_l_allTokens_0
-  %t451 = call ptr @scr_arr_retain_v(ptr %t450)
-  %t452 = call ptr @scr_union_new_ref(i32 0, ptr %t451, ptr @scr_arr_retain_v, ptr @scr_arr_release_v, ptr null)
-  %t453 = load ptr, ptr %sc_l_options_1
-  %t454 = call ptr @sc_rretain_r6(ptr %t453)
-  %t455 = call ptr @scr_union_new_ref(i32 0, ptr %t454, ptr @sc_rretain_r6, ptr @sc_rrelease_r6, ptr null)
-  %t456 = call double @sc_f__x25__x25_m37_Sampler_sample(ptr %t447, ptr %t449, ptr %t452, ptr %t455)
-  %t457 = call zeroext i1 @scr_exc_pending()
-  br i1 %t457, label %exc.u56, label %exc.k57
-exc.u56:
-  call void @sc_release__x25_m39_Generator(ptr %t444)
-  %t458 = load ptr, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t458)
-  %t459 = load ptr, ptr %sc_l_nextLogits1D_0
-  call void @sc_release__x25_m4_Tensor(ptr %t459)
-  %t460 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t460)
-  %t461 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t461)
-  %t462 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t462)
-  %t463 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t463)
-  %t464 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t464)
-  %t465 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t465)
-  %t466 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t466)
-  %t467 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t467)
-  %t468 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t468)
-  %t469 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t469)
-  %t470 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t470)
-  %t471 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t471)
-  ret ptr null
-exc.k57:
-  store double %t456, ptr %sc_l_nextTok_0
-  call void @sc_release__x25_m39_Generator(ptr %t444)
-  %t472 = load ptr, ptr %sc_l_decodeLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t472)
-  %t473 = load ptr, ptr %sc_l_nextLogits1D_0
-  call void @sc_release__x25_m4_Tensor(ptr %t473)
-  br label %loop.c29
-loop.e31:
-  %t474 = load ptr, ptr %sc_l_this_0
-  %t475 = call ptr @sc_retain__x25_m39_Generator(ptr %t474)
-  %t476 = getelementptr inbounds %sc_o__x25_m39_Generator, ptr %t475, i64 0, i32 2
-  %t477 = load ptr, ptr %t476
-  %t478 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t477)
-  %t479 = load ptr, ptr %sc_l_allTokens_0
-  %t480 = call ptr @scr_arr_retain_v(ptr %t479)
-  %t481 = call ptr @scr_union_new_bool(i32 0, i1 true)
-  %t482 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t478, i64 0, i32 1
-  %t483 = load ptr, ptr %t482
-  %t484 = getelementptr inbounds %sc_vtt__x25_m29_Tokenizer, ptr %t483, i64 0, i32 4
-  %t485 = load ptr, ptr %t484 ; decode
-  %t486 = call ptr %t485(ptr %t478, ptr %t480, ptr %t481)
-  store ptr %t486, ptr %sc_l_fullText_0
-  call void @sc_release__x25_m39_Generator(ptr %t475)
-  %t487 = call ptr @sc_rnew_r7()
-  %t488 = load ptr, ptr %sc_l_fullText_0
-  %t489 = call ptr @scr_str_retain_v(ptr %t488)
-  %t490 = getelementptr inbounds %sc_rs_r7, ptr %t487, i64 0, i32 3
-  store ptr %t489, ptr %t490
-  %t491 = load ptr, ptr %sc_l_promptTokens_0
-  %t492 = call ptr @scr_arr_retain_v(ptr %t491)
-  %t493 = getelementptr inbounds %sc_rs_r7, ptr %t487, i64 0, i32 2
-  store ptr %t492, ptr %t493
-  %t494 = load ptr, ptr %sc_l_generatedTokens_0
-  %t495 = call ptr @scr_arr_retain_v(ptr %t494)
-  %t496 = getelementptr inbounds %sc_rs_r7, ptr %t487, i64 0, i32 1
-  store ptr %t495, ptr %t496
-  %t497 = load ptr, ptr %sc_l_allTokens_0
-  %t498 = call ptr @scr_arr_retain_v(ptr %t497)
-  %t499 = call double @scr_arr_len(ptr %t498)
-  %t500 = getelementptr inbounds %sc_rs_r7, ptr %t487, i64 0, i32 4
-  store double %t499, ptr %t500
-  call void @scr_arr_release(ptr %t498)
-  %t501 = load ptr, ptr %sc_l_this_0
-  call void @sc_release__x25_m39_Generator(ptr %t501)
-  %t502 = load ptr, ptr %sc_l_prompt_0
-  call void @scr_str_release(ptr %t502)
-  %t503 = load ptr, ptr %sc_l_maxNewTokens_0
-  call void @scr_union_release(ptr %t503)
-  %t504 = load ptr, ptr %sc_l_options_0
-  call void @scr_union_release(ptr %t504)
-  %t505 = load ptr, ptr %sc_l_onToken_0
-  call void @scr_union_release(ptr %t505)
-  %t506 = load ptr, ptr %sc_l_options_1
-  call void @sc_rrelease_r6(ptr %t506)
-  %t507 = load ptr, ptr %sc_l_promptTokens_0
-  call void @scr_arr_release(ptr %t507)
-  %t508 = load ptr, ptr %sc_l_generatedTokens_0
-  call void @scr_arr_release(ptr %t508)
-  %t509 = load ptr, ptr %sc_l_allTokens_0
-  call void @scr_arr_release(ptr %t509)
-  %t510 = load ptr, ptr %sc_l_kvCache_0
-  call void @sc_release__x25_m27_KVCache(ptr %t510)
-  %t511 = load ptr, ptr %sc_l_prefillLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t511)
-  %t512 = load ptr, ptr %sc_l_lastLogits_0
-  call void @sc_release__x25_m4_Tensor(ptr %t512)
-  %t513 = load ptr, ptr %sc_l_fullText_0
-  call void @scr_str_release(ptr %t513)
-  ret ptr %t487
+  %t329 = load ptr, ptr %sc_l_allTokens_0
+  call void @scr_arr_release(ptr %t329)
+  %t330 = load ptr, ptr %sc_l_kvCache_0
+  call void @sc_release__x25_m27_KVCache(ptr %t330)
+  %t331 = load ptr, ptr %sc_l_prefillLogits_0
+  call void @sc_release__x25_m4_Tensor(ptr %t331)
+  %t332 = load ptr, ptr %sc_l_fullText_0
+  call void @scr_str_release(ptr %t332)
+  ret ptr %t307
 }
 
 define internal i1 @sc_f__x25_m40_runGeneratorTests() #0 { ; %m40.runGeneratorTests
 entry:
-  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_163)
+  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_167)
   %t1 = load ptr, ptr @sc_g_m40_tests
   %t2 = call ptr @scr_arr_retain_v(ptr %t1)
   %t3 = call i1 @sc_f__x25_m1_runTests(ptr %t0, ptr %t2)
@@ -34579,7 +34679,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 6)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_164)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_168)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn6, i64 0)
@@ -34587,7 +34687,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_165)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_169)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn7, i64 0)
@@ -34595,7 +34695,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_166)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_170)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn8, i64 0)
@@ -34603,7 +34703,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_167)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_171)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn11, i64 0)
@@ -34611,7 +34711,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_168)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_172)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn12, i64 0)
@@ -34619,7 +34719,7 @@ if.j1:
   store ptr %t29, ptr %t30
   %t31 = call double @scr_arr_push_ref(ptr %t1, ptr %t26)
   %t32 = call ptr @sc_rnew_r8()
-  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_169)
+  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_173)
   %t34 = getelementptr inbounds %sc_rs_r8, ptr %t32, i64 0, i32 2
   store ptr %t33, ptr %t34
   %t35 = call ptr @scr_closure_new(ptr @sc_f__x25_fn13, i64 0)
@@ -34674,7 +34774,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 9)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_170)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_174)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn15, i64 0)
@@ -34682,7 +34782,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_171)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_175)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn16, i64 0)
@@ -34690,7 +34790,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_172)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_176)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn17, i64 0)
@@ -34698,7 +34798,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_173)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_177)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn18, i64 0)
@@ -34706,7 +34806,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_174)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_178)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn19, i64 0)
@@ -34714,7 +34814,7 @@ if.j1:
   store ptr %t29, ptr %t30
   %t31 = call double @scr_arr_push_ref(ptr %t1, ptr %t26)
   %t32 = call ptr @sc_rnew_r8()
-  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_175)
+  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_179)
   %t34 = getelementptr inbounds %sc_rs_r8, ptr %t32, i64 0, i32 2
   store ptr %t33, ptr %t34
   %t35 = call ptr @scr_closure_new(ptr @sc_f__x25_fn25, i64 0)
@@ -34722,7 +34822,7 @@ if.j1:
   store ptr %t35, ptr %t36
   %t37 = call double @scr_arr_push_ref(ptr %t1, ptr %t32)
   %t38 = call ptr @sc_rnew_r8()
-  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_176)
+  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_180)
   %t40 = getelementptr inbounds %sc_rs_r8, ptr %t38, i64 0, i32 2
   store ptr %t39, ptr %t40
   %t41 = call ptr @scr_closure_new(ptr @sc_f__x25_fn27, i64 0)
@@ -34730,7 +34830,7 @@ if.j1:
   store ptr %t41, ptr %t42
   %t43 = call double @scr_arr_push_ref(ptr %t1, ptr %t38)
   %t44 = call ptr @sc_rnew_r8()
-  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_177)
+  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_181)
   %t46 = getelementptr inbounds %sc_rs_r8, ptr %t44, i64 0, i32 2
   store ptr %t45, ptr %t46
   %t47 = call ptr @scr_closure_new(ptr @sc_f__x25_fn28, i64 0)
@@ -34738,7 +34838,7 @@ if.j1:
   store ptr %t47, ptr %t48
   %t49 = call double @scr_arr_push_ref(ptr %t1, ptr %t44)
   %t50 = call ptr @sc_rnew_r8()
-  %t51 = call ptr @scr_str_retain_v(ptr @sc_lit_178)
+  %t51 = call ptr @scr_str_retain_v(ptr @sc_lit_182)
   %t52 = getelementptr inbounds %sc_rs_r8, ptr %t50, i64 0, i32 2
   store ptr %t51, ptr %t52
   %t53 = call ptr @scr_closure_new(ptr @sc_f__x25_fn29, i64 0)
@@ -34783,7 +34883,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 8)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_179)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_183)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn30, i64 0)
@@ -34791,7 +34891,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_180)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_184)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn31, i64 0)
@@ -34799,7 +34899,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_181)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_185)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn32, i64 0)
@@ -34807,7 +34907,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_182)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_186)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn33, i64 0)
@@ -34815,7 +34915,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_183)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_187)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn34, i64 0)
@@ -34823,7 +34923,7 @@ if.j1:
   store ptr %t29, ptr %t30
   %t31 = call double @scr_arr_push_ref(ptr %t1, ptr %t26)
   %t32 = call ptr @sc_rnew_r8()
-  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_184)
+  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_188)
   %t34 = getelementptr inbounds %sc_rs_r8, ptr %t32, i64 0, i32 2
   store ptr %t33, ptr %t34
   %t35 = call ptr @scr_closure_new(ptr @sc_f__x25_fn35, i64 0)
@@ -34831,7 +34931,7 @@ if.j1:
   store ptr %t35, ptr %t36
   %t37 = call double @scr_arr_push_ref(ptr %t1, ptr %t32)
   %t38 = call ptr @sc_rnew_r8()
-  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_185)
+  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_189)
   %t40 = getelementptr inbounds %sc_rs_r8, ptr %t38, i64 0, i32 2
   store ptr %t39, ptr %t40
   %t41 = call ptr @scr_closure_new(ptr @sc_f__x25_fn36, i64 0)
@@ -34839,7 +34939,7 @@ if.j1:
   store ptr %t41, ptr %t42
   %t43 = call double @scr_arr_push_ref(ptr %t1, ptr %t38)
   %t44 = call ptr @sc_rnew_r8()
-  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_186)
+  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_190)
   %t46 = getelementptr inbounds %sc_rs_r8, ptr %t44, i64 0, i32 2
   store ptr %t45, ptr %t46
   %t47 = call ptr @scr_closure_new(ptr @sc_f__x25_fn37, i64 0)
@@ -34883,7 +34983,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 6)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_187)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_191)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn41, i64 0)
@@ -34891,7 +34991,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_188)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_192)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn42, i64 0)
@@ -34899,7 +34999,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_189)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_193)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn43, i64 0)
@@ -34907,7 +35007,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_190)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_194)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn44, i64 0)
@@ -34915,7 +35015,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_191)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_195)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn45, i64 0)
@@ -34923,7 +35023,7 @@ if.j1:
   store ptr %t29, ptr %t30
   %t31 = call double @scr_arr_push_ref(ptr %t1, ptr %t26)
   %t32 = call ptr @sc_rnew_r8()
-  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_192)
+  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_196)
   %t34 = getelementptr inbounds %sc_rs_r8, ptr %t32, i64 0, i32 2
   store ptr %t33, ptr %t34
   %t35 = call ptr @scr_closure_new(ptr @sc_f__x25_fn46, i64 0)
@@ -34967,7 +35067,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 7)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_193)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_197)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn47, i64 0)
@@ -34975,7 +35075,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_194)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_198)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn48, i64 0)
@@ -34983,7 +35083,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_195)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_199)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn49, i64 0)
@@ -34991,7 +35091,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_196)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_200)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn50, i64 0)
@@ -34999,7 +35099,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_197)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_201)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn51, i64 0)
@@ -35007,7 +35107,7 @@ if.j1:
   store ptr %t29, ptr %t30
   %t31 = call double @scr_arr_push_ref(ptr %t1, ptr %t26)
   %t32 = call ptr @sc_rnew_r8()
-  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_198)
+  %t33 = call ptr @scr_str_retain_v(ptr @sc_lit_202)
   %t34 = getelementptr inbounds %sc_rs_r8, ptr %t32, i64 0, i32 2
   store ptr %t33, ptr %t34
   %t35 = call ptr @scr_closure_new(ptr @sc_f__x25_fn52, i64 0)
@@ -35015,7 +35115,7 @@ if.j1:
   store ptr %t35, ptr %t36
   %t37 = call double @scr_arr_push_ref(ptr %t1, ptr %t32)
   %t38 = call ptr @sc_rnew_r8()
-  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_199)
+  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_203)
   %t40 = getelementptr inbounds %sc_rs_r8, ptr %t38, i64 0, i32 2
   store ptr %t39, ptr %t40
   %t41 = call ptr @scr_closure_new(ptr @sc_f__x25_fn53, i64 0)
@@ -35060,7 +35160,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 5)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_200)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_204)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn55, i64 0)
@@ -35068,7 +35168,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_201)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_205)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn56, i64 0)
@@ -35076,7 +35176,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_202)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_206)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn57, i64 0)
@@ -35084,7 +35184,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_203)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_207)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn58, i64 0)
@@ -35092,7 +35192,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_204)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_208)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn59, i64 0)
@@ -35193,7 +35293,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 5)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_205)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_209)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn60, i64 0)
@@ -35201,7 +35301,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_206)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_210)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn61, i64 0)
@@ -35209,7 +35309,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_207)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_211)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn63, i64 0)
@@ -35217,7 +35317,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_208)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_212)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn64, i64 0)
@@ -35225,7 +35325,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_209)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_213)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn65, i64 0)
@@ -35269,7 +35369,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 3)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_210)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_214)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn66, i64 0)
@@ -35277,7 +35377,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_211)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_215)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn67, i64 0)
@@ -35285,7 +35385,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_212)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_216)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn68, i64 0)
@@ -35352,7 +35452,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 4)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_213)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_217)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn69, i64 0)
@@ -35360,7 +35460,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_214)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_218)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn70, i64 0)
@@ -35368,7 +35468,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_215)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_219)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn71, i64 0)
@@ -35376,7 +35476,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_216)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_220)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn72, i64 0)
@@ -35426,7 +35526,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 2)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_217)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_221)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn73, i64 0)
@@ -35434,7 +35534,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_218)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_222)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn74, i64 0)
@@ -35480,7 +35580,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 2)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_219)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_223)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn75, i64 0)
@@ -35488,7 +35588,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_220)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_224)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn76, i64 0)
@@ -35577,7 +35677,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 5)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_221)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_225)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn77, i64 0)
@@ -35585,7 +35685,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_222)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_226)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn78, i64 0)
@@ -35593,7 +35693,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_223)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_227)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn79, i64 0)
@@ -35601,7 +35701,7 @@ if.j1:
   store ptr %t17, ptr %t18
   %t19 = call double @scr_arr_push_ref(ptr %t1, ptr %t14)
   %t20 = call ptr @sc_rnew_r8()
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_224)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_228)
   %t22 = getelementptr inbounds %sc_rs_r8, ptr %t20, i64 0, i32 2
   store ptr %t21, ptr %t22
   %t23 = call ptr @scr_closure_new(ptr @sc_f__x25_fn80, i64 0)
@@ -35609,7 +35709,7 @@ if.j1:
   store ptr %t23, ptr %t24
   %t25 = call double @scr_arr_push_ref(ptr %t1, ptr %t20)
   %t26 = call ptr @sc_rnew_r8()
-  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_225)
+  %t27 = call ptr @scr_str_retain_v(ptr @sc_lit_229)
   %t28 = getelementptr inbounds %sc_rs_r8, ptr %t26, i64 0, i32 2
   store ptr %t27, ptr %t28
   %t29 = call ptr @scr_closure_new(ptr @sc_f__x25_fn81, i64 0)
@@ -35678,7 +35778,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 3)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_226)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_230)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn82, i64 0)
@@ -35686,7 +35786,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_227)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_231)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn83, i64 0)
@@ -35694,7 +35794,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_228)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_232)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn84, i64 0)
@@ -35738,7 +35838,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 3)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_229)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_233)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn85, i64 0)
@@ -35746,7 +35846,7 @@ if.j1:
   store ptr %t5, ptr %t6
   %t7 = call double @scr_arr_push_ref(ptr %t1, ptr %t2)
   %t8 = call ptr @sc_rnew_r8()
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_230)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_234)
   %t10 = getelementptr inbounds %sc_rs_r8, ptr %t8, i64 0, i32 2
   store ptr %t9, ptr %t10
   %t11 = call ptr @scr_closure_new(ptr @sc_f__x25_fn86, i64 0)
@@ -35754,7 +35854,7 @@ if.j1:
   store ptr %t11, ptr %t12
   %t13 = call double @scr_arr_push_ref(ptr %t1, ptr %t8)
   %t14 = call ptr @sc_rnew_r8()
-  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_231)
+  %t15 = call ptr @scr_str_retain_v(ptr @sc_lit_235)
   %t16 = getelementptr inbounds %sc_rs_r8, ptr %t14, i64 0, i32 2
   store ptr %t15, ptr %t16
   %t17 = call ptr @scr_closure_new(ptr @sc_f__x25_fn87, i64 0)
@@ -35804,7 +35904,7 @@ if.j1:
   call void @sc_f__x25_init_1()
   %t1 = call ptr @scr_arr_new_ref(ptr @sc_rretain_r8, ptr @sc_rrelease_r8, ptr @sc_rtrace_r8, i64 1)
   %t2 = call ptr @sc_rnew_r8()
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_232)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_236)
   %t4 = getelementptr inbounds %sc_rs_r8, ptr %t2, i64 0, i32 2
   store ptr %t3, ptr %t4
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn88, i64 0)
@@ -35923,21 +36023,21 @@ exc.k29:
 exc.u30:
   ret void
 exc.k31:
-  %t16 = call ptr @scr_str_retain_v(ptr @sc_lit_233)
+  %t16 = call ptr @scr_str_retain_v(ptr @sc_lit_237)
   %t17 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t17
   %t18 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
   store ptr %t16, ptr %t18
   call void @scr_console_log(i64 1, ptr %logargs)
   call void @scr_str_release(ptr %t16)
-  %t19 = call ptr @scr_str_retain_v(ptr @sc_lit_234)
+  %t19 = call ptr @scr_str_retain_v(ptr @sc_lit_238)
   %t20 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t20
   %t21 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
   store ptr %t19, ptr %t21
   call void @scr_console_log(i64 1, ptr %logargs)
   call void @scr_str_release(ptr %t19)
-  %t22 = call ptr @scr_str_retain_v(ptr @sc_lit_233)
+  %t22 = call ptr @scr_str_retain_v(ptr @sc_lit_237)
   %t23 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t23
   %t24 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
@@ -36104,7 +36204,7 @@ loop.u65:
   store double %t87, ptr %sc_l_i_0
   br label %loop.c62
 loop.e64:
-  %t88 = call ptr @scr_str_retain_v(ptr @sc_lit_235)
+  %t88 = call ptr @scr_str_retain_v(ptr @sc_lit_239)
   %t89 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t89
   %t90 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
@@ -36114,11 +36214,11 @@ loop.e64:
   %t91 = load i1, ptr @sc_g_e_allPassed
   br i1 %t91, label %if.t68, label %if.f70
 if.t68:
-  %t92 = call ptr @scr_str_retain_v(ptr @sc_lit_236)
+  %t92 = call ptr @scr_str_retain_v(ptr @sc_lit_240)
   %t93 = load double, ptr @sc_g_e_totalTime
   %t94 = call ptr @scr_f64_to_scrstr(double %t93)
   %t95 = call ptr @scr_str_concat(ptr %t92, ptr %t94)
-  %t96 = call ptr @scr_str_retain_v(ptr @sc_lit_237)
+  %t96 = call ptr @scr_str_retain_v(ptr @sc_lit_241)
   %t97 = call ptr @scr_str_concat(ptr %t95, ptr %t96)
   %t98 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t98
@@ -36132,7 +36232,7 @@ if.t68:
   call void @scr_str_release(ptr %t97)
   br label %if.j69
 if.f70:
-  %t100 = call ptr @scr_str_retain_v(ptr @sc_lit_238)
+  %t100 = call ptr @scr_str_retain_v(ptr @sc_lit_242)
   %t101 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t101
   %t102 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
@@ -36142,7 +36242,7 @@ if.f70:
   call void @scr_process_exit(double 0x3FF0000000000000)
   br label %if.j69
 if.j69:
-  %t103 = call ptr @scr_str_retain_v(ptr @sc_lit_233)
+  %t103 = call ptr @scr_str_retain_v(ptr @sc_lit_237)
   %t104 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 0
   store i32 1, ptr %t104
   %t105 = getelementptr inbounds %ScrLogArg, ptr %logargs, i64 0, i32 1
@@ -36209,7 +36309,7 @@ entry:
   %t1 = fcmp oeq double %t0, 0x0000000000000000
   br i1 %t1, label %if.t0, label %if.j1
 if.t0:
-  %t2 = call ptr @scr_str_retain_v(ptr @sc_lit_239)
+  %t2 = call ptr @scr_str_retain_v(ptr @sc_lit_243)
   %t3 = call ptr @scr_error_new(i32 0, ptr %t2)
   call void @scr_throw_obj(ptr %t3, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t2)
@@ -36247,7 +36347,7 @@ entry:
 
 define internal ptr @sc_f__x25_unit_strand_0() #0 { ; %unit.strand.0
 entry:
-  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_240)
+  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_244)
   %t1 = call ptr @scr_error_new(i32 1, ptr %t0)
   call void @scr_throw_obj(ptr %t1, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t0)
@@ -36266,7 +36366,7 @@ entry:
   call void @scr_union_release(ptr %t1)
   br i1 %t4, label %if.t0, label %if.j1
 if.t0:
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_241)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_245)
   %t6 = call ptr @scr_error_new(i32 1, ptr %t5)
   call void @scr_throw_obj(ptr %t6, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t5)
@@ -36297,7 +36397,7 @@ entry:
   call void @scr_union_release(ptr %t1)
   br i1 %t4, label %if.t0, label %if.j1
 if.t0:
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_242)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_246)
   %t6 = call ptr @scr_error_new(i32 1, ptr %t5)
   call void @scr_throw_obj(ptr %t6, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t5)
@@ -36318,7 +36418,7 @@ if.j1:
 
 define internal double @sc_f__x25_unit_strand_1() #0 { ; %unit.strand.1
 entry:
-  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_243)
+  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_247)
   %t1 = call ptr @scr_error_new(i32 1, ptr %t0)
   call void @scr_throw_obj(ptr %t1, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t0)
@@ -36337,7 +36437,7 @@ entry:
   call void @scr_union_release(ptr %t1)
   br i1 %t4, label %if.t0, label %if.j1
 if.t0:
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_241)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_245)
   %t6 = call ptr @scr_error_new(i32 1, ptr %t5)
   call void @scr_throw_obj(ptr %t6, ptr @scr_error_retain_v, ptr @scr_error_release_v, ptr null)
   call void @scr_str_release(ptr %t5)
@@ -36554,7 +36654,7 @@ exc.u0:
   ret void
 exc.k1:
   %t5 = call ptr @scr_closure_new(ptr @sc_f__x25_fn9, i64 0)
-  %t6 = call ptr @scr_str_retain_v(ptr @sc_lit_244)
+  %t6 = call ptr @scr_str_retain_v(ptr @sc_lit_248)
   %t7 = call ptr @scr_union_new_ref(i32 0, ptr %t6, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t5, ptr %t7)
   %t8 = call zeroext i1 @scr_exc_pending()
@@ -36563,7 +36663,7 @@ exc.u2:
   ret void
 exc.k3:
   %t9 = call ptr @scr_closure_new(ptr @sc_f__x25_fn10, i64 0)
-  %t10 = call ptr @scr_str_retain_v(ptr @sc_lit_244)
+  %t10 = call ptr @scr_str_retain_v(ptr @sc_lit_248)
   %t11 = call ptr @scr_union_new_ref(i32 0, ptr %t10, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t9, ptr %t11)
   %t12 = call zeroext i1 @scr_exc_pending()
@@ -36836,7 +36936,7 @@ exc.u18:
   ret void
 exc.k19:
   %t59 = call ptr @scr_closure_new(ptr @sc_f__x25_fn14, i64 0)
-  %t60 = call ptr @scr_str_retain_v(ptr @sc_lit_245)
+  %t60 = call ptr @scr_str_retain_v(ptr @sc_lit_249)
   %t61 = call ptr @scr_union_new_ref(i32 0, ptr %t60, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t59, ptr %t61)
   %t62 = call zeroext i1 @scr_exc_pending()
@@ -37700,7 +37800,7 @@ exc.k1:
   %t10 = getelementptr inbounds %ScrClosure, ptr %t7, i64 1 ; caps
   %t11 = getelementptr inbounds ptr, ptr %t10, i64 0 ; caps[0]
   store ptr %t9, ptr %t11
-  %t12 = call ptr @scr_str_retain_v(ptr @sc_lit_246)
+  %t12 = call ptr @scr_str_retain_v(ptr @sc_lit_250)
   %t13 = call ptr @scr_union_new_ref(i32 0, ptr %t12, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t7, ptr %t13)
   %t14 = call zeroext i1 @scr_exc_pending()
@@ -37716,7 +37816,7 @@ exc.k3:
   %t19 = getelementptr inbounds %ScrClosure, ptr %t16, i64 1 ; caps
   %t20 = getelementptr inbounds ptr, ptr %t19, i64 0 ; caps[0]
   store ptr %t18, ptr %t20
-  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_246)
+  %t21 = call ptr @scr_str_retain_v(ptr @sc_lit_250)
   %t22 = call ptr @scr_union_new_ref(i32 0, ptr %t21, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t16, ptr %t22)
   %t23 = call zeroext i1 @scr_exc_pending()
@@ -37732,7 +37832,7 @@ exc.k5:
   %t28 = getelementptr inbounds %ScrClosure, ptr %t25, i64 1 ; caps
   %t29 = getelementptr inbounds ptr, ptr %t28, i64 0 ; caps[0]
   store ptr %t27, ptr %t29
-  %t30 = call ptr @scr_str_retain_v(ptr @sc_lit_246)
+  %t30 = call ptr @scr_str_retain_v(ptr @sc_lit_250)
   %t31 = call ptr @scr_union_new_ref(i32 0, ptr %t30, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t25, ptr %t31)
   %t32 = call zeroext i1 @scr_exc_pending()
@@ -37748,7 +37848,7 @@ exc.k7:
   %t37 = getelementptr inbounds %ScrClosure, ptr %t34, i64 1 ; caps
   %t38 = getelementptr inbounds ptr, ptr %t37, i64 0 ; caps[0]
   store ptr %t36, ptr %t38
-  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_247)
+  %t39 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
   %t40 = call ptr @scr_union_new_ref(i32 0, ptr %t39, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t34, ptr %t40)
   %t41 = call zeroext i1 @scr_exc_pending()
@@ -37764,7 +37864,7 @@ exc.k9:
   %t46 = getelementptr inbounds %ScrClosure, ptr %t43, i64 1 ; caps
   %t47 = getelementptr inbounds ptr, ptr %t46, i64 0 ; caps[0]
   store ptr %t45, ptr %t47
-  %t48 = call ptr @scr_str_retain_v(ptr @sc_lit_247)
+  %t48 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
   %t49 = call ptr @scr_union_new_ref(i32 0, ptr %t48, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t43, ptr %t49)
   %t50 = call zeroext i1 @scr_exc_pending()
@@ -38048,7 +38148,7 @@ exc.k29:
   %t126 = getelementptr inbounds %ScrClosure, ptr %t123, i64 1 ; caps
   %t127 = getelementptr inbounds ptr, ptr %t126, i64 0 ; caps[0]
   store ptr %t125, ptr %t127
-  %t128 = call ptr @scr_str_retain_v(ptr @sc_lit_248)
+  %t128 = call ptr @scr_str_retain_v(ptr @sc_lit_252)
   %t129 = call ptr @scr_union_new_ref(i32 0, ptr %t128, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t123, ptr %t129)
   %t130 = call zeroext i1 @scr_exc_pending()
@@ -39366,7 +39466,7 @@ exc.u10:
   call void @sc_release__x25_m4_Tensor(ptr %t35)
   ret void
 exc.k11:
-  %t36 = call ptr @scr_jsval_get_prop(ptr %t32, ptr @sc_lit_249)
+  %t36 = call ptr @scr_jsval_get_prop(ptr %t32, ptr @sc_lit_253)
   %t37 = call zeroext i1 @scr_exc_pending()
   br i1 %t37, label %exc.u12, label %exc.k13
 exc.u12:
@@ -39431,7 +39531,7 @@ exc.u20:
   call void @sc_release__x25_m4_Tensor(ptr %t60)
   ret void
 exc.k21:
-  %t61 = call ptr @scr_jsval_get_prop(ptr %t57, ptr @sc_lit_249)
+  %t61 = call ptr @scr_jsval_get_prop(ptr %t57, ptr @sc_lit_253)
   %t62 = call zeroext i1 @scr_exc_pending()
   br i1 %t62, label %exc.u22, label %exc.k23
 exc.u22:
@@ -39470,7 +39570,7 @@ exc.u26:
   call void @sc_release__x25_m4_Tensor(ptr %t74)
   ret void
 exc.k27:
-  %t75 = call ptr @scr_jsval_get_prop(ptr %t71, ptr @sc_lit_249)
+  %t75 = call ptr @scr_jsval_get_prop(ptr %t71, ptr @sc_lit_253)
   %t76 = call zeroext i1 @scr_exc_pending()
   br i1 %t76, label %exc.u28, label %exc.k29
 exc.u28:
@@ -40186,7 +40286,7 @@ exc.k3:
   %t27 = getelementptr inbounds %ScrClosure, ptr %t20, i64 1 ; caps
   %t28 = getelementptr inbounds ptr, ptr %t27, i64 1 ; caps[1]
   store ptr %t26, ptr %t28
-  %t29 = call ptr @scr_str_retain_v(ptr @sc_lit_245)
+  %t29 = call ptr @scr_str_retain_v(ptr @sc_lit_249)
   %t30 = call ptr @scr_union_new_ref(i32 0, ptr %t29, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t20, ptr %t30)
   %t31 = call zeroext i1 @scr_exc_pending()
@@ -40217,7 +40317,7 @@ exc.u6:
   ret void
 exc.k7:
   %t44 = call ptr @scr_closure_new(ptr @sc_f__x25_fn40, i64 0)
-  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_250)
+  %t45 = call ptr @scr_str_retain_v(ptr @sc_lit_254)
   %t46 = call ptr @scr_union_new_ref(i32 0, ptr %t45, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t44, ptr %t46)
   %t47 = call zeroext i1 @scr_exc_pending()
@@ -42708,7 +42808,7 @@ exc.k3:
   %t22 = getelementptr inbounds %ScrClosure, ptr %t15, i64 1 ; caps
   %t23 = getelementptr inbounds ptr, ptr %t22, i64 1 ; caps[1]
   store ptr %t21, ptr %t23
-  %t24 = call ptr @scr_str_retain_v(ptr @sc_lit_247)
+  %t24 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
   %t25 = call ptr @scr_union_new_ref(i32 0, ptr %t24, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t15, ptr %t25)
   %t26 = call zeroext i1 @scr_exc_pending()
@@ -42959,7 +43059,7 @@ exc.u8:
 exc.k9:
   %t30 = fcmp uno double %t26, 0x0000000000000000
   %t31 = xor i1 %t30, true
-  %t32 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
+  %t32 = call ptr @scr_str_retain_v(ptr @sc_lit_255)
   %t33 = call ptr @scr_union_new_ref(i32 0, ptr %t32, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t31, ptr %t33)
   %t34 = call zeroext i1 @scr_exc_pending()
@@ -42987,7 +43087,7 @@ exc.u12:
 exc.k13:
   %t45 = fcmp uno double %t41, 0x0000000000000000
   %t46 = xor i1 %t45, true
-  %t47 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
+  %t47 = call ptr @scr_str_retain_v(ptr @sc_lit_255)
   %t48 = call ptr @scr_union_new_ref(i32 0, ptr %t47, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t46, ptr %t48)
   %t49 = call zeroext i1 @scr_exc_pending()
@@ -43015,7 +43115,7 @@ exc.u16:
 exc.k17:
   %t60 = fcmp uno double %t56, 0x0000000000000000
   %t61 = xor i1 %t60, true
-  %t62 = call ptr @scr_str_retain_v(ptr @sc_lit_251)
+  %t62 = call ptr @scr_str_retain_v(ptr @sc_lit_255)
   %t63 = call ptr @scr_union_new_ref(i32 0, ptr %t62, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t61, ptr %t63)
   %t64 = call zeroext i1 @scr_exc_pending()
@@ -44383,7 +44483,7 @@ exc.k19:
   %t106 = getelementptr inbounds %ScrClosure, ptr %t103, i64 1 ; caps
   %t107 = getelementptr inbounds ptr, ptr %t106, i64 0 ; caps[0]
   store ptr %t105, ptr %t107
-  %t108 = call ptr @scr_str_retain_v(ptr @sc_lit_246)
+  %t108 = call ptr @scr_str_retain_v(ptr @sc_lit_250)
   %t109 = call ptr @scr_union_new_ref(i32 0, ptr %t108, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertThrows(ptr %t103, ptr %t109)
   %t110 = call zeroext i1 @scr_exc_pending()
@@ -47194,7 +47294,7 @@ exc.u22:
 exc.k23:
   %t140 = fcmp uno double %t132, 0x0000000000000000
   %t141 = xor i1 %t140, true
-  %t142 = call ptr @scr_str_retain_v(ptr @sc_lit_252)
+  %t142 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
   %t143 = load double, ptr %sc_l_s_0
   %t144 = call ptr @scr_f64_to_scrstr(double %t143)
   %t145 = call ptr @scr_str_concat(ptr %t142, ptr %t144)
@@ -47203,7 +47303,7 @@ exc.k23:
   %t148 = load double, ptr %sc_l_d_0
   %t149 = call ptr @scr_f64_to_scrstr(double %t148)
   %t150 = call ptr @scr_str_concat(ptr %t147, ptr %t149)
-  %t151 = call ptr @scr_str_retain_v(ptr @sc_lit_253)
+  %t151 = call ptr @scr_str_retain_v(ptr @sc_lit_257)
   %t152 = call ptr @scr_str_concat(ptr %t150, ptr %t151)
   %t153 = call ptr @scr_union_new_ref(i32 0, ptr %t152, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t141, ptr %t153)
@@ -47266,7 +47366,7 @@ exc.u26:
   ret void
 exc.k27:
   %t176 = call i1 @scr_num_is_finite(double %t168)
-  %t177 = call ptr @scr_str_retain_v(ptr @sc_lit_252)
+  %t177 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
   %t178 = load double, ptr %sc_l_s_0
   %t179 = call ptr @scr_f64_to_scrstr(double %t178)
   %t180 = call ptr @scr_str_concat(ptr %t177, ptr %t179)
@@ -47275,7 +47375,7 @@ exc.k27:
   %t183 = load double, ptr %sc_l_d_0
   %t184 = call ptr @scr_f64_to_scrstr(double %t183)
   %t185 = call ptr @scr_str_concat(ptr %t182, ptr %t184)
-  %t186 = call ptr @scr_str_retain_v(ptr @sc_lit_254)
+  %t186 = call ptr @scr_str_retain_v(ptr @sc_lit_258)
   %t187 = call ptr @scr_str_concat(ptr %t185, ptr %t186)
   %t188 = call ptr @scr_union_new_ref(i32 0, ptr %t187, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t176, ptr %t188)
@@ -48223,7 +48323,7 @@ exc.u0:
   ret void
 exc.k1:
   store ptr %t0, ptr %sc_l_tok_0
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_255)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_259)
   store ptr %t3, ptr %sc_l_text_0
   %t4 = load ptr, ptr %sc_l_tok_0
   %t5 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t4)
@@ -48299,13 +48399,13 @@ entry:
   store ptr null, ptr %sc_l_encoded_0
   store ptr null, ptr %sc_l_decoded_0
   %t0 = call ptr @scr_arr_new(i32 2, i64 4)
-  %t1 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
+  %t1 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
   %t2 = call double @scr_arr_push_ref(ptr %t0, ptr %t1)
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_257)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_261)
   %t4 = call double @scr_arr_push_ref(ptr %t0, ptr %t3)
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_258)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_262)
   %t6 = call double @scr_arr_push_ref(ptr %t0, ptr %t5)
-  %t7 = call ptr @scr_str_retain_v(ptr @sc_lit_259)
+  %t7 = call ptr @scr_str_retain_v(ptr @sc_lit_263)
   %t8 = call double @scr_arr_push_ref(ptr %t0, ptr %t7)
   store ptr %t0, ptr %sc_l_customWords_0
   %t9 = call ptr @sc_new__x25_m29_Tokenizer()
@@ -48325,7 +48425,7 @@ exc.k1:
   store ptr %t9, ptr %sc_l_tok_0
   %t16 = load ptr, ptr %sc_l_tok_0
   %t17 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t16)
-  %t18 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
+  %t18 = call ptr @scr_str_retain_v(ptr @sc_lit_264)
   %t19 = call ptr @scr_union_new_bool(i32 0, i1 false)
   %t20 = call ptr @scr_union_new_bool(i32 0, i1 false)
   %t21 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t17, i64 0, i32 1
@@ -48374,7 +48474,7 @@ exc.k5:
   %t46 = load ptr, ptr %t45 ; idToToken
   %t47 = call ptr %t46(ptr %t39, double %t42)
   %t48 = call ptr @scr_union_new_ref(i32 2, ptr %t47, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t49 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
+  %t49 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
   %t50 = call ptr @scr_union_new_ref(i32 2, ptr %t49, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t48, ptr %t50, ptr @sc_unit_1)
   %t51 = call zeroext i1 @scr_exc_pending()
@@ -48428,7 +48528,7 @@ exc.k9:
   %t80 = load ptr, ptr %t79 ; idToToken
   %t81 = call ptr %t80(ptr %t73, double %t76)
   %t82 = call ptr @scr_union_new_ref(i32 2, ptr %t81, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t83 = call ptr @scr_str_retain_v(ptr @sc_lit_257)
+  %t83 = call ptr @scr_str_retain_v(ptr @sc_lit_261)
   %t84 = call ptr @scr_union_new_ref(i32 2, ptr %t83, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t82, ptr %t84, ptr @sc_unit_1)
   %t85 = call zeroext i1 @scr_exc_pending()
@@ -48457,7 +48557,7 @@ exc.k11:
   %t98 = load ptr, ptr %sc_l_decoded_0
   %t99 = call ptr @scr_str_retain_v(ptr %t98)
   %t100 = call ptr @scr_union_new_ref(i32 2, ptr %t99, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t101 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
+  %t101 = call ptr @scr_str_retain_v(ptr @sc_lit_264)
   %t102 = call ptr @scr_union_new_ref(i32 2, ptr %t101, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t100, ptr %t102, ptr @sc_unit_1)
   %t103 = call zeroext i1 @scr_exc_pending()
@@ -48502,7 +48602,7 @@ exc.k1:
   store ptr %t0, ptr %sc_l_tok_0
   %t3 = load ptr, ptr %sc_l_tok_0
   %t4 = call ptr @sc_retain__x25_m29_Tokenizer(ptr %t3)
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_261)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_265)
   %t6 = call ptr @scr_union_new_bool(i32 0, i1 true)
   %t7 = call ptr @scr_union_new_bool(i32 0, i1 true)
   %t8 = getelementptr inbounds %sc_o__x25_m29_Tokenizer, ptr %t4, i64 0, i32 1
@@ -48581,7 +48681,7 @@ exc.k7:
   %t50 = load ptr, ptr %t49 ; decode
   %t51 = call ptr %t50(ptr %t44, ptr %t46, ptr @sc_unit_7)
   %t52 = call ptr @scr_union_new_ref(i32 2, ptr %t51, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t53 = call ptr @scr_str_retain_v(ptr @sc_lit_261)
+  %t53 = call ptr @scr_str_retain_v(ptr @sc_lit_265)
   %t54 = call ptr @scr_union_new_ref(i32 2, ptr %t53, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t52, ptr %t54, ptr @sc_unit_1)
   %t55 = call zeroext i1 @scr_exc_pending()
@@ -48604,7 +48704,7 @@ exc.k9:
   %t66 = load ptr, ptr %t65 ; decode
   %t67 = call ptr %t66(ptr %t59, ptr %t61, ptr %t62)
   %t68 = call ptr @scr_union_new_ref(i32 2, ptr %t67, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t69 = call ptr @scr_str_retain_v(ptr @sc_lit_262)
+  %t69 = call ptr @scr_str_retain_v(ptr @sc_lit_266)
   %t70 = call ptr @scr_union_new_ref(i32 2, ptr %t69, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t68, ptr %t70, ptr @sc_unit_1)
   %t71 = call zeroext i1 @scr_exc_pending()
@@ -48633,7 +48733,7 @@ entry:
   store ptr null, ptr %sc_l_tok_0
   store ptr null, ptr %sc_l_prompt_0
   store ptr null, ptr %sc_l_encoded_0
-  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_263)
+  %t0 = call ptr @scr_str_retain_v(ptr @sc_lit_267)
   store ptr %t0, ptr %sc_l_modelPath_0
   %t1 = load ptr, ptr %sc_l_modelPath_0
   %t2 = call ptr @scr_str_retain_v(ptr %t1)
@@ -48660,7 +48760,7 @@ exc.u2:
   ret void
 exc.k3:
   store ptr %t6, ptr %sc_l_tok_0
-  %t12 = call ptr @scr_str_retain_v(ptr @sc_lit_264)
+  %t12 = call ptr @scr_str_retain_v(ptr @sc_lit_268)
   store ptr %t12, ptr %sc_l_prompt_0
   %t13 = load ptr, ptr %sc_l_tok_0
   %t14 = call ptr @sc_retain__x25_m32_GGUFTokenizer(ptr %t13)
@@ -48713,7 +48813,7 @@ exc.k5:
   %t50 = call ptr @scr_union_new_bool(i32 0, i1 true)
   %t51 = call ptr @sc_f__x25__x25_m32_GGUFTokenizer_decode(ptr %t47, ptr %t49, ptr %t50)
   %t52 = call ptr @scr_union_new_ref(i32 2, ptr %t51, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
-  %t53 = call ptr @scr_str_retain_v(ptr @sc_lit_265)
+  %t53 = call ptr @scr_str_retain_v(ptr @sc_lit_269)
   %t54 = call ptr @scr_union_new_ref(i32 2, ptr %t53, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assertEqual(ptr %t52, ptr %t54, ptr @sc_unit_1)
   %t55 = call zeroext i1 @scr_exc_pending()
@@ -48884,7 +48984,7 @@ exc.u14:
 exc.k15:
   %t70 = fcmp uno double %t64, 0x0000000000000000
   %t71 = xor i1 %t70, true
-  %t72 = call ptr @scr_str_retain_v(ptr @sc_lit_266)
+  %t72 = call ptr @scr_str_retain_v(ptr @sc_lit_270)
   %t73 = load double, ptr %sc_l_s_0
   %t74 = call ptr @scr_f64_to_scrstr(double %t73)
   %t75 = call ptr @scr_str_concat(ptr %t72, ptr %t74)
@@ -48893,7 +48993,7 @@ exc.k15:
   %t78 = load double, ptr %sc_l_v_0
   %t79 = call ptr @scr_f64_to_scrstr(double %t78)
   %t80 = call ptr @scr_str_concat(ptr %t77, ptr %t79)
-  %t81 = call ptr @scr_str_retain_v(ptr @sc_lit_253)
+  %t81 = call ptr @scr_str_retain_v(ptr @sc_lit_257)
   %t82 = call ptr @scr_str_concat(ptr %t80, ptr %t81)
   %t83 = call ptr @scr_union_new_ref(i32 0, ptr %t82, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t71, ptr %t83)
@@ -49211,7 +49311,7 @@ exc.k3:
   %t33 = call ptr @scr_arr_get_ref(ptr %t32, double 0x3FF0000000000000)
   %t34 = call ptr @scr_path_dirname(ptr %t33)
   %t35 = call double @scr_arr_push_ref(ptr %t31, ptr %t34)
-  %t36 = call ptr @scr_str_retain_v(ptr @sc_lit_267)
+  %t36 = call ptr @scr_str_retain_v(ptr @sc_lit_271)
   %t37 = call double @scr_arr_push_ref(ptr %t31, ptr %t36)
   %t38 = call ptr @scr_path_join(ptr %t31)
   store ptr %t38, ptr %sc_l_tmpFile_0
@@ -49237,7 +49337,7 @@ exc.k5:
   %t47 = load ptr, ptr %sc_l_tmpFile_0
   %t48 = call ptr @scr_str_retain_v(ptr %t47)
   %t49 = call i1 @scr_fs_exists(ptr %t48)
-  %t50 = call ptr @scr_str_retain_v(ptr @sc_lit_268)
+  %t50 = call ptr @scr_str_retain_v(ptr @sc_lit_272)
   %t51 = call ptr @scr_union_new_ref(i32 0, ptr %t50, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t49, ptr %t51)
   %t52 = call zeroext i1 @scr_exc_pending()
@@ -49627,11 +49727,11 @@ log.r8:
   br label %log.j9
 log.j9:
   %t37 = load i1, ptr %s34
-  %t38 = call ptr @scr_str_retain_v(ptr @sc_lit_269)
+  %t38 = call ptr @scr_str_retain_v(ptr @sc_lit_273)
   %t39 = load double, ptr %sc_l_token_0
   %t40 = call ptr @scr_f64_to_scrstr(double %t39)
   %t41 = call ptr @scr_str_concat(ptr %t38, ptr %t40)
-  %t42 = call ptr @scr_str_retain_v(ptr @sc_lit_270)
+  %t42 = call ptr @scr_str_retain_v(ptr @sc_lit_274)
   %t43 = call ptr @scr_str_concat(ptr %t41, ptr %t42)
   %t44 = call ptr @scr_union_new_ref(i32 0, ptr %t43, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t37, ptr %t44)
@@ -49703,15 +49803,15 @@ entry:
   store ptr null, ptr %sc_l_streamTokens_0
   store ptr null, ptr %sc_l_result_0
   %t0 = call ptr @scr_arr_new(i32 2, i64 5)
-  %t1 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
+  %t1 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
   %t2 = call double @scr_arr_push_ref(ptr %t0, ptr %t1)
-  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_257)
+  %t3 = call ptr @scr_str_retain_v(ptr @sc_lit_261)
   %t4 = call double @scr_arr_push_ref(ptr %t0, ptr %t3)
-  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_259)
+  %t5 = call ptr @scr_str_retain_v(ptr @sc_lit_263)
   %t6 = call double @scr_arr_push_ref(ptr %t0, ptr %t5)
-  %t7 = call ptr @scr_str_retain_v(ptr @sc_lit_271)
+  %t7 = call ptr @scr_str_retain_v(ptr @sc_lit_275)
   %t8 = call double @scr_arr_push_ref(ptr %t0, ptr %t7)
-  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_272)
+  %t9 = call ptr @scr_str_retain_v(ptr @sc_lit_276)
   %t10 = call double @scr_arr_push_ref(ptr %t0, ptr %t9)
   store ptr %t0, ptr %sc_l_vocabWords_0
   %t11 = call ptr @sc_new__x25_m29_Tokenizer()
@@ -49790,7 +49890,7 @@ exc.k3:
   call void @scr_box_set_ref(ptr %t51, ptr %t52)
   %t53 = load ptr, ptr %sc_l_generator_0
   %t54 = call ptr @sc_retain__x25_m39_Generator(ptr %t53)
-  %t55 = call ptr @scr_str_retain_v(ptr @sc_lit_256)
+  %t55 = call ptr @scr_str_retain_v(ptr @sc_lit_260)
   %t56 = call ptr @scr_union_new_f64(i32 0, double 0x4018000000000000)
   %t57 = call ptr @sc_rnew_r6()
   %t58 = call ptr @scr_union_new_f64(i32 0, double 0x0000000000000000)
@@ -49896,7 +49996,7 @@ exc.k9:
   %t111 = call ptr @scr_str_retain_v(ptr %t110)
   %t112 = call double @scr_str_utf16_len(ptr %t111)
   %t113 = fcmp ogt double %t112, 0x0000000000000000
-  %t114 = call ptr @scr_str_retain_v(ptr @sc_lit_273)
+  %t114 = call ptr @scr_str_retain_v(ptr @sc_lit_277)
   %t115 = call ptr @scr_union_new_ref(i32 0, ptr %t114, ptr @scr_str_retain_v, ptr @scr_str_release_v, ptr null)
   call void @sc_f__x25_m1_assert(i1 %t113, ptr %t115)
   %t116 = call zeroext i1 @scr_exc_pending()
