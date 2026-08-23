@@ -338,7 +338,6 @@ llama.scriptc/
 
 1. **KV Cache Mathematical Equivalence**: Formal verification that step-by-step decoding with KV Cache produces a result **strictly identical ($< 10^{-6}$)** to full recomputation without cache.
 2. **Strict Attention Causality**: Verification that no future information leak alters the past (causal triangular masking).
-3. **PyTorch Reference**: A reference script [`tools/reference/pytorch_reference.py`](tools/reference/pytorch_reference.py) allows exporting weights and activations layer by layer for direct numerical comparison.
 
 ---
 
