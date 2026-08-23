@@ -249,8 +249,9 @@ function applyRoPEInPlace(tensor: Tensor, startPos: number, freqs?: RoPEFreqs): 
       const headOffset = rowOffset + h * strides[1];
 
       for (let d = 0; d < halfDim; d++) {
-        const idx1 = headOffset + d * strides[2];
-        const idx2 = headOffset + (d + halfDim) * strides[2];
+        // Interleaved pair convention (matches GGUF/Qwen2): (x[2d], x[2d+1])
+        const idx1 = headOffset + (2 * d) * strides[2];
+        const idx2 = headOffset + (2 * d + 1) * strides[2];
 
         const x1 = data[idx1];
         const x2 = data[idx2];

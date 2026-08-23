@@ -39,6 +39,7 @@ export class Generator {
 
     const generatedTokens: number[] = [];
     const allTokens: number[] = promptTokens.slice();
+    let emittedLen = 0; // chars of decoded text already streamed via onToken
 
     // 2. Initialize KV Cache
     const kvCache: KVCache = this.model.createKVCache();
@@ -65,9 +66,14 @@ export class Generator {
       generatedTokens.push(nextTok);
       allTokens.push(nextTok);
 
-      const tokenText: string = this.tokenizer.idToToken(nextTok);
       if (onToken) {
-        onToken(tokenText);
+        // Stream properly byte-decoded text (handles multi-byte UTF-8 tokens
+        // split across tokens by only emitting complete characters).
+        const decodedSoFar: string = this.tokenizer.decode(allTokens, true);
+        if (decodedSoFar.length > emittedLen) {
+          onToken(decodedSoFar.substring(emittedLen));
+          emittedLen = decodedSoFar.length;
+        }
       }
 
       const curPos: number = promptTokens.length + generatedTokens.length - 1;

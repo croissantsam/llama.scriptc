@@ -7,6 +7,29 @@ import { Tokenizer } from "./tokenizer";
 
 export class GGUFTokenizer extends Tokenizer {
   tokens: string[] = [];
+  // Inverse of the GPT-2 bytes_to_unicode map: codepoint -> original byte
+  private static cpToByte: Map<number, number> = GGUFTokenizer.buildCpToByteMap();
+
+  private static buildCpToByteMap(): Map<number, number> {
+    const bs: number[] = [];
+    for (let b = 33; b < 127; b++) bs.push(b);
+    for (let b = 161; b < 173; b++) bs.push(b);
+    for (let b = 174; b < 256; b++) bs.push(b);
+    const cs = bs.slice();
+    let n = 0;
+    for (let b = 0; b < 256; b++) {
+      if (!bs.includes(b)) {
+        bs.push(b);
+        cs.push(256 + n);
+        n++;
+      }
+    }
+    const m = new Map<number, number>();
+    for (let i = 0; i < bs.length; i++) {
+      m.set(cs[i], bs[i]);
+    }
+    return m;
+  }
 
   constructor(filePath: string) {
     super();
@@ -98,21 +121,9 @@ export class GGUFTokenizer extends Tokenizer {
 
       for (let c = 0; c < tokStr.length; c++) {
         const code = tokStr.charCodeAt(c);
-        if (tokStr[c] === "Ġ") {
-          rawBytes.push(32); // Space
-        } else if (tokStr[c] === "Ċ") {
-          rawBytes.push(10); // Newline
-        } else if (tokStr[c] === "ĉ") {
-          rawBytes.push(9);  // Tab
-        } else if (code >= 256) {
-          // UTF-8 multi-byte fallback representation
-          const b = Buffer.from(tokStr[c], "utf8");
-          for (let k = 0; k < b.length; k++) {
-            rawBytes.push(b[k]);
-          }
-        } else {
-          rawBytes.push(code);
-        }
+        // Invert the GPT-2 bytes_to_unicode mapping to recover the raw byte
+        const b = GGUFTokenizer.cpToByte.get(code);
+        rawBytes.push(b !== undefined ? b : code & 0xff);
       }
     }
 
